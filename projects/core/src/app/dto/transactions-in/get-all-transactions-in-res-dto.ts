@@ -1,6 +1,6 @@
 import { GetTransactionsInDataDto } from "./get-transactions-in-data-dto"
 
 export class GetAllTransactionsInResDto {
-	GetTransactionsInDataDto!: GetTransactionsInDataDto[]
+	getTransactionsInDataDto!: GetTransactionsInDataDto[]
 	message!: string
 }
