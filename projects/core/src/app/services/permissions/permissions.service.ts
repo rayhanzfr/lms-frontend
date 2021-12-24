@@ -16,12 +16,12 @@ export class PermissionsService {
     return this.http.get<GetAllPermissionsResDto>('http://localhost:8888/permissions/')
   }
 
-  getByCode(): Observable<GetByCodePermissionsResDto>{
-    return this.http.get<GetByCodePermissionsResDto>('http://localhost:8888/permissions/id')
+  getByCode(code: string): Observable<GetByCodePermissionsResDto>{
+    return this.http.get<GetByCodePermissionsResDto>('http://localhost:8888/permissions/code/?code='+code)
   }
 
-  getById(): Observable<GetByIdPermissionsResDto>{
-    return this.http.get<GetByIdPermissionsResDto>('http://localhost:8888/permissions/code')
+  getById(id: string): Observable<GetByIdPermissionsResDto>{
+    return this.http.get<GetByIdPermissionsResDto>('http://localhost:8888/permissions/id/?id='+id)
   }
 
   save(permissions: Permissions): Observable<Permissions>{
@@ -33,7 +33,7 @@ export class PermissionsService {
   }
 
   delete(id: string): Observable<Permissions>{
-    return this.http.delete<Permissions>('http://localhost:8888/permissions/' + id)
+    return this.http.delete<Permissions>('http://localhost:8888/permissions/id/?id=' + id)
   }
 }
 

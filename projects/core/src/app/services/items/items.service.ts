@@ -16,12 +16,12 @@ export class ItemsService {
     return this.http.get<GetAllItemsResDto>('http://localhost:8888/items/')
   }
 
-  getByCode(): Observable<GetByCodeItemsResDto>{
-    return this.http.get<GetByCodeItemsResDto>('http://localhost:8888/items/id')
+  getByCode(code: string): Observable<GetByCodeItemsResDto>{
+    return this.http.get<GetByCodeItemsResDto>('http://localhost:8888/items/code/?code='+code)
   }
 
-  getById(): Observable<GetByIdItemsResDto>{
-    return this.http.get<GetByIdItemsResDto>('http://localhost:8888/items/code')
+  getById(id:string): Observable<GetByIdItemsResDto>{
+    return this.http.get<GetByIdItemsResDto>('http://localhost:8888/items/id/?id='+id)
   }
 
   save(items: Items): Observable<Items>{
