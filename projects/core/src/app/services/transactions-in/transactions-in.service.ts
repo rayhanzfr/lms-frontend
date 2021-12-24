@@ -18,15 +18,15 @@ export class TransactionsInService {
     return this.http.get<GetAllTransactionsInResDto>('http://localhost:8888/transactions-in/');
   }
 
-  GetById(): Observable<GetByTransactionsInIdResDto> {
-    return this.http.get<GetByTransactionsInIdResDto>('http://localhost:8888/transactions-in/id');
+  GetById(id: string): Observable<GetByTransactionsInIdResDto> {
+    return this.http.get<GetByTransactionsInIdResDto>('http://localhost:8888/transactions-in/id?id=' + id);
   }
 
-  GetByCode(): Observable<GetByTransactionsInCodeResDto> {
-    return this.http.get<GetByTransactionsInCodeResDto>('http://localhost:8888/transactions-in/code');
+  GetByCode(code: string): Observable<GetByTransactionsInCodeResDto> {
+    return this.http.get<GetByTransactionsInCodeResDto>('http://localhost:8888/transactions-in/code?code=' + code);
   }
 
-  insertAll(saveFullTransactionsInReqDto: SaveFullTransactionsInReqDto): Observable<SaveFullTransactionsInReqDto>{
-    return this.http.post<SaveFullTransactionsInReqDto>('http://localhost:8888/transactions-in/', saveFullTransactionsInReqDto);
+  insertAll(saveFullTransactionsInReqDto: SaveFullTransactionsInReqDto): Observable<SaveFullTransactionsInResDto>{
+    return this.http.post<SaveFullTransactionsInResDto>('http://localhost:8888/transactions-in/', saveFullTransactionsInReqDto);
   }
 }
