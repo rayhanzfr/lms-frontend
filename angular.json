@@ -28,11 +28,22 @@
             ],
             "styles": [
               "projects/lms/src/styles.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeng/resources/themes/luna-blue/theme.css"
+              "projects/lms/src/template/plugins/fontawesome-free/css/all.css",
+              "projects/lms/src/template/plugins/overlayScrollbars/css/OverlayScrollbars.css",
+              "projects/lms/src/template/dist/css/adminlte.css"
             ],
-            "scripts": []
+            "scripts": [
+              "projects/lms/src/template/plugins/jquery/jquery.js",
+              "projects/lms/src/template/plugins/bootstrap/js/bootstrap.bundle.js",
+              "projects/lms/src/template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.js",
+              "projects/lms/src/template/dist/js/adminlte.js",
+              "projects/lms/src/template/dist/js/demo.js",
+              "projects/lms/src/template/plugins/jquery-mousewheel/jquery.mousewheel.js",
+              "projects/lms/src/template/plugins/raphael/raphael.js",
+              "projects/lms/src/template/plugins/jquery-mapael/jquery.mapael.js",
+              "projects/lms/src/template/plugins/chart.js/Chart.js",
+              "projects/lms/src/template/dist/js/pages/dashboard2.js"
+            ]
           },
           "configurations": {
             "production": {
