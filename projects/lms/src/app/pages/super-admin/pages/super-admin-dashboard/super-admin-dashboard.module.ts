@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SuperAdminDashboardComponent } from './super-admin-dashboard.component';
-import { MainbarComponent } from '../../../mainbar/mainbar.component';
 import { SuperAdminDashboardRoutingModule } from './super-admin-dashboard-routing.module';
+import { MainbarModule } from '../../../mainbar/mainbar.module';
 
 
 
@@ -11,7 +11,7 @@ import { SuperAdminDashboardRoutingModule } from './super-admin-dashboard-routin
     SuperAdminDashboardComponent
   ],
   imports: [
-    CommonModule, SuperAdminDashboardRoutingModule, MainbarComponent
+    CommonModule, SuperAdminDashboardRoutingModule, MainbarModule
   ]
 })
 export class SuperAdminDashboardModule { }

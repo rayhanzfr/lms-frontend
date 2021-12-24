@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   onClick(): void {
-    this.router.navigateByUrl
+    this.router.navigateByUrl('/admin-dashboard')
   }
 
 }

@@ -1,3 +1,3 @@
-export class DeleteStatusesAssetsInResDto {
+export class DeleteStatusesAssetsResDto {
 	message!: string
 }

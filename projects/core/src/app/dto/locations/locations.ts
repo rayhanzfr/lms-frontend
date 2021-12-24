@@ -1,3 +1,5 @@
+import { Companies } from "../companies/companies"
+
 export class Locations{
 	
 	id!: string
@@ -9,6 +11,6 @@ export class Locations{
 	isActive!: boolean
 	locationsCode!: string
 	locationsDeploy!: string
-	companies!: string
+	companies!: Companies
 
 }

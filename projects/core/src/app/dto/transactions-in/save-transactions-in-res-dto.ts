@@ -2,6 +2,6 @@ import { SaveTransactionsDetailsInResDto } from "./save-transactions-details-in-
 
 export class SaveTransactionsInResDto {
 	code!: string
-	listDetail!: SaveTransactionsDetailsInResDto
+	listDetail!: SaveTransactionsDetailsInResDto[]
 
 }
