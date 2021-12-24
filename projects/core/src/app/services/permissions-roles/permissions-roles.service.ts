@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GetAllPermissionsRolesResDto } from '../../dto/permissions-roles/get-all-permissions-res-dto';
