@@ -1,6 +1,6 @@
 import { GetTransactionsOutDataDto } from "./get-transactions-out-data-dto"
 
-export class GetByTransactionsDetailInIdResDto {
+export class GetByTransactionsDetailsOutIdResDto {
 	getTransactionsOutDataDto!: GetTransactionsOutDataDto
 	message!: string
 

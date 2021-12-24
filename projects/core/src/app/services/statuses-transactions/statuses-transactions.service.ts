@@ -17,12 +17,12 @@ export class StatusesTransactionsService {
     return this.http.get<GetAllStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/')
   }
 
-  getByCode(): Observable<GetByCodeStatusesTransactionsResDto>{
-    return this.http.get<GetByCodeStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/id')
+  getByCode(code: string): Observable<GetByCodeStatusesTransactionsResDto>{
+    return this.http.get<GetByCodeStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/code/?code='+code)
   }
 
-  getById(): Observable<GetByIdStatusesTransactionsResDto>{
-    return this.http.get<GetByIdStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/code')
+  getById(id:string): Observable<GetByIdStatusesTransactionsResDto>{
+    return this.http.get<GetByIdStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/id/?id='+id)
   }
 
   save(statusesTrasanctions: StatusesTransactions): Observable<StatusesTransactions>{
