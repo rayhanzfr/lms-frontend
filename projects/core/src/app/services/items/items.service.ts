@@ -5,6 +5,8 @@ import { GetAllItemsResDto } from '../../dto/items/get-all-items-res-dto';
 import { GetByCodeItemsResDto } from '../../dto/items/get-by-code-items-res-dto';
 import { GetByIdItemsResDto } from '../../dto/items/get-by-id-items-res-dto';
 import { Items } from '../../dto/items/items';
+import { SaveItemsResDto } from '../../dto/items/save-items-res-dto';
+import { UpdateItemsResDto } from '../../dto/items/update-items-res-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +18,20 @@ export class ItemsService {
     return this.http.get<GetAllItemsResDto>('http://localhost:8888/items/')
   }
 
-  getByCode(): Observable<GetByCodeItemsResDto>{
-    return this.http.get<GetByCodeItemsResDto>('http://localhost:8888/items/id')
+  getByCode(code: string): Observable<GetByCodeItemsResDto>{
+    return this.http.get<GetByCodeItemsResDto>('http://localhost:8888/items/code/?code='+code)
   }
 
-  getById(): Observable<GetByIdItemsResDto>{
-    return this.http.get<GetByIdItemsResDto>('http://localhost:8888/items/code')
+  getById(id:string): Observable<GetByIdItemsResDto>{
+    return this.http.get<GetByIdItemsResDto>('http://localhost:8888/items/id/?id='+id)
   }
 
-  save(items: Items): Observable<Items>{
-    return this.http.post<Items>('http://localhost:8888/items/', items)
+  save(items: Items): Observable<SaveItemsResDto>{
+    return this.http.post<SaveItemsResDto>('http://localhost:8888/items/', items)
   }
 
-  update(items: Items): Observable<Items>{
-    return this.http.put<Items>('http://localhost:8888/items/', items)
+  update(items: Items): Observable<UpdateItemsResDto>{
+    return this.http.put<UpdateItemsResDto>('http://localhost:8888/items/', items)
   }
 
   delete(id: string): Observable<Items>{
