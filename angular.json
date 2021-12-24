@@ -42,7 +42,6 @@
               "projects/lms/src/template/plugins/raphael/raphael.js",
               "projects/lms/src/template/plugins/jquery-mapael/jquery.mapael.js",
               "projects/lms/src/template/plugins/chart.js/Chart.js",
-              "projects/lms/src/template/dist/js/pages/dashboard2.js"
             ]
           },
           "configurations": {
