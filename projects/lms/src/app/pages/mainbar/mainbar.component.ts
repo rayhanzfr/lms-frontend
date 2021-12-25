@@ -8,67 +8,44 @@ import { Router } from '@angular/router';
 })
 export class MainbarComponent implements OnInit {
 
-  menuItem: any[] = []
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.menuItem = [
-      {
-        name: 'Dashboard',
-        path: '/admin-dashboard'
-      },
-      {
-        name: 'Company'
-      },
-      {
-        name: 'Employee',
-        menu: [
-          {
-            name: 'Users'
-          },
-          {
-            name: 'Roles'
-          }
-        ]
-      },
-      {
-        name: 'Items',
-        menu: [
-          {
-            name: 'Items Types'
-          },
-          {
-            name: 'Items Brands'
-          }
-        ]
-      },
-      {
-        name: 'Invoices'
-      },
-      {
-        name: 'Assets',
-        menu: [
-          {
-            name: 'statuses'
-          }
-        ]
-      },
-      {
-        name: 'Transaction',
-        menu: [
-          {
-            name: 'Borrowed'
-          },
-          {
-            name: 'Returned'
-          }
-        ]
-      },
-      {
-        name: 'Report'
-      }
-    ];
+  }
+
+  toggleClick(): void {
+    const body = document.getElementsByTagName('body')[0]
+    if (body.className.match('sidebar-icon-only')) {
+      body.classList.remove('sidebar-icon-only')
+    }
+    else {
+      body.classList.add('sidebar-icon-only')
+    }
+  }
+
+  showSidebar(): void {
+    const canvas = document.getElementById('sidebar')
+    if (canvas?.className.match('active')) {
+      canvas.classList.remove('active')
+    }
+    else {
+      canvas?.classList.add('active')
+    }
+  }
+
+  inHover(data: any): void {
+    const body = document.getElementsByTagName('body')[0]
+    if (body.className.match("sidebar-icon-only")) {
+      data.classList.add('hover-open')
+    }
+  }
+
+  outHover(data: any): void {
+    const body = document.getElementsByTagName('body')[0]
+    if (body.className.match("sidebar-icon-only")) {
+      data.classList.remove('hover-open')
+    }
   }
 
 }
