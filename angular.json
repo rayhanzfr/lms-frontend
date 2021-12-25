@@ -27,22 +27,9 @@
               "projects/lms/src/assets"
             ],
             "styles": [
-              "projects/lms/src/styles.css",
-              "projects/lms/src/template/plugins/fontawesome-free/css/all.css",
-              "projects/lms/src/template/plugins/overlayScrollbars/css/OverlayScrollbars.css",
-              "projects/lms/src/template/dist/css/adminlte.css"
+              "projects/lms/src/styles.css"
             ],
-            "scripts": [
-              "projects/lms/src/template/plugins/jquery/jquery.js",
-              "projects/lms/src/template/plugins/bootstrap/js/bootstrap.bundle.js",
-              "projects/lms/src/template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.js",
-              "projects/lms/src/template/dist/js/adminlte.js",
-              "projects/lms/src/template/dist/js/demo.js",
-              "projects/lms/src/template/plugins/jquery-mousewheel/jquery.mousewheel.js",
-              "projects/lms/src/template/plugins/raphael/raphael.js",
-              "projects/lms/src/template/plugins/jquery-mapael/jquery.mapael.js",
-              "projects/lms/src/template/plugins/chart.js/Chart.js",
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
