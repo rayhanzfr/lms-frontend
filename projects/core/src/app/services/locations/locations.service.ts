@@ -16,8 +16,8 @@ export class LocationsService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<GetAllLocationsResDto> {
-    return this.http.get<GetAllLocationsResDto>('http://localhost:8888/locations/');
+  getAll(): Observable<Locations[]> {
+    return this.http.get<Locations[]>('http://localhost:8888/locations/');
   }
 
   getById(id: string): Observable<GetByIdLocationsResDto> {

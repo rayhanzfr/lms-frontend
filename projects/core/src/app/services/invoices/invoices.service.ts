@@ -16,8 +16,8 @@ export class InvoicesService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<GetAllInvoicesResDto>{
-    return this.http.get<GetAllInvoicesResDto>('http://localhost:8888/invoices/')
+  getAll(): Observable<Invoices[]>{
+    return this.http.get<Invoices[]>('http://localhost:8888/invoices/')
   }
 
   getById(id: string): Observable<GetByIdInvoicesResDto>{
