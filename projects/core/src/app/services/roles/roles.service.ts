@@ -17,8 +17,7 @@ export class RolesService {
 
   constructor(private http: HttpClient,private authService:AuthService) { }
   getAll(): Observable<Roles[]>{
-    const token:string|undefined = this.authService.getToken()
-      return this.http.get<Roles[]>('http://localhost:8888/roles',{headers:{Authorization:`Bearer ${token}`}})
+      return this.http.get<Roles[]>('http://localhost:8888/roles')
   }
 
   getByCode(code: string): Observable<GetByCodeRolesResDto>{
