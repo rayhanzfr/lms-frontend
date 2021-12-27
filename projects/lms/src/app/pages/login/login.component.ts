@@ -27,15 +27,16 @@ export class LoginComponent implements OnInit {
       this.authService.saveUserData(result)
       this.token = this.authService.getToken()
       this.code = this.authService.getRolesCode()
-      if(this.code == code.get(1)){
-        this.router.navigateByUrl('/admin-dashboard');
-      }
-      else if(this.code == code.get(2)){
-        this.router.navigateByUrl('/')
-      }
-      else{
+      this.router.navigateByUrl('/admin-dashboard');
+      // if(this.code == code.get(1)){
+      //   this.router.navigateByUrl('/admin-dashboard');
+      // }
+      // else if(this.code == code.get(2)){
+      //   this.router.navigateByUrl('/')
+      // }
+      // else{
         
-      }
+      // }
     })
   }
 
