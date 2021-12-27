@@ -21,23 +21,26 @@
               <div class="card">
                   <div class="card-body">
                       <p class="card-title"><b>Locations Table</b></p>
-                      <p-table responsiveLayout="stack" [lazy]="true">
+                      <p-table responsiveLayout="stack" [value]="data">
                           <ng-template pTemplate="header">
                               <tr>
                                   <th>No</th>
                                   <th>Locations Code</th>
                                   <th>Locations Deploy</th>
-                                  <th>Companies Name</th>
+                                  <th>Company Name</th>
                                   <th>Active</th>
                                   <th>Action</th>
                               </tr>
                           </ng-template>
-                          <ng-template pTemplate="body">
+                          <ng-template pTemplate="body" let-l let-i="rowIndex">
                               <tr>
-                                  <td>1</td>
-                                  <td>Sumidi</td>
-                                  <td>Sumidi@gmail.com</td>
-                                  <td>true</td>
+                                  <td>{{i+1}}</td>
+                                  <td>{{l.locationsCode}}</td>
+                                  <td>{{l.locationsName}}</td>
+                                  <td>{{l.companies.companiesName}}</td>
+                                  <td><input disabled class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckChecked" [checked]="l.isActive"></td>
+                                  <td>
                                   <td>
                                       <div class="row">
                                           <button type="button" class="btn btn-danger">Delete</button>

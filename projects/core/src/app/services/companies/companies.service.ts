@@ -16,8 +16,8 @@ export class CompaniesService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<GetAllCompaniesResDto>{
-    return this.http.get<GetAllCompaniesResDto>('http://localhost:8888/companies/')
+  getAll(): Observable<Companies[]>{
+    return this.http.get<Companies[]>('http://localhost:8888/companies/')
   }
 
   getById(id: string): Observable<GetByCodeCompaniesResDto>{
