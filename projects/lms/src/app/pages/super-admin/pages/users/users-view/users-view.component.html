@@ -21,26 +21,49 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-title"><b>User Table</b></p>
-                    <p-table responsiveLayout="stack" [lazy]="true">
+                    <p-table responsiveLayout="stack" #dt1 [value]="data" dataKey="id"
+                    [rows]="1" [showCurrentPageReport]="true" [rowsPerPageOptions]="[1,25,50]" styleClass="p-datatable-gridlines"
+                    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [globalFilterFields]="['usersEmail','roles.rolesName']">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex">
+                            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left p-ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword" />
+                            </span>
+                        </div>
+                    </ng-template>
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>No</th>
-                                <th>Full Name</th>
                                 <th>User Email</th>
+                                <th>Roles</th>
                                 <th>Active</th>
                                 <th>Action</th>
                             </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body">
                             <tr>
-                                <td>1</td>
-                                <td>Sumidi</td>
-                                <td>Sumidi@gmail.com</td>
-                                <td>true</td>
+                                <th></th>
+                                <th>
+                                    <p-columnFilter type="text" field="usersEmail"></p-columnFilter>
+                                </th>
+                                <th>
+                                    <p-columnFilter type="text" field="roles.rolesName"></p-columnFilter>
+                                </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
+                            <tr>
+                                <td>{{rowIndex+1}}</td>
+                                <td>{{d.usersEmail}}</td>
+                                <td>{{d.roles.rolesName}}</td>
+                                <td>{{d.isActive}}</td>
                                 <td>
                                     <div class="row">
+                                        <button type="button" class="btn btn-warning">Update</button>
                                         <button type="button" class="btn btn-danger">Delete</button>
-                                        <button type="button" class="btn btn-info">Update</button>
                                     </div>
                                 </td>
                             </tr>

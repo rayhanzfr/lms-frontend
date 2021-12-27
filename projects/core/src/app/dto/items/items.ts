@@ -1,9 +1,11 @@
+import { Files } from "../files/files";
 import { ItemsBrands } from "../items-brands/items-brands";
+import { ItemsTypes } from "../items-types/items-types";
 
 export class Items{
     id!:string;
-    files!:string;
-	itemsTypes?:string;
+    files!:Files;
+	itemsTypes?:ItemsTypes;
 	itemsBrands!:ItemsBrands;
 	itemsCode!:string;
 	itemsName!:string;
