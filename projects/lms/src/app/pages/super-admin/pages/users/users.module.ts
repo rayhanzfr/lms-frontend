@@ -4,6 +4,7 @@ import { UsersModifyComponent } from './users-modify/users-modify.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UsersRoutingModule } from './users-routing.module';
 import {TableModule} from 'primeng/table';
+import { MainbarModule } from '../../../mainbar/mainbar.module';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import {TableModule} from 'primeng/table';
     UsersViewComponent
   ],
   imports: [
-    CommonModule, UsersRoutingModule, TableModule
+    CommonModule, UsersRoutingModule, MainbarModule, TableModule
   ]
 })
 export class UsersModule { }
