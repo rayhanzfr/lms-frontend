@@ -5,12 +5,19 @@
                 {{roles|json}}
                 <h3 class="text-center my-5">Add Roles</h3>
                 <div class="form-outline mb-4">
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-4" *ngIf="rolesReq.rolesCode">
+                        <label class="form-label" for="form6Example3">Roles Code</label>
+                        <input disabled type="text" id="form6Example3" class="form-control" [(ngModel)]="rolesReq.rolesCode"/>
+                        <!-- <span *ngIf="!rolesReq.rolesCode">{{ rolesReq.rolesCode }}</span> -->
+                    </div>
+
+                    <div class="form-outline mb-4" *ngIf="!rolesReq.rolesCode">
                         <label class="form-label" for="form6Example3">Roles Code</label>
                         <input type="text" id="form6Example3" class="form-control" [(ngModel)]="rolesReq.rolesCode"/>
+                        <!-- <span *ngIf="!rolesReq.rolesCode">{{ rolesReq.rolesCode }}</span> -->
                     </div>
                     
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-4" >
                         <label class="form-label" for="form6Example3">Roles Name</label>
                         <input type="text" id="form6Example3" class="form-control" [(ngModel)]="rolesReq.rolesName"/>
                     </div>
