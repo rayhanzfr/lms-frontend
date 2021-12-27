@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
   login(data:LoginReqDto):Observable<LoginResDto>{
-    return this.http.post<LoginResDto>(`http://localhost:1234/login`,data)
+    return this.http.post<LoginResDto>(`http://localhost:8888/login`,data)
   }
   saveUserData(data:LoginResDto):void{
     localStorage.setItem('data',JSON.stringify(data))
