@@ -16,8 +16,8 @@ export class StatusesAssetsService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<GetAllStatusesAssetsResDto> {
-    return this.http.get<GetAllStatusesAssetsResDto>('http://localhost:8888/statuses-assets/');
+  getAll(): Observable<StatusesAssets[]> {
+    return this.http.get<StatusesAssets[]>('http://localhost:8888/statuses-assets/');
   }
 
   getById(id: string): Observable<GetByIdStatusesAssetsResDto> {
