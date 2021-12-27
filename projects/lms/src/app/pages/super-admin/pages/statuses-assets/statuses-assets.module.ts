@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StatusesAssetsViewComponent } from './statuses-assets-view/statuses-assets-view.component';
 import { StatusesAssetsModifyComponent } from './statuses-assets-modify/statuses-assets-modify.component';
+import { StatusesAssetsRoutingModule } from './statuses-assets-routing.module';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -11,7 +13,7 @@ import { StatusesAssetsModifyComponent } from './statuses-assets-modify/statuses
     StatusesAssetsModifyComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, StatusesAssetsRoutingModule, TableModule
   ]
 })
 export class StatusesAssetsModule { }
