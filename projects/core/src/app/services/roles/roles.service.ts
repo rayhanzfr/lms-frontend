@@ -20,12 +20,12 @@ export class RolesService {
       return this.http.get<Roles[]>('http://localhost:8888/roles')
   }
 
-  getByCode(code: string): Observable<GetByCodeRolesResDto>{
-    return this.http.get<GetByCodeRolesResDto>('http://localhost:8888/roles/code/?code='+code)
+  getByCode(code: string): Observable<Roles>{
+    return this.http.get<Roles>('http://localhost:8888/roles/code/?code='+code)
   }
 
-  getById(id:string): Observable<GetByIdRolesResDto>{
-    return this.http.get<GetByIdRolesResDto>('http://localhost:8888/roles/id/?id='+id)
+  getById(id:string): Observable<Roles>{
+    return this.http.get<Roles>('http://localhost:8888/roles/id/?id='+id)
   }
 
   save(roles: Roles): Observable<SaveRolesResDto>{
