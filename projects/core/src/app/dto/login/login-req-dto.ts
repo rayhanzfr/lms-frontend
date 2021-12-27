@@ -1,4 +1,4 @@
 export class LoginReqDto {
-	public email!:string;
-	public pass!:string;
+	public usersEmail!:string;
+	public usersPassword!:string;
 }
