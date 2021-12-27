@@ -9,7 +9,7 @@
                             <a type="button" class="btn btn-primary text-white decoration-none "
                                 routerLink="/roles/new">Add Data</a>
                         </div>
-                        <p-table responsiveLayout="stack" [lazy]="true">
+                        <p-table responsiveLayout="stack" [lazy]="true" [value]="data">
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>No</th>
@@ -19,9 +19,9 @@
                                     <th>Action</th>
                                 </tr>
                             </ng-template>
-                            <ng-template pTemplate="body">
-                                <tr *ngFor="let d of data?.roles;let i=index">
-                                    <td scope="row">{{i+1}} </td>
+                            <ng-template pTemplate="body" let-d let-index>
+                                <tr>
+                                    <td scope="row">{{index.index+1}} </td>
                                     <td>{{d.rolesCode}}</td>
                                     <td>{{d.rolesName}}</td>
                                     <td>
