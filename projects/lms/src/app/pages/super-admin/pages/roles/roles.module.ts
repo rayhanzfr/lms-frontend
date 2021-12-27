@@ -15,7 +15,9 @@ import { TableModule } from 'primeng/table';
   ],
   imports: [
     CommonModule,
-    RolesRoutingModule,MainbarModule, TableModule
+    RolesRoutingModule,
+    MainbarModule, 
+    TableModule
   ]
 })
 export class RolesModule { }

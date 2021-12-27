@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DeletePermissionsResDto } from '../../dto/permissions/delete-permissions-res-dto';
 import { GetAllPermissionsResDto } from '../../dto/permissions/get-all-permissions-res-dto';
 import { GetByCodePermissionsResDto } from '../../dto/permissions/get-by-code-permissions-res-dto';
 import { GetByIdPermissionsResDto } from '../../dto/permissions/get-by-id-permissions-res-dto';
@@ -12,16 +13,16 @@ import { Permissions } from '../../dto/permissions/permissions';
 export class PermissionsService {
 
   constructor(private http: HttpClient) { }
-  getAll(): Observable<GetAllPermissionsResDto>{
-    return this.http.get<GetAllPermissionsResDto>('http://localhost:8888/permissions/')
+  getAll(): Observable<Permissions[]>{
+    return this.http.get<Permissions[]>('http://localhost:8888/permissions/')
   }
 
-  getByCode(code: string): Observable<GetByCodePermissionsResDto>{
-    return this.http.get<GetByCodePermissionsResDto>('http://localhost:8888/permissions/code/?code='+code)
+  getByCode(code: string): Observable<Permissions>{
+    return this.http.get<Permissions>('http://localhost:8888/permissions/code/?code='+code)
   }
 
-  getById(id: string): Observable<GetByIdPermissionsResDto>{
-    return this.http.get<GetByIdPermissionsResDto>('http://localhost:8888/permissions/id/?id='+id)
+  getById(id: string): Observable<Permissions>{
+    return this.http.get<Permissions>('http://localhost:8888/permissions/id/?id='+id)
   }
 
   save(permissions: Permissions): Observable<Permissions>{
@@ -32,8 +33,8 @@ export class PermissionsService {
     return this.http.put<Permissions>('http://localhost:8888/permissions/', permissions)
   }
 
-  delete(id: string): Observable<Permissions>{
-    return this.http.delete<Permissions>('http://localhost:8888/permissions/id/?id=' + id)
+  delete(id: string): Observable<DeletePermissionsResDto>{
+    return this.http.delete<DeletePermissionsResDto>('http://localhost:8888/permissions/id/?id=' + id)
   }
 }
 

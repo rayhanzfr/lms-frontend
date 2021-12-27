@@ -1,1 +1,43 @@
-<p>items-brands-view works!</p>
+<div class="row">
+    <div class="col-md-12 grid-margin grid-stretch">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card transparent">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-center"><b>ItemsBrands</b></p>
+                        <div class="col-12 text-end">
+                            <a type="button" class="btn btn-primary text-white decoration-none "
+                                routerLink="/itemsBrands/new">Add Data</a>
+                        </div>
+                        <p-table responsiveLayout="stack" [lazy]="true" [value]="data">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>No</th>
+                                    <th>ItemsBrands Code</th>
+                                    <th>ItemsBrands Name</th>
+                                    <th>isActive</th>
+                                    <th>Action</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-d let-i="rowIndex" >
+                                <tr>
+                                    <td scope="row">{{i+1}}</td>
+                                    <td>{{d.itemsBrandsCode}}</td>
+                                    <td>{{d.itemsBrandsName}}</td>
+                                    <td>
+                                        <input disabled class="form-check-input" type="checkbox" value=""
+                                            id="flexCheckChecked" [checked]="d.isActive">
+                                    </td>
+                                    <td><a type="button" routerLink="/itemsBrands/update.html"
+                                            class="btn btn-warning">Update</a>
+                                        <a type="button" (click)="delete(d.id)" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DeleteStatusesTransactionsResDto } from '../../dto/statuses-transactions/delete-statuses-transactions-res-dto';
 import { GetAllStatusesTransactionsResDto } from '../../dto/statuses-transactions/get-all-statuses-transactions-res-dto';
 import { GetByCodeStatusesTransactionsResDto } from '../../dto/statuses-transactions/get-by-code-statuses-transactions-res-dto';
 import { GetByIdStatusesTransactionsResDto } from '../../dto/statuses-transactions/get-by-id-statuses-transactions-res-dto';
@@ -13,16 +14,16 @@ import { StatusesTransactions } from '../../dto/statuses-transactions/statuses-t
 export class StatusesTransactionsService {
 
   constructor(private http: HttpClient) { }
-  getAll(): Observable<GetAllStatusesTransactionsResDto>{
-    return this.http.get<GetAllStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/')
+  getAll(): Observable<StatusesTransactions[]>{
+    return this.http.get<StatusesTransactions[]>('http://localhost:8888/statuses-transactions/')
   }
 
-  getByCode(code: string): Observable<GetByCodeStatusesTransactionsResDto>{
-    return this.http.get<GetByCodeStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/code/?code='+code)
+  getByCode(code: string): Observable<StatusesTransactions>{
+    return this.http.get<StatusesTransactions>('http://localhost:8888/statuses-transactions/code/?code='+code)
   }
 
-  getById(id:string): Observable<GetByIdStatusesTransactionsResDto>{
-    return this.http.get<GetByIdStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/id/?id='+id)
+  getById(id:string): Observable<StatusesTransactions>{
+    return this.http.get<StatusesTransactions>('http://localhost:8888/statuses-transactions/id/?id='+id)
   }
 
   save(statusesTrasanctions: StatusesTransactions): Observable<StatusesTransactions>{
@@ -33,7 +34,7 @@ export class StatusesTransactionsService {
     return this.http.put<StatusesTransactions>('http://localhost:8888/statuses-transactions/', statusesTrasanctions)
   }
 
-  delete(id: string): Observable<StatusesTransactions>{
-    return this.http.delete<StatusesTransactions>('http://localhost:8888/statuses-transactions/' + id)
+  delete(id: string): Observable<DeleteStatusesTransactionsResDto>{
+    return this.http.delete<DeleteStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/' + id)
   }
 }
