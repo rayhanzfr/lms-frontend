@@ -5,7 +5,7 @@
               <div class="card">
                   <div class="card-body">
                       <p class="card-title"><b>Status Assets Table</b></p>
-                      <p-table responsiveLayout="stack" [lazy]="true">
+                      <p-table responsiveLayout="stack" [value]="data">
                           <ng-template pTemplate="header">
                               <tr>
                                   <th>No</th>
@@ -15,11 +15,11 @@
                                   <th>Action</th>
                               </tr>
                           </ng-template>
-                          <ng-template pTemplate="body">
+                          <ng-template pTemplate="body" let-s>
                               <tr>
                                   <td>1</td>
-                                  <td>Sumidi</td>
-                                  <td>Sumidi@gmail.com</td>
+                                  <td>{{s.statusesAssetsCode}}</td>
+                                  <td>{{s.statusesAssetsName}}</td>
                                   <td>true</td>
                                   <td>
                                       <div class="row">
