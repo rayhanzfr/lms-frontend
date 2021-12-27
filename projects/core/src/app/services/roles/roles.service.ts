@@ -8,15 +8,17 @@ import { GetByIdRolesResDto } from '../../dto/roles/get-by-id-roles-res-dto';
 import { Roles } from '../../dto/roles/roles';
 import { SaveRolesResDto } from '../../dto/roles/save-roles-res-dto';
 import { UpdateRolesResDto } from '../../dto/roles/update-roles-res-dto';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
 
-  constructor(private http: HttpClient) { }
-  getAll(): Observable<GetAllRolesResDto>{
-    return this.http.get<GetAllRolesResDto>('http://localhost:8888/roles/')
+  constructor(private http: HttpClient,private authService:AuthService) { }
+  getAll(): Observable<Roles[]>{
+    const token:string|undefined = this.authService.getToken()
+      return this.http.get<Roles[]>('http://localhost:8888/roles',{headers:{Authorization:`Bearer ${token}`}})
   }
 
   getByCode(code: string): Observable<GetByCodeRolesResDto>{

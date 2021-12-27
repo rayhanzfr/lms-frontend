@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class RolesViewComponent implements OnInit,OnDestroy {
 
  constructor(private rolesService:RolesService) { }
-  data?:GetAllRolesResDto
+  data:Roles[] = []
   obs?:Subscription
   resDeleteRoles?:DeleteRolesResDto
   
@@ -29,8 +29,8 @@ export class RolesViewComponent implements OnInit,OnDestroy {
     this.obs?.unsubscribe()
   }
   ngOnInit(): void {
-    this.data=new GetAllRolesResDto();
-    this.obs=this.rolesService.getAll()?.subscribe(result=>{this.data=result});
+    this.obs=this.rolesService.getAll()?.subscribe(result=>{this.data=result
+    console.log(this.data)});
   }
 
 }
