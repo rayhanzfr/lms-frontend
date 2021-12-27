@@ -1,6 +1,6 @@
 import { Users } from "./users";
 
-export class GetByIdResDto{
+export class GetByEmailUsersResDto{
     users!:Users
     message!:string
 }
