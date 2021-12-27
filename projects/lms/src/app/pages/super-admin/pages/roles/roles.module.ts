@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RolesViewComponent } from './roles-view/roles-view.component';
 import { RolesModifyComponent } from './roles-modify/roles-modify.component';
 import { RolesRoutingModule } from './roles-routing.module';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -13,7 +14,8 @@ import { RolesRoutingModule } from './roles-routing.module';
   ],
   imports: [
     CommonModule,
-    RolesRoutingModule
+    RolesRoutingModule,
+    TableModule
   ]
 })
 export class RolesModule { }
