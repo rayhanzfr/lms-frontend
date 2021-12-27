@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DeleteItemsResDto } from '../../dto/items/delete-items-res-dto';
 import { GetAllItemsResDto } from '../../dto/items/get-all-items-res-dto';
 import { GetByCodeItemsResDto } from '../../dto/items/get-by-code-items-res-dto';
 import { GetByIdItemsResDto } from '../../dto/items/get-by-id-items-res-dto';
@@ -14,16 +15,16 @@ import { UpdateItemsResDto } from '../../dto/items/update-items-res-dto';
 export class ItemsService {
 
   constructor(private http: HttpClient) { }
-  getAll(): Observable<GetAllItemsResDto>{
-    return this.http.get<GetAllItemsResDto>('http://localhost:8888/items/')
+  getAll(): Observable<Items[]>{
+    return this.http.get<Items[]>('http://localhost:8888/items/')
   }
 
-  getByCode(code: string): Observable<GetByCodeItemsResDto>{
-    return this.http.get<GetByCodeItemsResDto>('http://localhost:8888/items/code/?code='+code)
+  getByCode(code: string): Observable<Items>{
+    return this.http.get<Items>('http://localhost:8888/items/code/?code='+code)
   }
 
-  getById(id:string): Observable<GetByIdItemsResDto>{
-    return this.http.get<GetByIdItemsResDto>('http://localhost:8888/items/id/?id='+id)
+  getById(id:string): Observable<Items>{
+    return this.http.get<Items>('http://localhost:8888/items/id/?id='+id)
   }
 
   save(items: Items): Observable<SaveItemsResDto>{
@@ -34,7 +35,7 @@ export class ItemsService {
     return this.http.put<UpdateItemsResDto>('http://localhost:8888/items/', items)
   }
 
-  delete(id: string): Observable<Items>{
-    return this.http.delete<Items>('http://localhost:8888/items/' + id)
+  delete(id: string): Observable<DeleteItemsResDto>{
+    return this.http.delete<DeleteItemsResDto>('http://localhost:8888/items/' + id)
   }
 }

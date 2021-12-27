@@ -7,7 +7,7 @@
                         <p class="card-title text-center"><b>Roles</b></p>
                         <div class="col-12 text-end">
                             <a type="button" class="btn btn-primary text-white decoration-none "
-                                routerLink="/roles/new">Add Data</a>
+                            (click)="gotoInsert()">Add Data</a>
                         </div>
                         <p-table responsiveLayout="stack" [lazy]="true" [value]="data">
                             <ng-template pTemplate="header">
@@ -19,16 +19,16 @@
                                     <th>Action</th>
                                 </tr>
                             </ng-template>
-                            <ng-template pTemplate="body" let-d let-index>
+                            <ng-template pTemplate="body" let-d let-i="rowIndex"  >
                                 <tr>
-                                    <td scope="row">{{index.index+1}} </td>
+                                    <td scope="row">{{i+1}}</td>
                                     <td>{{d.rolesCode}}</td>
                                     <td>{{d.rolesName}}</td>
                                     <td>
                                         <input disabled class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckChecked" [checked]="d.isActive">
+                                            id="flexCheckChecked" [checked]="d.isActive" style="margin: 0 25px; flex-direction: row-reverse">
                                     </td>
-                                    <td><a type="button" routerLink="/roles/update.html"
+                                    <td><a type="button" (click)="gotoUpdate(d.id)"
                                             class="btn btn-warning">Update</a>
                                         <a type="button" (click)="delete(d.id)" class="btn btn-danger">Delete</a>
                                     </td>

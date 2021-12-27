@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DeleteRolesResDto } from 'projects/core/src/app/dto/roles/delete-roles-res-dto';
 import { GetAllRolesResDto } from 'projects/core/src/app/dto/roles/get-all-roles-res-dto';
 import { Roles } from 'projects/core/src/app/dto/roles/roles';
@@ -12,11 +13,17 @@ import { Subscription } from 'rxjs';
 })
 export class RolesViewComponent implements OnInit,OnDestroy {
 
- constructor(private rolesService:RolesService) { }
+ constructor(private router:Router,private rolesService:RolesService) { }
   data:Roles[] = []
   obs?:Subscription
   resDeleteRoles?:DeleteRolesResDto
   
+  gotoInsert(){
+    this.router.navigateByUrl('admin/roles/new')
+  }
+  gotoUpdate(i:string):void{
+    this.router.navigateByUrl(`admin/roles/${i}`)
+  }
   delete(id:string){
     if(confirm("Are you sure?")){
       this.rolesService.delete(id).subscribe(result=>{

@@ -16,8 +16,8 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
-  getAll():Observable<GetAllUsersResDto> {
-    return this.http.get<GetAllUsersResDto>('http://localhost:8888/users')
+  getAll():Observable<Users[]> {
+    return this.http.get<Users[]>('http://localhost:8888/users')
   }
   getById(id: string): Observable<GetByIdUsersResDto> {
     return this.http.get<GetByIdUsersResDto>('http://localhost:8888/users/id?id=' + id);

@@ -5,6 +5,7 @@ import { RolesModifyComponent } from './roles-modify/roles-modify.component';
 import { RolesRoutingModule } from './roles-routing.module';
 import { MainbarModule } from '../../../mainbar/mainbar.module';
 import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,10 @@ import { TableModule } from 'primeng/table';
   ],
   imports: [
     CommonModule,
-    RolesRoutingModule,MainbarModule, TableModule
+    RolesRoutingModule,
+    MainbarModule, 
+    TableModule,
+    FormsModule
   ]
 })
 export class RolesModule { }

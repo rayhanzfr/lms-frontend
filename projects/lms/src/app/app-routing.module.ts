@@ -45,6 +45,21 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/roles/roles.module').then(result => result.RolesModule)
   },
   {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/items-brands/items-brands.module').then(result => result.ItemsBrandsModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/items/items.module').then(result => result.ItemsModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/permissions/permissions.module').then(result => result.PermissionsModule)
+  },
+  {
     path:'',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/users/users.module').then(result=>result.UsersModule)
