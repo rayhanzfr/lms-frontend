@@ -20,24 +20,32 @@
         <div class="col-12 grid-margin stretch-card transparent">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-titke"><b>User Table</b></p>
-                    <div class="row text-center">
-                        <div class="col-12">
-                            <div class="table-responsive">
-                                <table class=" display" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Full Name</th>
-                                            <th>User Email</th>
-                                            <th>Active</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="card-title"><b>User Table</b></p>
+                    <p-table responsiveLayout="stack" [lazy]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>No</th>
+                                <th>Full Name</th>
+                                <th>User Email</th>
+                                <th>Active</th>
+                                <th>Action</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body">
+                            <tr>
+                                <td>1</td>
+                                <td>Sumidi</td>
+                                <td>Sumidi@gmail.com</td>
+                                <td>true</td>
+                                <td>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-info">Update</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
                 </div>
             </div>
         </div>

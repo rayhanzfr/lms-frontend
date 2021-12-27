@@ -22,7 +22,7 @@
             </div>
             <div class="row d-flex justify-content-center align-items-center">
               <div class="col-10">
-                <div class="card">
+                <div class="card" style="opacity:0.95">
                   <div class="card-body">
                     <div class="card-title">
                       <h3 class="text-center text-info"><b>Sign In</b></h3>
@@ -34,8 +34,7 @@
                         <form class="pt-4 pb-3">
                           <div class="form-group">
                               <label for="email"><h5><b>E-mail</b></h5></label>
-
-                            <input
+                            <input style="border: none; border-bottom: 1px solid"
                               id="email"
                               type="text"
                               pInputText
@@ -57,7 +56,7 @@
                                 currentPassword.type == 'password' ? 'text' : 'password'
                                 "
                                 ></i>                                
-                                <input
+                                <input style="border: none; border-bottom: 1px solid"
                                 id="password"
                                 type="password"
                                 formControlName="currentPassword"
