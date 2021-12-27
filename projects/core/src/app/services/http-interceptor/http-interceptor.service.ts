@@ -1,17 +1,16 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Router } from '@angular/router';
 // import { ToastrService } from 'ngx-toastr';
+import { Observable, tap } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpInterceptorService {
+export class HttpInterceptorService implements HttpInterceptor{
 
-  constructor(private authService:AuthService,
-    // private toastr:ToastrService
-    ) { }
+  constructor(private authService:AuthService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     console.log(req.url)
@@ -24,12 +23,10 @@ export class HttpInterceptorService {
       next :(success:any)=>{
         let successMessage:HttpErrorResponse=success
         if (successMessage.message) {
-          // this.toastr.success(success)
         }
       },
       error:(err)=>{
         let errorMessage:HttpErrorResponse=err
-        // this.toastr.error(errorMessage.error.message)
       }
     }))
   }
