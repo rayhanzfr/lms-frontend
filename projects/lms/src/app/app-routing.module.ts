@@ -18,6 +18,11 @@ const routes: Routes = [
     path: '',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/super-admin-dashboard/super-admin-dashboard.module').then(result => result.SuperAdminDashboardModule)
+  },
+  {
+    path:'',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/users/users.module').then(result=>result.UsersModule)
   }
 ];
 

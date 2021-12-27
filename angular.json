@@ -27,7 +27,10 @@
               "projects/lms/src/assets"
             ],
             "styles": [
-              "projects/lms/src/styles.css"
+              "projects/lms/src/styles.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css"
             ],
             "scripts": []
           },

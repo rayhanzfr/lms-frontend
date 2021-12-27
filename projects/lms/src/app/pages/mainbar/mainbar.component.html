@@ -55,7 +55,7 @@
     </div>
   </nav>
   <div class="container-fluid page-body-wrapper">
-    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <nav class="sidebar sidebar-offcanvas sidebar-fixed" id="sidebar">
       <ul class="nav">
         <li
           class="nav-item"
@@ -95,7 +95,7 @@
             aria-expanded="false"
             aria-controls="office-employee"
           >
-            <i class="ti-user menu-icon"></i>
+            <i class="ti-id-badge menu-icon"></i>
             <span class="menu-title">Office Employee</span>
             <i class="menu-arrow"></i>
           </a>
@@ -107,7 +107,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="pages/forms/basic_elements.html">
+                <a class="nav-link" routerLink="/admin/user">
                   User
                 </a>
               </li>
@@ -167,7 +167,7 @@
             aria-expanded="false"
             aria-controls="assets"
           >
-            <i class="icon-ribbon menu-icon"></i>
+            <i class="ti-package menu-icon"></i>
             <span class="menu-title">Assets</span>
             <i class="menu-arrow"></i>
           </a>
@@ -223,7 +223,7 @@
           (mouseleave)="outHover($event.target)"
         >
           <a class="nav-link" routerLink="#">
-            <i class="icon-book menu-icon"></i>
+            <i class="ti-folder menu-icon"></i>
             <span class="menu-title">Report</span>
           </a>
         </li>

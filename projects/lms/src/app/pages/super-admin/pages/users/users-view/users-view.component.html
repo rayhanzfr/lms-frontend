@@ -1,1 +1,54 @@
-<p>users-view works!</p>
+<div class="row">
+  <div class="col-md-12 grid-margin grid-stretch">
+      <div class="row">
+          <div class="col-12 col-lg-8 col-xl-9 col-md-8 col-sm-8 mb-5 mb-lg-4 mb-xl-3 grid-margin stretch-card">
+            <div class="card ">
+                <div class="card-body">
+                    <p>new user here</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 col-xl-3 col-md-4 col-sm-4  mb-5 mb-lg-4 mb-xl-3 grid-margin stretch-card">
+              <div class="card">
+                  <div class="card-body">
+                      <p>this total of user</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-12 grid-margin stretch-card transparent">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title"><b>User Table</b></p>
+                    <p-table responsiveLayout="stack" [lazy]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>No</th>
+                                <th>Full Name</th>
+                                <th>User Email</th>
+                                <th>Active</th>
+                                <th>Action</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body">
+                            <tr>
+                                <td>1</td>
+                                <td>Sumidi</td>
+                                <td>Sumidi@gmail.com</td>
+                                <td>true</td>
+                                <td>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-info">Update</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
