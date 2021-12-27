@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/statuses-assets/statuses-assets.module').then(result => result.StatusesAssetsModule)
   },
   {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/roles/roles.module').then(result => result.RolesModule)
+  },
+  {
     path:'',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/users/users.module').then(result=>result.UsersModule)
