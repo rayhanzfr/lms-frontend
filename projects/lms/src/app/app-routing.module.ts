@@ -27,6 +27,21 @@ const routes: Routes = [
   {
     path: '',
     component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/companies/companies.module').then(result => result.CompaniesModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/locations/locations.module').then(result => result.LocationsModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/invoices/invoices.module').then(result => result.InvoicesModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/roles/roles.module').then(result => result.RolesModule)
   },
   {
