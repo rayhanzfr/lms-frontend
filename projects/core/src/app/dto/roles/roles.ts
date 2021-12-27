@@ -7,4 +7,5 @@ export class Roles{
 	createdBy!: string;
 	updatedAt!: string;
 	updatedBy!: string;
+	isActive!:boolean;
 }

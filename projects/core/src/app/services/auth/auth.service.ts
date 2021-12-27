@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginReqDto } from '../../dto/login/loginreqdto';
-import { LoginResDto } from '../../dto/login/loginresdto';
+import { LoginReqDto } from '../../dto/login/login-req-dto';
+import { LoginResDto } from '../../dto/login/login-res-dto';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DeleteRolesResDto } from '../../dto/roles/delete-roles-res-dto';
 import { GetAllRolesResDto } from '../../dto/roles/get-all-roles-res-dto';
 import { GetByCodeRolesResDto } from '../../dto/roles/get-by-code-roles-res-dto';
 import { GetByIdRolesResDto } from '../../dto/roles/get-by-id-roles-res-dto';
@@ -34,7 +35,7 @@ export class RolesService {
     return this.http.put<UpdateRolesResDto>('http://localhost:8888/roles/', roles)
   }
 
-  delete(id: string): Observable<Roles>{
-    return this.http.delete<Roles>('http://localhost:8888/roles/' + id)
+  delete(id: string): Observable<DeleteRolesResDto>{
+    return this.http.delete<DeleteRolesResDto>('http://localhost:8888/roles/' + id)
   }
 }
