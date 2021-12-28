@@ -73,6 +73,11 @@ const routes: Routes = [
     path:'',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/assets/assets.module').then(result=>result.AssetsModule)
+  },
+  {
+    path:'',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/employees/employees.module').then(result=>result.EmployeesModule)
   }
 ];
 

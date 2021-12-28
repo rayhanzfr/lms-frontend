@@ -8,7 +8,6 @@ import {SaveAssetsReqDto} from '../../dto/asset/save-assets-req-dto'
 import { SaveAssetsResDto } from '../../dto/asset/save-assets-res-dto';
 import { UpdateAssetsReqDto } from '../../dto/asset/update-assets-req-dto';
 import { UpdateAssetsResDto } from '../../dto/asset/update-assets-res-dto';
-import {DeleteAssetsResDto} from '../../dto/asset/delete-assets-res-dto'
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +41,7 @@ export class AssetsService {
     return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/statusesAssets?statusesAssetsCode='+statusAssetsCode)
   }
   getByStatusInOut(statusesInOutCode:string):Observable<GetAllAssetsResDto>{
-    return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/statusesInOut?statusesInOut='+statusesInOutCode)
+    return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/statusesInOut?statusesInOutCode='+statusesInOutCode)
   }
   getByReq(itemsCode:string, itemsTypesCode:string, brandsCode:string, statusesAssetsCode:string, statusesInOutCode:string, total:number):Observable<GetTotalAssetsReqDto>{
     return this.http.get<GetTotalAssetsReqDto>(`http://localhost:8888/req?itemsCode=${itemsCode}&itemsTypesCode=${itemsTypesCode}&itemsBrandsCode=${brandsCode}&statusesAssetsCode=${statusesAssetsCode}&statusesInOutCode=${statusesInOutCode}&total=${total}`)
