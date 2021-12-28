@@ -6,6 +6,7 @@ import { RolesRoutingModule } from './roles-routing.module';
 import { MainbarModule } from '../../../mainbar/mainbar.module';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
 
 
 
