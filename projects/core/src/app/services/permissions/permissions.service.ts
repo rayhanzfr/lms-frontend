@@ -6,6 +6,8 @@ import { GetAllPermissionsResDto } from '../../dto/permissions/get-all-permissio
 import { GetByCodePermissionsResDto } from '../../dto/permissions/get-by-code-permissions-res-dto';
 import { GetByIdPermissionsResDto } from '../../dto/permissions/get-by-id-permissions-res-dto';
 import { Permissions } from '../../dto/permissions/permissions';
+import { SavePermissionsResDto } from '../../dto/permissions/save-permissions-res-dto';
+import { UpdatePermissionsResDto } from '../../dto/permissions/update-permissions-res-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,12 +27,12 @@ export class PermissionsService {
     return this.http.get<Permissions>('http://localhost:8888/permissions/id/?id='+id)
   }
 
-  save(permissions: Permissions): Observable<Permissions>{
-    return this.http.post<Permissions>('http://localhost:8888/permissions/', permissions)
+  save(permissions: Permissions): Observable<SavePermissionsResDto>{
+    return this.http.post<SavePermissionsResDto>('http://localhost:8888/permissions/', permissions)
   }
 
-  update(permissions: Permissions): Observable<Permissions>{
-    return this.http.put<Permissions>('http://localhost:8888/permissions/', permissions)
+  update(permissions: Permissions): Observable<UpdatePermissionsResDto>{
+    return this.http.put<UpdatePermissionsResDto>('http://localhost:8888/permissions/', permissions)
   }
 
   delete(id: string): Observable<DeletePermissionsResDto>{

@@ -7,4 +7,5 @@ export class Permissions{
 	createdBy!: string;
 	updatedAt!: string;
 	updatedBy!: string;
+	isActive!:boolean;
 }

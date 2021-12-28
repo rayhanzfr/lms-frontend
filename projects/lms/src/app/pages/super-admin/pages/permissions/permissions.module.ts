@@ -6,6 +6,7 @@ import { PermissionsViewComponent } from './permissions-view/permissions-view.co
 import { PermissionsModifyComponent } from './permissions-modify/permissions-modify.component';
 import { MainbarModule } from '../../../mainbar/mainbar.module';
 import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TableModule } from 'primeng/table';
     CommonModule,
     PermissionsRoutingModule,
     MainbarModule, 
-    TableModule
+    TableModule,
+    FormsModule
   ]
 })
 export class PermissionsModule { }
