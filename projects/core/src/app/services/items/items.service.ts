@@ -27,12 +27,20 @@ export class ItemsService {
     return this.http.get<Items>('http://localhost:8888/items/id/?id='+id)
   }
 
-  save(items: Items): Observable<SaveItemsResDto>{
-    return this.http.post<SaveItemsResDto>('http://localhost:8888/items/', items)
+  save(items: Items, file: File | null): Observable<SaveItemsResDto>{
+    const formData: FormData = new FormData();
+    formData.append('data', JSON.stringify(items));
+    formData.append('file', file!);
+    console.log(file)
+    return this.http.post<SaveItemsResDto>('http://localhost:8888/items/', formData)
   }
 
-  update(items: Items): Observable<UpdateItemsResDto>{
-    return this.http.put<UpdateItemsResDto>('http://localhost:8888/items/', items)
+  update(items: Items, file: File | null): Observable<UpdateItemsResDto>{
+    const formData: FormData = new FormData();
+    formData.append('data', JSON.stringify(items));
+    formData.append('file', file!);
+    console.log(file)
+    return this.http.put<UpdateItemsResDto>('http://localhost:8888/items/', formData)
   }
 
   delete(id: string): Observable<DeleteItemsResDto>{

@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    {{itemsTypes|json}}
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="row d-flex justify-content-center">
+          <div class="col-7 align-center">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="text-center fs-50 m-2 mb-sm-3"><b>ItemsTypes</b></h4>
+                <div class="card-body mx-5">
+                  <div class="form-group mt-4 mb-3">
+                    <h5 for="itemsTypes"><b>ItemsTypes Name</b></h5>
+                    <input
+                      type="text"
+                      id="email"
+                      pInputText
+                      class="form-control form-control-md col-12"
+                      [(ngModel)]="itemsTypesReq.itemsTypesName"
+                    />
+                  </div>
+                  <div class="form-check">
+                    <h5 for="itemsTypes"><b>Is Active</b></h5>
+                    <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" [(ngModel)]="itemsTypesReq.isActive">
+                </div>
+                  <div class="row d-flex mt-5 justify-content-end">
+                    <div class="btn-group">
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="Cancel"
+                        class="p-button-sm p-button-danger mx-3"
+                        (click)="back()"
+                      ></button>
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="Success"
+                        class="p-button-sm p-button-success"
+                        (click)="submitData()"
+                      ></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

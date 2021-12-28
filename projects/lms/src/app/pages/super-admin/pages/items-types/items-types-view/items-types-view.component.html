@@ -1,0 +1,140 @@
+<div class="row">
+    <div class="col-md-12 grid-margin">
+      <div class="row">
+        <div
+        class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+      > 
+      </div>
+        <div
+          class="col-12 col-lg-4 col-xl-3 col-sm-4 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+        >
+          <div class="card card-tale">
+            <div class="card-body">
+              <h3 class="mb-4"><b>Total Items Brands</b></h3>
+              <p class="fs-50 mb-4 text-center">
+                <b>{{totalData}}</b>
+              </p>
+              <p class="text-center">Items Brands in this application</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 stretch-card transparent">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title pt-3">
+                <h2 class="text-center"><b>List Items Brands</b></h2>
+              </div>
+              <div class="container-fluid col-10">
+                <div class="row justify-content-end">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-plus"
+                    class="p-button-sm p-button-info"
+                    (click)="gotoInsert()"
+                  ></button>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <p-table
+                  #dt
+                  [value]="data"
+                  [rows]="10"
+                  [paginator]="true"
+                  [globalFilterFields]="[
+                              'itemsTypesCode',
+                              'itemsTypesName',
+                            ]"
+                  [rowHover]="true"
+                  dataKey="id"
+                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                  [showCurrentPageReport]="true"
+                >
+                  <ng-template pTemplate="caption">
+                    <div class="row">
+                      <div class="col-5">
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-search"></i>
+                          <input
+                            type="text"
+                            pInputText
+                            (input)="
+                              dt.filterGlobal(
+                                $any($event.target).value,
+                                'contains'
+                              )
+                            "
+                            placeholder="Search"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="header">
+                    <tr class="text-center">
+                      <th style="width: 3rem;">
+                        No
+                      </th>
+                      <th pSortableColumn="itemsTypesCode">
+                        ItemsTypes Code
+                        <p-sortIcon field="itemsTypesCode"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="itemsTypesName">
+                        ItemsTypes Name
+                        <p-sortIcon field="itemsTypesName"></p-sortIcon>
+                      </th>
+                      <th class="text-center">
+                        Active
+                      </th>
+                      <th class="text-center">
+                        Action
+                      </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
+                    <tr>
+                      <td>
+                        {{ rowIndex + 1 }}
+                      </td>
+                      <td>{{ d.itemsTypesCode }}</td>
+                      <td>{{ d.itemsTypesName }}</td>
+                      <td class="text-center">
+                        <input
+                          style="margin: -8px 0 0 -5px;"
+                          type="checkbox"
+                          class="form-check-input"
+                          disabled
+                          [checked]="d.isActive"
+                        />
+                      </td>
+                      <td class="text-center">
+                        <button
+                          pButton
+                          pRipple
+                          icon="pi pi-pencil"
+                          class="p-button-sm p-button-warning mx-2"
+                          (click)="gotoUpdate(d.itemsTypesCode)"
+                        ></button>
+                        <button
+                          pButton
+                          pRipple
+                          icon="pi pi-trash"
+                          class="p-button-sm p-button-danger"
+                          (click)="delete(d.id)"
+                        ></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
