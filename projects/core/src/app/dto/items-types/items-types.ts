@@ -7,4 +7,5 @@ export class ItemsTypes{
 	createdBy!: string;
 	updatedAt!: string;
 	updatedBy!: string;
+	isActive!:boolean;
 }

@@ -52,6 +52,11 @@ const routes: Routes = [
   {
     path: '',
     component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/items-types/items-types.module').then(result => result.ItemsTypesModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/items/items.module').then(result => result.ItemsModule)
   },
   {

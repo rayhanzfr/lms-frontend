@@ -51,7 +51,7 @@ export class ItemsBrandsModifyComponent implements OnInit {
     const id:any = this.router.snapshot.paramMap.get('id');
     if (id) {
       this.itemsBrands=  new ItemsBrands();
-      this.itemsBrandsSub=this.itemsBrandsService.getById(id).subscribe(result=>{this.itemsBrands=result
+      this.itemsBrandsSub=this.itemsBrandsService.getByCode(id).subscribe(result=>{this.itemsBrands=result
       this.itemsBrandsReq = this.itemsBrands
       });
     }

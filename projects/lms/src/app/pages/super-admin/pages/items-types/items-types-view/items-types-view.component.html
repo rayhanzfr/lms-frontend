@@ -47,8 +47,8 @@
                   [rows]="10"
                   [paginator]="true"
                   [globalFilterFields]="[
-                              'itemsBrandsCode',
-                              'itemsBrandsName',
+                              'itemsTypesCode',
+                              'itemsTypesName',
                             ]"
                   [rowHover]="true"
                   dataKey="id"
@@ -80,13 +80,13 @@
                       <th style="width: 3rem;">
                         No
                       </th>
-                      <th pSortableColumn="itemsBrandsCode">
-                        ItemsBrands Code
-                        <p-sortIcon field="itemsBrandsCode"></p-sortIcon>
+                      <th pSortableColumn="itemsTypesCode">
+                        ItemsTypes Code
+                        <p-sortIcon field="itemsTypesCode"></p-sortIcon>
                       </th>
-                      <th pSortableColumn="itemsBrandsName">
-                        ItemsBrands Name
-                        <p-sortIcon field="itemsBrandsName"></p-sortIcon>
+                      <th pSortableColumn="itemsTypesName">
+                        ItemsTypes Name
+                        <p-sortIcon field="itemsTypesName"></p-sortIcon>
                       </th>
                       <th class="text-center">
                         Active
@@ -101,8 +101,8 @@
                       <td>
                         {{ rowIndex + 1 }}
                       </td>
-                      <td>{{ d.itemsBrandsCode }}</td>
-                      <td>{{ d.itemsBrandsName }}</td>
+                      <td>{{ d.itemsTypesCode }}</td>
+                      <td>{{ d.itemsTypesName }}</td>
                       <td class="text-center">
                         <input
                           style="margin: -8px 0 0 -5px;"
@@ -118,7 +118,7 @@
                           pRipple
                           icon="pi pi-pencil"
                           class="p-button-sm p-button-warning mx-2"
-                          (click)="gotoUpdate(d.itemsBrandsCode)"
+                          (click)="gotoUpdate(d.itemsTypesCode)"
                         ></button>
                         <button
                           pButton
