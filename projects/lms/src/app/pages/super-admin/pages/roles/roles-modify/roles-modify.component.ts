@@ -51,7 +51,7 @@ export class RolesModifyComponent implements OnInit {
     const id:any = this.router.snapshot.paramMap.get('id');
     if (id) {
       this.roles=  new Roles();
-      this.rolesSub=this.rolesService.getById(id).subscribe(result=>{this.roles=result
+      this.rolesSub=this.rolesService.getByCode(id).subscribe(result=>{this.roles=result
       this.rolesReq = this.roles
       });
     }
