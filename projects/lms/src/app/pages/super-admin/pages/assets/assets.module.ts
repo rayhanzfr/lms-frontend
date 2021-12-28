@@ -4,6 +4,8 @@ import { AssetsViewComponent } from './assets-view/assets-view.component';
 import { AssetsModifyComponent } from './assets-modify/assets-modify.component';
 import { AssetsRoutingModule } from './assets-routing.module';
 import { MainbarModule } from '../../../mainbar/mainbar.module';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +15,9 @@ import { MainbarModule } from '../../../mainbar/mainbar.module';
     AssetsModifyComponent
   ],
   imports: [
-    CommonModule, AssetsRoutingModule, MainbarModule
+    CommonModule, AssetsRoutingModule, MainbarModule,
+    ButtonModule,
+    FormsModule
   ]
 })
 export class AssetsModule { }

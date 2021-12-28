@@ -8,7 +8,6 @@ import {SaveAssetsReqDto} from '../../dto/asset/save-assets-req-dto'
 import { SaveAssetsResDto } from '../../dto/asset/save-assets-res-dto';
 import { UpdateAssetsReqDto } from '../../dto/asset/update-assets-req-dto';
 import { UpdateAssetsResDto } from '../../dto/asset/update-assets-res-dto';
-import {DeleteAssetsResDto} from '../../dto/asset/delete-assets-res-dto'
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +49,12 @@ export class AssetsService {
 
   save(save:SaveAssetsReqDto):Observable<SaveAssetsResDto>{
     return this.http.post<SaveAssetsResDto>('http://localhost:8888/assets',save)
+  }
+
+  upload(file: File | null):Observable<any>{
+    const formData = new FormData();
+    formData.append('file', file!);
+    return this.http.post<any>('http://localhost:8888/assets/upload', formData)
   }
 
   update(update:UpdateAssetsReqDto):Observable<UpdateAssetsResDto>{
