@@ -22118,6 +22118,23 @@ code {
   background: #f59095;
 }
 
+.card.card-orange {
+  background: #fa840f;
+  color: #ffffff;
+}
+
+.card.card-orange:hover {
+  background: #fba550;
+}
+.card.card-blue {
+  background: #33ccff;
+  color: #ffffff;
+}
+
+.card.card-blue:hover {
+  background: #6dd5ed;
+}
+
 .card-inverse-primary {
   background: rgba(75, 73, 172, 0.2);
   border: 1px solid #45439e;
