@@ -21,7 +21,6 @@ export class StatusesAssetsViewComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.statusesAssetsService.getAll().subscribe(result => this.data = result)
-    console.log("dsds"+this.data)
   }
 
 }

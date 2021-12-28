@@ -5,7 +5,7 @@ import { LocationsViewComponent } from './locations-view/locations-view.componen
 
 const routes: Routes = [
   {
-    path: 'admin/statuses-assets',
+    path: 'admin/locations',
     component:LocationsViewComponent
   }
 ]

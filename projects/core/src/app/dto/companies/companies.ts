@@ -1,3 +1,5 @@
+import { Files } from "../files/files"
+
 export class Companies {
 	id!: string
 	version!: number
@@ -10,6 +12,6 @@ export class Companies {
 	companiesName!: string
 	companiesPhone!: string
 	companiesAddress!: string
-	files!: string
+	files!: Files
 
 }
