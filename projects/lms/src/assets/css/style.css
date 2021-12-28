@@ -20234,6 +20234,12 @@ code {
 .fs-30 {
   font-size: 30px;
 }
+.fs-50 {
+  font-size: 50px;
+}
+.fs-70 {
+  font-size: 70px;
+}
 
 .chartjs-legend ul {
   margin-bottom: 0;
