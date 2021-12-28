@@ -38,4 +38,8 @@ export class UsersModifyComponent implements OnInit {
     }
   }
 
+  back():void{
+    this.router.navigateByUrl('admin/user')
+  }
+
 }
