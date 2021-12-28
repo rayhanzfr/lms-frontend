@@ -48,8 +48,8 @@
                                     id="flexCheckChecked" [checked]="in.isActive"></td>
                                   <td>
                                       <div class="row">
-                                          <button type="button" class="btn btn-danger">Delete</button>
-                                          <button type="button" class="btn btn-warning text-white">Update</button>
+                                          <button type="button" (click)="delete(in.id)" class="btn btn-danger">Delete</button>
+                                          <button type="button" (click)="gotoUpdate(in.invoicesCode)" class="btn btn-warning text-white">Update</button>
                                       </div>
                                   </td>
                               </tr>

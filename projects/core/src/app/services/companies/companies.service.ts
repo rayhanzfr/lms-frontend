@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Companies } from '../../dto/companies/companies';
 import { DeleteCompaniesResDto } from '../../dto/companies/delete-companies-res-dto';
-import { GetAllCompaniesResDto } from '../../dto/companies/get-all-companies-res-dto';
-import { GetByCodeCompaniesResDto } from '../../dto/companies/get-by-code-companies-res-dto';
-import { GetByIdCompaniesResDto } from '../../dto/companies/get-by-id-companies-res-dto';
 import { SaveCompaniesResDto } from '../../dto/companies/save-companies-res-dto';
 import { UpdateCompaniesResDto } from '../../dto/companies/update-companies-res-dto';
 
@@ -20,16 +17,20 @@ export class CompaniesService {
     return this.http.get<Companies[]>('http://localhost:8888/companies/')
   }
 
-  getById(id: string): Observable<GetByCodeCompaniesResDto>{
-    return this.http.get<GetByCodeCompaniesResDto>('http://localhost:8888/companies/id?id=' + id)
+  getById(id: string): Observable<Companies>{
+    return this.http.get<Companies>('http://localhost:8888/companies/id?id=' + id)
   }
 
-  getByCode(code: string): Observable<GetByIdCompaniesResDto>{
-    return this.http.get<GetByIdCompaniesResDto>('http://localhost:8888/companies/code?code=' + code)
+  getByCode(code: string): Observable<Companies>{
+    return this.http.get<Companies>('http://localhost:8888/companies/code?code=' + code)
   }
 
-  save(companies: Companies): Observable<SaveCompaniesResDto>{
-    return this.http.post<SaveCompaniesResDto>('http://localhost:8888/companies/', companies)
+  save(companies: Companies, file: File | null): Observable<SaveCompaniesResDto>{
+    const formData: FormData = new FormData();
+    formData.append('data', JSON.stringify(companies));
+    formData.append('file', file!);
+    console.log(file)
+    return this.http.post<SaveCompaniesResDto>('http://localhost:8888/companies/',formData)
   }
 
   update(companies: Companies): Observable<UpdateCompaniesResDto>{

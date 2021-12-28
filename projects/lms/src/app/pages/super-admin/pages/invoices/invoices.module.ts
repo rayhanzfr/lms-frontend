@@ -4,6 +4,9 @@ import { InvoicesViewComponent } from './invoices-view/invoices-view.component';
 import { InvoicesModifyComponent } from './invoices-modify/invoices-modify.component';
 import { TableModule } from 'primeng/table';
 import { InvoicesRoutingModule } from './invoices-routing.module';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +16,12 @@ import { InvoicesRoutingModule } from './invoices-routing.module';
     InvoicesModifyComponent
   ],
   imports: [
-    CommonModule, InvoicesRoutingModule, TableModule
+    CommonModule,
+    InvoicesRoutingModule,
+    TableModule,
+    InputTextModule,
+    ButtonModule,
+    FormsModule
   ]
 })
 export class InvoicesModule { }

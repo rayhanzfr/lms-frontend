@@ -20,8 +20,8 @@ export class LocationsService {
     return this.http.get<Locations[]>('http://localhost:8888/locations/');
   }
 
-  getById(id: string): Observable<GetByIdLocationsResDto> {
-    return this.http.get<GetByIdLocationsResDto>('http://localhost:8888/locations/id?id=' + id);
+  getById(id: string): Observable<Locations> {
+    return this.http.get<Locations>('http://localhost:8888/locations/id?id=' + id);
   }
 
   getByCode(code: string): Observable<GetByCodeLocationsResDto> {

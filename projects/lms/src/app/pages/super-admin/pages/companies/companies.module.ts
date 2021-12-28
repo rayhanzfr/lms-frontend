@@ -4,6 +4,9 @@ import { CompaniesViewComponent } from './companies-view/companies-view.componen
 import { CompaniesModifyComponent } from './companies-modify/companies-modify.component';
 import { TableModule } from 'primeng/table';
 import { CompaniesRoutingModule } from './companies-routing.module';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +16,12 @@ import { CompaniesRoutingModule } from './companies-routing.module';
     CompaniesModifyComponent
   ],
   imports: [
-    CommonModule, CompaniesRoutingModule, TableModule
+    CommonModule,
+    CompaniesRoutingModule,
+    TableModule,
+    InputTextModule,
+    ButtonModule,
+    FormsModule
   ]
 })
 export class CompaniesModule { }
