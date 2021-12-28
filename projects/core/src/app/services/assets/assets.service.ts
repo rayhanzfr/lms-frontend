@@ -51,6 +51,12 @@ export class AssetsService {
     return this.http.post<SaveAssetsResDto>('http://localhost:8888/assets',save)
   }
 
+  upload(file: File | null):Observable<any>{
+    const formData = new FormData();
+    formData.append('file', file!);
+    return this.http.post<any>('http://localhost:8888/assets/upload', formData)
+  }
+
   update(update:UpdateAssetsReqDto):Observable<UpdateAssetsResDto>{
     return this.http.put<UpdateAssetsResDto>('http://localhost:8888/assets',update)
     }

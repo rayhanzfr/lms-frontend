@@ -29,12 +29,14 @@ export class CompaniesService {
     const formData: FormData = new FormData();
     formData.append('data', JSON.stringify(companies));
     formData.append('file', file!);
-    console.log(file)
     return this.http.post<SaveCompaniesResDto>('http://localhost:8888/companies/',formData)
   }
 
-  update(companies: Companies): Observable<UpdateCompaniesResDto>{
-    return this.http.put<UpdateCompaniesResDto>('http://localhost:8888/companies/', companies)
+  update(companies: Companies, file: File | null): Observable<UpdateCompaniesResDto>{
+    const formData: FormData = new FormData();
+    formData.append('data', JSON.stringify(companies));
+    formData.append('file', file!);
+    return this.http.put<UpdateCompaniesResDto>('http://localhost:8888/companies/',formData)
   }
 
   delete(id: string): Observable<DeleteCompaniesResDto>{

@@ -15,6 +15,7 @@ export class StatusesTransactionsViewComponent implements OnInit,OnDestroy {
 
  constructor(private router:Router,private statusesTransactionsService:StatusesTransactionsService) { }
   data:StatusesTransactions[] = []
+  totalData!:number
   obs?:Subscription
   resDeleteStatusesTransactions?:DeleteStatusesTransactionsResDto
   
@@ -37,6 +38,7 @@ export class StatusesTransactionsViewComponent implements OnInit,OnDestroy {
   }
   ngOnInit(): void {
     this.obs=this.statusesTransactionsService.getAll()?.subscribe(result=>{this.data=result
-    console.log(this.data)});
+    console.log(this.data)
+    this.totalData=this.data.length });
   }
 }
