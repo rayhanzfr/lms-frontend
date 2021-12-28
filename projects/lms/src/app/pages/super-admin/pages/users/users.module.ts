@@ -6,7 +6,6 @@ import { UsersRoutingModule } from './users-routing.module'
 import { TableModule } from 'primeng/table'
 import { MainbarModule } from '../../../mainbar/mainbar.module'
 import { SliderModule } from 'primeng/slider'
-import { ContextMenuModule } from 'primeng/contextmenu'
 import { ToolbarModule } from 'primeng/toolbar'
 import { InputTextModule } from 'primeng/inputtext'
 import { MultiSelectModule } from 'primeng/multiselect'
@@ -20,7 +19,6 @@ import { DropdownModule } from 'primeng/dropdown'
     UsersRoutingModule,
     MainbarModule,
     TableModule,
-    ContextMenuModule,
     SliderModule,
     ToolbarModule,
     InputTextModule,
