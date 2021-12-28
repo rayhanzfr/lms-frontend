@@ -15,6 +15,7 @@ export class RolesViewComponent implements OnInit,OnDestroy {
 
  constructor(private router:Router,private rolesService:RolesService) { }
   data:Roles[] = []
+  totalData!:number
   obs?:Subscription
   resDeleteRoles?:DeleteRolesResDto
   
@@ -37,7 +38,9 @@ export class RolesViewComponent implements OnInit,OnDestroy {
   }
   ngOnInit(): void {
     this.obs=this.rolesService.getAll()?.subscribe(result=>{this.data=result
-    console.log(this.data)});
+    console.log(this.data)
+    this.totalData=this.data.length;
+    });
   }
 
 }
