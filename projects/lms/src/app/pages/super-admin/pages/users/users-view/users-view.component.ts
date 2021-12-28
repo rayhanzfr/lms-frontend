@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Table } from 'primeng/table';
 import { Users } from 'projects/core/src/app/dto/users/users';
 import { UsersService } from 'projects/core/src/app/services/users/users.service';
@@ -10,15 +11,16 @@ import { UsersService } from 'projects/core/src/app/services/users/users.service
 })
 export class UsersViewComponent implements OnInit {
 
-  loading: boolean = true;
   data:Users[]=[]
-  constructor(private usersService: UsersService) { }
+  totalUsers!:number
+  constructor(private router: Router,private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.usersService.getAll().subscribe(result=>this.data = result);
+    this.totalUsers = this.data.length;
   }
-
-  clear(table: Table) {
-    table.clear();
-}
+  
+  addNew():void{
+    this.router.navigateByUrl('/admin/user/new')
+  }
 }
