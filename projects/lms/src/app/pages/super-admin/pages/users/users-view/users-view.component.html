@@ -2,6 +2,9 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div
+        class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+      ></div>
+        <div
           class="col-12 col-lg-4 col-xl-3 col-sm-4 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
         >
           <div class="card card-tale">
@@ -30,7 +33,7 @@
                     type="button"
                     icon="pi pi-plus"
                     class="p-button-sm p-button-success"
-                    (click)="addNew()"
+                    (click)="gotoInsert()"
                   ></button>
                 </div>
               </div>
@@ -114,12 +117,14 @@
                           pRipple
                           icon="pi pi-pencil"
                           class="p-button-sm p-button-warning mx-2"
+                          (click)="gotoUpdate(d.usersEmail)"
                         ></button>
                         <button
                           pButton
                           pRipple
                           icon="pi pi-trash"
                           class="p-button-sm p-button-danger"
+                          (click)="delete(d.id)"
                         ></button>
                       </td>
                     </tr>
