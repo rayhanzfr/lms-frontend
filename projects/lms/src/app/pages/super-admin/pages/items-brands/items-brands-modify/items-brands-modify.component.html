@@ -1,1 +1,25 @@
-<p>items-brands-modify works!</p>
+<div class="container">
+    <div class="row my-4 justify-content-center">
+        <div class="col-md-8">
+            <div>
+                {{itemsBrands|json}}
+                <h3 class="text-center my-5">Add ItemsBrands</h3>
+                <div class="form-outline mb-4">
+                    <div class="form-outline mb-4" >
+                        <label class="form-label" for="form6Example3">ItemsBrands Name</label>
+                        <input type="text" id="form6Example3" class="form-control" [(ngModel)]="itemsBrandsReq.itemsBrandsName"/>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Is Active
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" [(ngModel)]="itemsBrandsReq.isActive">
+                    </div>
+                      
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mb-4" (click)="submitData()">Submit</button>
+            </div>
+            <a type="button" (click)="back()" class="btn btn-warning">Back</a>
+        </div>
+    </div>
+</div>

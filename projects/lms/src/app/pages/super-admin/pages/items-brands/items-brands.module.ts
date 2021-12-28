@@ -5,6 +5,7 @@ import { ItemsBrandsViewComponent } from './items-brands-view/items-brands-view.
 import { MainbarModule } from '../../../mainbar/mainbar.module';
 import { TableModule } from 'primeng/table';
 import { ItemsBrandsRoutingModule } from './items-brands-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { ItemsBrandsRoutingModule } from './items-brands-routing.module';
     CommonModule,
     ItemsBrandsRoutingModule,
     MainbarModule, 
-    TableModule
+    TableModule,
+    FormsModule
   ]
 })
 export class ItemsBrandsModule { }
