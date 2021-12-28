@@ -13,6 +13,7 @@ import { TableModule } from 'primeng/table';
 
 
 
+
 @NgModule({
   declarations: [
     AssetsViewComponent,
@@ -20,11 +21,12 @@ import { TableModule } from 'primeng/table';
   ],
   imports: [
     CommonModule, AssetsRoutingModule, MainbarModule,
-    FormsModule,
+
     ToolbarModule,
     InputTextModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    FormsModule
   ]
 })
 export class AssetsModule { }
