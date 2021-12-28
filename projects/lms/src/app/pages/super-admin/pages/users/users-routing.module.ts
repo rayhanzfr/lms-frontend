@@ -15,7 +15,7 @@ const routes: Routes = [
     component:UsersModifyComponent
   },
   {
-    path: 'admin/user/user?{id}',
+    path: 'admin/user/:id',
     component:UsersModifyComponent
   }
 ]

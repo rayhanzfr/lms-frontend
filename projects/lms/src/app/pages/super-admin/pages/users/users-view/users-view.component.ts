@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Table } from 'primeng/table';
+import { DeleteUsersResDto } from 'projects/core/src/app/dto/users/delete-users-res-dto';
 import { Users } from 'projects/core/src/app/dto/users/users';
 import { UsersService } from 'projects/core/src/app/services/users/users.service';
 
@@ -13,14 +14,30 @@ export class UsersViewComponent implements OnInit {
 
   data:Users[]=[]
   totalUsers!:number
+  resDeleteUsers?:DeleteUsersResDto
   constructor(private router: Router,private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.usersService.getAll().subscribe(result=>this.data = result);
-    this.totalUsers = this.data.length;
+    this.usersService.getAll().subscribe(result=>{
+      this.data = result 
+    this.totalUsers = this.data.length
+    });
   }
   
-  addNew():void{
+  gotoInsert():void{
     this.router.navigateByUrl('/admin/user/new')
+  }
+
+  gotoUpdate(i:string):void{
+    this.router.navigateByUrl(`admin/user/${i}`)
+  }
+
+  delete(id:string){
+    if(confirm("Are you sure?")){
+      this.usersService.delete(id).subscribe(result=>{
+        this.resDeleteUsers=result
+        window.location.reload()
+      })
+    }
   }
 }
