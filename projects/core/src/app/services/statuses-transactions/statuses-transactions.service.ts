@@ -5,7 +5,9 @@ import { DeleteStatusesTransactionsResDto } from '../../dto/statuses-transaction
 import { GetAllStatusesTransactionsResDto } from '../../dto/statuses-transactions/get-all-statuses-transactions-res-dto';
 import { GetByCodeStatusesTransactionsResDto } from '../../dto/statuses-transactions/get-by-code-statuses-transactions-res-dto';
 import { GetByIdStatusesTransactionsResDto } from '../../dto/statuses-transactions/get-by-id-statuses-transactions-res-dto';
+import { SaveStatusesTransactionsResDto } from '../../dto/statuses-transactions/save-statuses-transactions-res-dto';
 import { StatusesTransactions } from '../../dto/statuses-transactions/statuses-transactions';
+import { UpdateStatusesTransactionsResDto } from '../../dto/statuses-transactions/update-statuses-transactions-res-dto';
 
 
 @Injectable({
@@ -26,12 +28,12 @@ export class StatusesTransactionsService {
     return this.http.get<StatusesTransactions>('http://localhost:8888/statuses-transactions/id/?id='+id)
   }
 
-  save(statusesTrasanctions: StatusesTransactions): Observable<StatusesTransactions>{
-    return this.http.post<StatusesTransactions>('http://localhost:8888/statuses-transactions/', statusesTrasanctions)
+  save(statusesTrasanctions: StatusesTransactions): Observable<SaveStatusesTransactionsResDto>{
+    return this.http.post<SaveStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/', statusesTrasanctions)
   }
 
-  update(statusesTrasanctions: StatusesTransactions): Observable<StatusesTransactions>{
-    return this.http.put<StatusesTransactions>('http://localhost:8888/statuses-transactions/', statusesTrasanctions)
+  update(statusesTrasanctions: StatusesTransactions): Observable<UpdateStatusesTransactionsResDto>{
+    return this.http.put<UpdateStatusesTransactionsResDto>('http://localhost:8888/statuses-transactions/', statusesTrasanctions)
   }
 
   delete(id: string): Observable<DeleteStatusesTransactionsResDto>{

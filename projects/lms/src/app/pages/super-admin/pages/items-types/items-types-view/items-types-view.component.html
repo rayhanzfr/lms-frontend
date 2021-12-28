@@ -2,19 +2,19 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div
-        class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent">
-        
+        class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+      > 
       </div>
         <div
           class="col-12 col-lg-4 col-xl-3 col-sm-4 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
         >
           <div class="card card-tale">
             <div class="card-body">
-              <h3 class="mb-4"><b>Total Invoices</b></h3>
+              <h3 class="mb-4"><b>Total Items Brands</b></h3>
               <p class="fs-50 mb-4 text-center">
                 <b>{{totalData}}</b>
               </p>
-              <p class="text-center">Invoices in this application</p>
+              <p class="text-center">Items Brands in this application</p>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
           <div class="card">
             <div class="card-body">
               <div class="card-title pt-3">
-                <h2 class="text-center"><b>List Invoices</b></h2>
+                <h2 class="text-center"><b>List Items Brands</b></h2>
               </div>
               <div class="container-fluid col-10">
                 <div class="row justify-content-end">
@@ -33,7 +33,7 @@
                     pRipple
                     type="button"
                     icon="pi pi-plus"
-                    class="p-button-sm p-button-success"
+                    class="p-button-sm p-button-info"
                     (click)="gotoInsert()"
                   ></button>
                 </div>
@@ -47,8 +47,8 @@
                   [rows]="10"
                   [paginator]="true"
                   [globalFilterFields]="[
-                              'storeName',
-                              'invoicesCode',
+                              'itemsTypesCode',
+                              'itemsTypesName',
                             ]"
                   [rowHover]="true"
                   dataKey="id"
@@ -80,21 +80,13 @@
                       <th style="width: 3rem;">
                         No
                       </th>
-                      <th pSortableColumn="invoicesCode">
-                        Invoice Code
-                        <p-sortIcon field="invoicesCode"></p-sortIcon>
+                      <th pSortableColumn="itemsTypesCode">
+                        ItemsTypes Code
+                        <p-sortIcon field="itemsTypesCode"></p-sortIcon>
                       </th>
-                      <th pSortableColumn="invoicesDate">
-                        Invoices Date
-                        <p-sortIcon field="invoicesDate"></p-sortIcon>
-                      </th>
-                      <th pSortableColumn="storeName">
-                        Store Name
-                        <p-sortIcon field="storeName"></p-sortIcon>
-                      </th>
-                      <th pSortableColumn="price">
-                        Price
-                        <p-sortIcon field="price"></p-sortIcon>
+                      <th pSortableColumn="itemsTypesName">
+                        ItemsTypes Name
+                        <p-sortIcon field="itemsTypesName"></p-sortIcon>
                       </th>
                       <th class="text-center">
                         Active
@@ -104,22 +96,20 @@
                       </th>
                     </tr>
                   </ng-template>
-                  <ng-template pTemplate="body" let-i let-rowIndex="rowIndex">
+                  <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
                     <tr>
                       <td>
                         {{ rowIndex + 1 }}
                       </td>
-                      <td>{{ i.invoicesCode }}</td>
-                      <td>{{ i.invoicesDate }}</td>
-                      <td>{{ i.storeName }}</td>
-                      <td>{{ i.price }}</td>
+                      <td>{{ d.itemsTypesCode }}</td>
+                      <td>{{ d.itemsTypesName }}</td>
                       <td class="text-center">
                         <input
                           style="margin: -8px 0 0 -5px;"
                           type="checkbox"
                           class="form-check-input"
                           disabled
-                          [checked]="i.isActive"
+                          [checked]="d.isActive"
                         />
                       </td>
                       <td class="text-center">
@@ -128,14 +118,14 @@
                           pRipple
                           icon="pi pi-pencil"
                           class="p-button-sm p-button-warning mx-2"
-                          (click)="gotoUpdate(i.invoicesCode)"
+                          (click)="gotoUpdate(d.itemsTypesCode)"
                         ></button>
                         <button
                           pButton
                           pRipple
                           icon="pi pi-trash"
                           class="p-button-sm p-button-danger"
-                          (click)="delete(i.id)"
+                          (click)="delete(d.id)"
                         ></button>
                       </td>
                     </tr>

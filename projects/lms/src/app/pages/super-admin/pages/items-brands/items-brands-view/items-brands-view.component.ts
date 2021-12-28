@@ -14,6 +14,7 @@ export class ItemsBrandsViewComponent implements OnInit {
 
   constructor(private itemsBrandsService:ItemsBrandsService,private router:Router) { }
   data:ItemsBrands[] = []
+  totalData!:number
   obs?:Subscription
   resDeleteItemsBrands?:DeleteItemsBrandsResDto
   
@@ -36,7 +37,8 @@ export class ItemsBrandsViewComponent implements OnInit {
   }
   ngOnInit(): void {
     this.obs=this.itemsBrandsService.getAll()?.subscribe(result=>{this.data=result
-    console.log(this.data)});
+    console.log(this.data)
+    this.totalData=this.data.length;});
   }
 
 }

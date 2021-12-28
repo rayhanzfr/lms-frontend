@@ -42,7 +42,8 @@ export class CompaniesModifyComponent implements OnInit, OnDestroy {
 
   submitData(){
     if (this.companiesReq.companiesCode) {
-      this.companiesSubs = this.companiesService.update(this.companiesReq)?.subscribe(result=>{
+      this.file = this.selectedFiles.item(0)
+      this.companiesSubs = this.companiesService.update(this.companiesReq, this.file)?.subscribe(result=>{
         this.updateCompaniesRes=result
         if (this.updateCompaniesRes) { 
           this.route.navigateByUrl("admin/companies")

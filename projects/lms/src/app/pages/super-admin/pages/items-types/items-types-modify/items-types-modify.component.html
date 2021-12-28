@@ -1,43 +1,27 @@
 <div class="container-fluid">
+    {{itemsTypes|json}}
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row d-flex justify-content-center">
           <div class="col-7 align-center">
             <div class="card">
               <div class="card-body">
-                <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Invoices</b></h4>
+                <h4 class="text-center fs-50 m-2 mb-sm-3"><b>ItemsTypes</b></h4>
                 <div class="card-body mx-5">
                   <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Invoices Code</b></h5>
+                    <h5 for="itemsTypes"><b>ItemsTypes Name</b></h5>
                     <input
                       type="text"
-                      id="text"
+                      id="email"
                       pInputText
                       class="form-control form-control-md col-12"
-                      disabled
-                      value="{{invoicesReq.invoicesCode}}"
+                      [(ngModel)]="itemsTypesReq.itemsTypesName"
                     />
                   </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Store Name</b></h5>
-                    <input
-                      type="text"
-                      id="text"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                      [(ngModel)]="invoicesReq.storeName"
-                    />
-                  </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Price</b></h5>
-                    <input
-                      type="number"
-                      id="text"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                      [(ngModel)]="invoicesReq.price"
-                    />
-                  </div>
+                  <div class="form-check">
+                    <h5 for="itemsTypes"><b>Is Active</b></h5>
+                    <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" [(ngModel)]="itemsTypesReq.isActive">
+                </div>
                   <div class="row d-flex mt-5 justify-content-end">
                     <div class="btn-group">
                       <button
@@ -52,7 +36,7 @@
                         pButton
                         pRipple
                         type="button"
-                        label="Submit"
+                        label="Success"
                         class="p-button-sm p-button-success"
                         (click)="submitData()"
                       ></button>
@@ -66,4 +50,3 @@
       </div>
     </div>
   </div>
-  
