@@ -1,59 +1,145 @@
 <div class="row">
-    <div class="col-md-12 grid-margin grid-stretch">
-        <div class="row">
-            <div class="col-12 col-lg-8 col-xl-9 col-md-8 col-sm-8 mb-5 mb-lg-4 mb-xl-3 grid-margin stretch-card">
-              <div class="card ">
-                  <div class="card-body">
-                      <p>new locations here</p>
-                  </div>
-              </div>
+    <div class="col-md-12 grid-margin">
+      <div class="row">
+        <div
+        class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent">
+        
+      </div>
+        <div
+          class="col-12 col-lg-4 col-xl-3 col-sm-4 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+        >
+          <div class="card card-tale">
+            <div class="card-body">
+              <h3 class="mb-4"><b>Total Locations</b></h3>
+              <p class="fs-50 mb-4 text-center">
+                <b>{{totalData}}</b>
+              </p>
+              <p class="text-center">Locations in this application</p>
             </div>
-            <div class="col-12 col-lg-4 col-xl-3 col-md-4 col-sm-4  mb-5 mb-lg-4 mb-xl-3 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p>this total of locations</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-12 grid-margin stretch-card transparent">
-              <div class="card">
-                  <div class="card-body">
-                      <p class="card-title"><b>Locations Table</b></p>
-                      <p-table responsiveLayout="stack" [value]="data">
-                          <ng-template pTemplate="header">
-                              <tr>
-                                  <th>No</th>
-                                  <th>Locations Code</th>
-                                  <th>Locations Deploy</th>
-                                  <th>Company Name</th>
-                                  <th>Active</th>
-                                  <th>Action</th>
-                              </tr>
-                          </ng-template>
-                          <ng-template pTemplate="body" let-l let-i="rowIndex">
-                              <tr>
-                                  <td>{{i+1}}</td>
-                                  <td>{{l.locationsCode}}</td>
-                                  <td>{{l.locationsName}}</td>
-                                  <td>{{l.companies.companiesName}}</td>
-                                  <td><input disabled class="form-check-input" type="checkbox" value=""
-                                    id="flexCheckChecked" [checked]="l.isActive"></td>
-                                  <td>
-                                  <td>
-                                      <div class="row">
-                                          <button type="button" class="btn btn-danger">Delete</button>
-                                          <button type="button" class="btn btn-info">Update</button>
-                                      </div>
-                                  </td>
-                              </tr>
-                          </ng-template>
-                      </p-table>
-                  </div>
-              </div>
           </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-12 stretch-card transparent">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title pt-3">
+                <h2 class="text-center"><b>List Locations</b></h2>
+              </div>
+              <div class="container-fluid col-10">
+                <div class="row justify-content-end">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-plus"
+                    class="p-button-sm p-button-success"
+                    (click)="gotoInsert()"
+                  ></button>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <p-table
+                  #dt
+                  [value]="data"
+                  [rows]="10"
+                  [paginator]="true"
+                  [globalFilterFields]="[
+                              'locationsCode',
+                              'locationsDeploy'
+                            ]"
+                  [rowHover]="true"
+                  dataKey="id"
+                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                  [showCurrentPageReport]="true"
+                >
+                  <ng-template pTemplate="caption">
+                    <div class="row">
+                      <div class="col-5">
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-search"></i>
+                          <input
+                            type="text"
+                            pInputText
+                            (input)="
+                              dt.filterGlobal(
+                                $any($event.target).value,
+                                'contains'
+                              )
+                            "
+                            placeholder="Search"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="header">
+                    <tr class="text-center">
+                      <th style="width: 3rem;">
+                        No
+                      </th>
+                      <th pSortableColumn="locationsCode">
+                        Locations Code
+                        <p-sortIcon field="locationsCode"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="locationsDeploy">
+                        Locations Deploy
+                        <p-sortIcon field="locationsDeploy"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="companiesName">
+                        Company Name
+                        <p-sortIcon field="companiesName"></p-sortIcon>
+                      </th>
+                      <th class="text-center">
+                        Active
+                      </th>
+                      <th class="text-center">
+                        Action
+                      </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-l let-rowIndex="rowIndex">
+                    <tr>
+                      <td>
+                        {{ rowIndex + 1 }}
+                      </td>
+                      <td>{{ l.locationsCode }}</td>
+                      <td>{{ l.locationsDeploy }}</td>
+                      <td>{{ l.companies.companiesName }}</td>
+                      <td class="text-center">
+                        <input
+                          style="margin: -8px 0 0 -5px;"
+                          type="checkbox"
+                          class="form-check-input"
+                          disabled
+                          [checked]="l.isActive"
+                        />
+                      </td>
+                      <td class="text-center">
+                        <button
+                          pButton
+                          pRipple
+                          icon="pi pi-pencil"
+                          class="p-button-sm p-button-warning mx-2"
+                          (click)="gotoUpdate(l.locationsCode)"
+                        ></button>
+                        <button
+                          pButton
+                          pRipple
+                          icon="pi pi-trash"
+                          class="p-button-sm p-button-danger"
+                          (click)="delete(l.id)"
+                        ></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  

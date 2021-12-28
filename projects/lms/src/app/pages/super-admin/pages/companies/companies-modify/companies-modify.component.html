@@ -15,6 +15,7 @@
                       pInputText
                       class="form-control form-control-md col-12"
                       disabled
+                      value = {{companiesReq.companiesCode}}
                     />
                   </div>
                   <div class="form-group mt-4 mb-3">
@@ -53,6 +54,7 @@
                       type="file"
                       id="file"
                       class="form-control form-control-md col-12"
+                      accept="image/*"
                       (change)="selectFile($event)"
                     />
                   </div>
