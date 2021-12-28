@@ -7,4 +7,5 @@ export class ItemsBrands{
 	createdBy!: string;
 	updatedAt!: string;
 	updatedBy!: string;
+	isActive!:boolean;
 }

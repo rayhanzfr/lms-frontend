@@ -60,6 +60,11 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/permissions/permissions.module').then(result => result.PermissionsModule)
   },
   {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/statuses-transactions/statuses-transactions.module').then(result => result.StatusesTransactionsModule)
+  },
+  {
     path:'',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/users/users.module').then(result=>result.UsersModule)

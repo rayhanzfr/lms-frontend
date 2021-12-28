@@ -4,12 +4,16 @@
             <div class="col-12 grid-margin stretch-card transparent">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-title text-center"><b>ItemsBrands</b></p>
+                        <p class="card-title text-center"><b>Items Brands</b></p>
                         <div class="col-12 text-end">
                             <a type="button" class="btn btn-primary text-white decoration-none "
-                                routerLink="/itemsBrands/new">Add Data</a>
+                            (click)="gotoInsert()">Add Data</a>
                         </div>
-                        <p-table responsiveLayout="stack" [lazy]="true" [value]="data">
+                        <p-table responsiveLayout="stack" #dt1 [value]="data" dataKey="id" [rows]="10"
+                        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+                        styleClass="p-datatable-gridlines" [paginator]="true"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [globalFilterFields]="['itemsBrandsCode','itemsBrandsName']">
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>No</th>
@@ -17,6 +21,17 @@
                                     <th>ItemsBrands Name</th>
                                     <th>isActive</th>
                                     <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        <p-columnFilter type="text" field="itemsBrandsCode"></p-columnFilter>
+                                    </th>
+                                    <th>
+                                        <p-columnFilter type="text" field="itemsBrandsName"></p-columnFilter>
+                                    </th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-d let-i="rowIndex" >
@@ -28,7 +43,7 @@
                                         <input disabled class="form-check-input" type="checkbox" value=""
                                             id="flexCheckChecked" [checked]="d.isActive" style="margin: 0 25px; flex-direction: row-reverse">
                                     </td>
-                                    <td><a type="button" routerLink="/itemsBrands/update.html"
+                                    <td><a type="button" (click)="gotoUpdate(d.id)"
                                             class="btn btn-warning">Update</a>
                                         <a type="button" (click)="delete(d.id)" class="btn btn-danger">Delete</a>
                                     </td>
