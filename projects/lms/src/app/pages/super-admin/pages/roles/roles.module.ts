@@ -6,7 +6,13 @@ import { RolesRoutingModule } from './roles-routing.module';
 import { MainbarModule } from '../../../mainbar/mainbar.module';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
+import { InputText, InputTextModule } from 'primeng/inputtext';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { SliderModule } from 'primeng/slider';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -20,7 +26,13 @@ import { InputText } from 'primeng/inputtext';
     RolesRoutingModule,
     MainbarModule, 
     TableModule,
-    FormsModule
+    FormsModule,
+    ContextMenuModule,
+    ToolbarModule,
+    InputTextModule,
+    ButtonModule,
+    MultiSelectModule,
+    DropdownModule
   ]
 })
 export class RolesModule { }
