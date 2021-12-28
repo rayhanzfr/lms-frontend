@@ -14,7 +14,7 @@ export class InvoicesViewComponent implements OnInit,OnDestroy {
 
   obs?: Subscription
   data: Invoices[] = []
-  resDeleteRoles?:DeleteInvoicesResDto
+  resDeleteInvoices?:DeleteInvoicesResDto
 
   constructor(private router:Router, private invoicesService: InvoicesService) { }
   ngOnDestroy(): void {
@@ -36,7 +36,7 @@ export class InvoicesViewComponent implements OnInit,OnDestroy {
   delete(id:string){
     if(confirm("Are you sure?")){
       this.invoicesService.delete(id).subscribe(result=>{
-        this.resDeleteRoles=result
+        this.resDeleteInvoices=result
         window.location.reload()
       })
     }
