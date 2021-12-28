@@ -10,7 +10,7 @@ export class Employees{
     updatedBy!: string
     isActive!:boolean
     users!:Users
-    Companies!:Companies
+    companies!:Companies
 	employeesCode!:string
 	employeesFullname!:string
 	employeesAddress!:string
