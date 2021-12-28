@@ -15,6 +15,7 @@ export class CompaniesViewComponent implements OnInit, OnDestroy {
   obs?: Subscription
   data: Companies[] = []
   resDeleteCompanies?:DeleteCompaniesResDto
+  totalData!:number
 
   constructor(private router:Router, private companiesService: CompaniesService) { }
   ngOnDestroy(): void {
@@ -22,7 +23,10 @@ export class CompaniesViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.companiesService.getAll().subscribe(result => this.data = result)
+    this.companiesService.getAll().subscribe(result =>{
+      this.data = result
+      this.totalData = this.data.length
+    })
   }
 
   gotoInsert(){

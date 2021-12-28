@@ -15,6 +15,7 @@ export class InvoicesViewComponent implements OnInit,OnDestroy {
   obs?: Subscription
   data: Invoices[] = []
   resDeleteInvoices?:DeleteInvoicesResDto
+  totalData!:number
 
   constructor(private router:Router, private invoicesService: InvoicesService) { }
   ngOnDestroy(): void {
@@ -22,7 +23,10 @@ export class InvoicesViewComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    this.invoicesService.getAll().subscribe(result => this.data = result)
+    this.invoicesService.getAll().subscribe(result => {
+      this.data = result
+      this.totalData = this.data.length
+    })
   }
 
   gotoInsert(){
