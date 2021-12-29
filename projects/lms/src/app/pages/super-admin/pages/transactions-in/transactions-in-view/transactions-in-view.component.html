@@ -46,8 +46,7 @@
                   [rows]="10"
                   [paginator]="true"
                   [globalFilterFields]="[
-                              'storeName',
-                              'invoicesCode',
+                              'transactionsInCode'
                             ]"
                   [rowHover]="true"
                   dataKey="id"
@@ -79,13 +78,13 @@
                       <th style="width: 3rem;">
                         No
                       </th>
-                      <th pSortableColumn="invoicesCode">
+                      <th pSortableColumn="transactionsInCode">
                         Transaction Code
-                        <p-sortIcon field="invoicesCode"></p-sortIcon>
+                        <p-sortIcon field="transactionsInCode"></p-sortIcon>
                       </th>
-                      <th pSortableColumn="invoicesDate">
+                      <th pSortableColumn="transactionsInDate">
                         Transaction Date
-                        <p-sortIcon field="invoicesDate"></p-sortIcon>
+                        <p-sortIcon field="transactionsInDate"></p-sortIcon>
                       </th>
                       <th class="text-center">
                         Active
