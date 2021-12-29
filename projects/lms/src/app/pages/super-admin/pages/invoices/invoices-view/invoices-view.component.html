@@ -1,64 +1,150 @@
 <div class="row">
-    <div class="col-md-12 grid-margin grid-stretch">
-        <div class="row">
-            <div class="col-12 col-lg-8 col-xl-9 col-md-8 col-sm-8 mb-5 mb-lg-4 mb-xl-3 grid-margin stretch-card">
-              <div class="card ">
-                  <div class="card-body">
-                      <p>new invoices here</p>
-                  </div>
-              </div>
+    <div class="col-md-12 grid-margin">
+      <div class="row">
+        <div
+        class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent">
+        
+      </div>
+        <div
+          class="col-12 col-lg-4 col-xl-3 col-sm-4 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+        >
+          <div class="card card-tale">
+            <div class="card-body">
+              <h3 class="mb-4"><b>Total Invoices</b></h3>
+              <p class="fs-50 mb-4 text-center">
+                <b>{{totalData}}</b>
+              </p>
+              <p class="text-center">Invoices in this application</p>
             </div>
-            <div class="col-12 col-lg-4 col-xl-3 col-md-4 col-sm-4  mb-5 mb-lg-4 mb-xl-3 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p>this total of invoices</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-12 grid-margin stretch-card transparent">
-              <div class="card">
-                  <div class="card-body">
-                      <p class="card-title text-center"><b>Invoices</b></p>
-                      <div class="col-12 text-end">
-                        <a type="button" class="btn btn-primary text-white decoration-none "
-                            routerLink="/roles/new">Add Data</a>
-                    </div>
-                      <p-table responsiveLayout="stack" [lazy]="true" [value]="data">
-                          <ng-template pTemplate="header">
-                              <tr>
-                                  <th>No</th>
-                                  <th>Invoices Code</th>
-                                  <th>Invoices Date</th>
-                                  <th>Store Name</th>
-                                  <th>Price</th>
-                                  <th>Active</th>
-                                  <th>Action</th>
-                              </tr>
-                          </ng-template>
-                          <ng-template pTemplate="body" let-in let-i="rowIndex">
-                              <tr>
-                                  <td>{{i+1}}</td>
-                                  <td>{{in.invoicesCode}}</td>
-                                  <td>{{in.invoicesDate}}</td>
-                                  <td>{{in.storeName}}</td>
-                                  <td>{{in.price}}</td>
-                                  <td><input disabled class="form-check-input" type="checkbox" value=""
-                                    id="flexCheckChecked" [checked]="in.isActive"></td>
-                                  <td>
-                                      <div class="row">
-                                          <button type="button" (click)="delete(in.id)" class="btn btn-danger">Delete</button>
-                                          <button type="button" (click)="gotoUpdate(in.invoicesCode)" class="btn btn-warning text-white">Update</button>
-                                      </div>
-                                  </td>
-                              </tr>
-                          </ng-template>
-                      </p-table>
-                  </div>
-              </div>
           </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-12 stretch-card transparent">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title pt-3">
+                <h2 class="text-center"><b>List Invoices</b></h2>
+              </div>
+              <div class="container-fluid col-10">
+                <div class="row justify-content-end">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-plus"
+                    class="p-button-sm p-button-success"
+                    (click)="gotoInsert()"
+                  ></button>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <p-table
+                  #dt
+                  [value]="data"
+                  [rows]="10"
+                  [paginator]="true"
+                  [globalFilterFields]="[
+                              'storeName',
+                              'invoicesCode',
+                            ]"
+                  [rowHover]="true"
+                  dataKey="id"
+                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                  [showCurrentPageReport]="true"
+                >
+                  <ng-template pTemplate="caption">
+                    <div class="row">
+                      <div class="col-5">
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-search"></i>
+                          <input
+                            type="text"
+                            pInputText
+                            (input)="
+                              dt.filterGlobal(
+                                $any($event.target).value,
+                                'contains'
+                              )
+                            "
+                            placeholder="Search"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="header">
+                    <tr class="text-center">
+                      <th style="width: 3rem;">
+                        No
+                      </th>
+                      <th pSortableColumn="invoicesCode">
+                        Invoice Code
+                        <p-sortIcon field="invoicesCode"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="invoicesDate">
+                        Invoices Date
+                        <p-sortIcon field="invoicesDate"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="storeName">
+                        Store Name
+                        <p-sortIcon field="storeName"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="price">
+                        Price
+                        <p-sortIcon field="price"></p-sortIcon>
+                      </th>
+                      <th class="text-center">
+                        Active
+                      </th>
+                      <th class="text-center">
+                        Action
+                      </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-i let-rowIndex="rowIndex">
+                    <tr>
+                      <td>
+                        {{ rowIndex + 1 }}
+                      </td>
+                      <td>{{ i.invoicesCode }}</td>
+                      <td>{{ i.invoicesDate }}</td>
+                      <td>{{ i.storeName }}</td>
+                      <td>{{ i.price }}</td>
+                      <td class="text-center">
+                        <input
+                          style="margin: -8px 0 0 -5px;"
+                          type="checkbox"
+                          class="form-check-input"
+                          disabled
+                          [checked]="i.isActive"
+                        />
+                      </td>
+                      <td class="text-center">
+                        <button
+                          pButton
+                          pRipple
+                          icon="pi pi-pencil"
+                          class="p-button-sm p-button-warning mx-2"
+                          (click)="gotoUpdate(i.invoicesCode)"
+                        ></button>
+                        <button
+                          pButton
+                          pRipple
+                          icon="pi pi-trash"
+                          class="p-button-sm p-button-danger"
+                          (click)="delete(i.id)"
+                        ></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  

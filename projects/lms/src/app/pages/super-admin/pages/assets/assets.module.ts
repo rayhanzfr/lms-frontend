@@ -5,6 +5,12 @@ import { AssetsModifyComponent } from './assets-modify/assets-modify.component';
 import { AssetsRoutingModule } from './assets-routing.module';
 import { MainbarModule } from '../../../mainbar/mainbar.module';
 
+import { ToolbarModule } from 'primeng/toolbar';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -13,7 +19,13 @@ import { MainbarModule } from '../../../mainbar/mainbar.module';
     AssetsModifyComponent
   ],
   imports: [
-    CommonModule, AssetsRoutingModule, MainbarModule
+    CommonModule, AssetsRoutingModule, MainbarModule,
+
+    ToolbarModule,
+    InputTextModule,
+    ButtonModule,
+    TableModule,
+    FormsModule
   ]
 })
 export class AssetsModule { }
