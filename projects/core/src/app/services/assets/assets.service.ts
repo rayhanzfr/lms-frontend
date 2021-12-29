@@ -60,4 +60,12 @@ export class AssetsService {
   update(update:UpdateAssetsReqDto):Observable<UpdateAssetsResDto>{
     return this.http.put<UpdateAssetsResDto>('http://localhost:8888/assets',update)
     }
+
+  download():Observable<any>{
+    return this.http.get(`http://localhost:8888/assets/download`, {responseType: 'blob'});
+  }
+
+  sendReport():Observable<any>{
+    return this.http.get(`http://localhost:8888/assets/send-report`);
+  }
 }
