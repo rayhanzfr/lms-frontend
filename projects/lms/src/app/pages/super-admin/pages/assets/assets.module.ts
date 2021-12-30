@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 
@@ -26,7 +27,8 @@ import { TableModule } from 'primeng/table';
     InputTextModule,
     ButtonModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule
   ]
 })
 export class AssetsModule { }

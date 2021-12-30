@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {DropdownModule} from 'primeng/dropdown';
 import { LoginModule } from './pages/login/login.module';
 import { MainbarComponent } from './pages/mainbar/mainbar.component';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ import { HttpInterceptorService } from 'projects/core/src/app/services/http-inte
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    DropdownModule,
     FormsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],

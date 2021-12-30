@@ -22100,6 +22100,15 @@ code {
   background: #5050b2;
 }
 
+.card.card-dark {
+  background: #000;
+  color: #ffffff;
+}
+
+.card.card-dark:hover {
+  background: #0f0f0f;
+}
+
 .card.card-light-blue {
   background: #7978E9;
   color: #ffffff;
