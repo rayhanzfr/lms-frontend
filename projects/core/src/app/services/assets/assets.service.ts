@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Assets } from '../../dto/asset/assets';
 import {GetAllAssetsResDto} from '../../dto/asset/get-all-assets-res-dto'
 import {GetByIdAssetsResDto} from '../../dto/asset/get-by-id-assets-res-dto'
 import {GetTotalAssetsReqDto} from '../../dto/asset/get-total-assets-req-dto'
@@ -43,8 +44,8 @@ export class AssetsService {
   getByStatusInOut(statusesInOutCode:string):Observable<GetAllAssetsResDto>{
     return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/statusesInOut?statusesInOutCode='+statusesInOutCode)
   }
-  getByReq(itemsCode:string, itemsTypesCode:string, brandsCode:string, statusesAssetsCode:string, statusesInOutCode:string, total:number):Observable<GetTotalAssetsReqDto>{
-    return this.http.get<GetTotalAssetsReqDto>(`http://localhost:8888/req?itemsCode=${itemsCode}&itemsTypesCode=${itemsTypesCode}&itemsBrandsCode=${brandsCode}&statusesAssetsCode=${statusesAssetsCode}&statusesInOutCode=${statusesInOutCode}&total=${total}`)
+  getByReq(itemsCode:string,statusesAssetsCode:string, total:number):Observable<Assets[]>{
+    return this.http.get<Assets[]>(`http://localhost:8888/req?itemsCode=${itemsCode}&statusesAssetsCode=${statusesAssetsCode}&total=${total}`)
   }
 
   save(save:SaveAssetsReqDto):Observable<SaveAssetsResDto>{
@@ -60,4 +61,19 @@ export class AssetsService {
   update(update:UpdateAssetsReqDto):Observable<UpdateAssetsResDto>{
     return this.http.put<UpdateAssetsResDto>('http://localhost:8888/assets',update)
     }
+
+    newAssets():Observable<GetAllAssetsResDto>{
+      return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/new')
+    }
+
+    getBorrowedAssets():Observable<GetAllAssetsResDto>{
+      return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/top5')
+    }
+  download():Observable<any>{
+    return this.http.get(`http://localhost:8888/assets/download`, {responseType: 'blob'});
+  }
+
+  sendReport():Observable<any>{
+    return this.http.get(`http://localhost:8888/assets/send-report`);
+  }
 }

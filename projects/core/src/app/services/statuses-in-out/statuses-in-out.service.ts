@@ -14,7 +14,7 @@ export class StatusesInOutService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<StatusesInOut[]>{
-    return this.http.get<StatusesInOut[]>('http://localhost:8888/statauses-in-out/')
+    return this.http.get<StatusesInOut[]>('http://localhost:8888/statuses-in-out/')
   }
   getById(id:string): Observable<StatusesInOut>{
     return this.http.get<StatusesInOut>('http://localhost:8888/statuses-in-out/id?id='+id)

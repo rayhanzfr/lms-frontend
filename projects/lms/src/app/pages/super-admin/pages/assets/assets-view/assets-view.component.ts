@@ -12,6 +12,7 @@ import { AssetsService } from 'projects/core/src/app/services/assets/assets.serv
 export class AssetsViewComponent implements OnInit {
 
   data:GetAllAssetsResDto = new GetAllAssetsResDto()
+  newAssets:GetAllAssetsResDto = new GetAllAssetsResDto()
   totalAssets!:number
   borrowedAssets!:number
   readyAssets!:number
@@ -23,6 +24,9 @@ export class AssetsViewComponent implements OnInit {
     this.assetsService.getAll().subscribe(result=>{
       this.data = result
       this.totalAssets = this.data.data.length
+    })
+    this.assetsService.newAssets().subscribe(result=>{
+      this.newAssets = result
     })
     this.assetsService.getByStatusInOut("COUT").subscribe(result=>{
       this.borrowedAssets = result.data.length

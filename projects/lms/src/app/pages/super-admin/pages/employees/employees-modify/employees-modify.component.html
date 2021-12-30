@@ -35,22 +35,12 @@
                     />
                   </div>
                   <div class="form-group mt-4 mb-3">
-                    <h5 for="users"><b>Users</b></h5>
-                    <p-dropdown
-                      id="users"
-                      placeholder="Select users"
-                      optionLabel="name"
-                      [showClear]="true"
-                    ></p-dropdown>
+                    <h5 for="roles"><b>Users</b></h5>
+                    <p-dropdown [options]="users" [(ngModel)]="selectedUsers" placeholder="Select Users" optionLabel="usersEmail" [showClear]="true"></p-dropdown>
                   </div>
                   <div class="form-group mt-4 mb-3">
-                    <h5 for="companies"><b>Companies</b></h5>
-                    <p-dropdown
-                      id="companies"
-                      placeholder="Select users"
-                      optionLabel="name"
-                      [showClear]="true"
-                    ></p-dropdown>
+                    <h5 for="roles"><b>Companies</b></h5>
+                    <p-dropdown [options]="companies" [(ngModel)]="selectedCompanies" placeholder="Select Comapnies" optionLabel="companiesName" [showClear]="true"></p-dropdown>
                   </div>
                   <div class="row d-flex mt-5 justify-content-end">
                     <div class="btn-group">

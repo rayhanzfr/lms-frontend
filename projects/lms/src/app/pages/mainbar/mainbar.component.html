@@ -91,6 +91,22 @@
           <a
             class="nav-link"
             data-toggle="collapse"
+            href="#ui-basic"
+            aria-expanded="false"
+            aria-controls="ui-basic"
+          >
+            <i class="icon-location menu-icon"></i>
+            <span class="menu-title">Location</span>
+          </a>
+        </li>
+        <li
+          class="nav-item"
+          (mouseenter)="inHover($event.target)"
+          (mouseleave)="outHover($event.target)"
+        >
+          <a
+            class="nav-link"
+            data-toggle="collapse"
             href="#office-employee"
             aria-expanded="false"
             aria-controls="office-employee"
