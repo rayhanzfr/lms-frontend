@@ -27,6 +27,10 @@ export class ItemsService {
     return this.http.get<Items>('http://localhost:8888/items/id/?id='+id)
   }
 
+  getByBrandsAndTypes(itemsBrandsCode:string,itemsTypesCode:string): Observable<Items>{
+    return this.http.get<Items>(`http://localhost:8888/items/filter/?itemsBrandsCode=${itemsBrandsCode}&itemsTypesCode=${itemsTypesCode}`)
+  }
+
   save(items: Items, file: File | null): Observable<SaveItemsResDto>{
     const formData: FormData = new FormData();
     formData.append('data', JSON.stringify(items));
