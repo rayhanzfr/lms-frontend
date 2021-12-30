@@ -9,117 +9,135 @@
                 <div class="form-outline mb-4">
                     <div class="form-group mt-4 mb-3">
                         <h5 for="transactionsOut"><b>Assets For</b></h5>
-                        <p-dropdown  (change)="vContent()" [options]="assetsFor.name" [(ngModel)]="assetsForSelected" placeholder="Select Assets For" optionLabel="name" [showClear]="true"></p-dropdown>
+                        <p-dropdown (change)="vContent()" [options]="assetsFor" [(ngModel)]="assetsForSelected"
+                            placeholder="Select Assets For" optionLabel="name" [showClear]="true"></p-dropdown>
                     </div>
-                    <div *ngIf="isEmployees"class="form-group mt-4 mb-3">
+                    <div *ngIf="isEmployees" class="form-group mt-4 mb-3">
                         <h5 for="transactionsOut"><b>Employees</b></h5>
-                        <p-dropdown [options]="listEmployees" [(ngModel)]="saveTransactionsOutDetailReqDto.employeesCode" placeholder="Select Employees " optionLabel="employeesCode" [showClear]="true"></p-dropdown>
+                        <p-dropdown [options]="listEmployees"
+                            [(ngModel)]="saveTransactionsOutDetailReqDto.employeesCode" placeholder="Select Employees "
+                            optionLabel="employeesCode" [showClear]="true"></p-dropdown>
                     </div>
-                    <div *ngIf="isLocations"class="form-group mt-4 mb-3">
-                        <h5 for="transactionsOut"><b>Employees</b></h5>
-                        <p-dropdown [options]="listLocations" [(ngModel)]="saveTransactionsOutDetailReqDto.locationsCode" placeholder="Select Locations " optionLabel="locationsCode" [showClear]="true"></p-dropdown>
-                    </div>
-                    
-                    <div class="form-group mt-4 mb-3">
-                        <h5 for="transactionsOut"><b>Items Brands</b></h5>
-                        <p-dropdown  [options]="listItemsBrands" [(ngModel)]="selectedItemsBrands" placeholder="Select Items Brands " optionLabel="itemsBrandsName" [showClear]="true"></p-dropdown>
-                    </div>
-                    <div class="form-group mt-4 mb-3">
-                        <h5 for="transactionsOut"><b>Items Types</b></h5>
-                        <p-dropdown  [options]="listItemsTypes" [(ngModel)]="selectedItemsTypes" placeholder="Select Items Types " optionLabel="itemsTypesName" [showClear]="true"></p-dropdown>
+                    <div *ngIf="isLocations" class="form-group mt-4 mb-3">
+                        <h5 for="transactionsOut"><b>Locations</b></h5>
+                        <p-dropdown [options]="listLocations"
+                            [(ngModel)]="saveTransactionsOutDetailReqDto.locationsCode" placeholder="Select Locations "
+                            optionLabel="locationsCode" [showClear]="true"></p-dropdown>
                     </div>
 
                     <div class="form-group mt-4 mb-3">
-                        <h5 for="transactionsOut"><b>Items</b></h5>
-                        <p-dropdown  [options]="listItems" [(ngModel)]="itemsCodeSelected" placeholder="Select Items " optionLabel="itemsName" [value]="itemsCode"[showClear]="true"></p-dropdown>
+                        <h5 for="transactionsOut"><b>Items Brands</b></h5>
+                        <p-dropdown [options]="listItemsBrands" [(ngModel)]="selectedItemsBrands"
+                            placeholder="Select Items Brands " optionLabel="itemsBrandsName" [showClear]="true">
+                        </p-dropdown>
+                    </div>
+                    <div class="form-group mt-4 mb-3">
+                        <h5 for="transactionsOut"><b>Items Types</b></h5>
+                        <p-dropdown [options]="listItemsTypes" [(ngModel)]="selectedItemsTypes"
+                            placeholder="Select Items Types " optionLabel="itemsTypesName" [showClear]="true">
+                        </p-dropdown>
                     </div>
                     <div class="form-group mt-4 mb-3">
                         <h5 for="statusesTransactions"><b>Quantity</b></h5>
-                        <input
-                          type="text"
-                          id="qty"
-                          pInputText
-                          class="form-control form-control-md col-12"
-                          [(ngModel)]="qty"
-                        />
-                      </div>
-                      <div class="row d-flex mt-5 justify-content-end">
+                        <input type="text" id="qty" pInputText class="form-control form-control-md col-12"
+                            [(ngModel)]="qty" />
+                    </div>
+                    <div class="form-group mt-4 mb-3">
+                        <h5 for="statusesTransactions"><b>Expired Date</b></h5>
+                        <input type="date" id="expiredDate" pInputText class="form-control form-control-md col-12"
+                            [(ngModel)]="saveTransactionsOutDetailReqDto.expiredDate" />
+                    </div>
+                    <div class="row d-flex mt-5 justify-content-end">
                         <div class="btn-group">
-                          <button
-                            pButton
-                            pRipple
-                            type="button"
-                            label="Success"
-                            class="p-button-sm p-button-success"
-                            (click)="findAssets()"
-                          ></button>
+                            <button pButton pRipple type="button" label="Success" class="p-button-sm p-button-success"
+                                (click)="findAssets()"></button>
                         </div>
-                      </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div>
-                <h5 class="text-center my-5">Add Item</h5>
-                <div class="form-outline mb-4">
-                    <div class="form-outline mb-4">
-                        <select class="form-select" id="inputGroupSelect01" [(ngModel)]="dataDetail.categoryId">
-                            <option selected></option>
-                            <option *ngFor="let d of dataCategory?.data"[value]="d.id">{{d?.names}}</option>
-                        </select>
-                        <label class="form-label" for="form6Example3">Category</label>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <input type="text" id="form6Example3" class="form-control" [(ngModel)]="dataDetail.itemNames"/>
-                        <label class="form-label" for="form6Example3">Item Name</label>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <input type="number" id="form6Example3" class="form-control" [(ngModel)]="dataDetail.weight"/>
-                        <label class="form-label" for="form6Example3">Weight(Kg)</label>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <input type="number" id="form6Example3" class="form-control"[(ngModel)]="dataDetail.quantity" />
-                        <label class="form-label" for="form6Example3">Quantity</label>
-                    </div>
-            
-                </div>
-                <button type="button" class="btn btn-primary btn-block mb-4" (click)="saveDetail()">Save</button>
-            </div>
-            <div class="container-fluid ">
-                <div class="row">
-                    <div class="col-md-10 col-12">
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Item Names</th>
-                                    <th>Weight</th>
-                                    <th>Quantity</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let d of tempDetail;let i=index">
-                                    <td scope="row">{{i+1}} </td>
-                                    <td>{{d?.itemNames}}</td>
-                                    <td>{{d?.weight}}</td>
-                                    <td>{{d?.quantity}}</td>
-                                    <td>
-                                        <a type="button"
-                                            class="btn btn-danger"(click)="tempDelete(i)" >Delete</a>
-                                    </td>
-            
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a type="submit" (click)="saveAll()" class="btn btn-primary btn-block mb-4">Submit</a>
-                <a type="button" routerLink="/shipment" class="btn btn-warning mb-4">Back</a>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-center fs-30 mt-3 mb-3"><b>List Assets</b></p>
+                    <div class="row d-flex justify-content-center">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <p-table #dt [value]="listSaveTransactionsOutDetailReqDto" [rows]="10"
+                                    [paginator]="true" [globalFilterFields]="[
+                        'assetsName',
+                        'assetsExpired',
+                      ]" [rowHover]="true" dataKey="id"
+                                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                    [showCurrentPageReport]="true">
+                                    <ng-template pTemplate="caption">
+                                        <div class="row">
+                                            <div class="col-xl-5 col-lg-6 col-md-7 col-3">
+                                                <span class="p-input-icon-left">
+                                                    <i class="pi pi-search"></i>
+                                                    <input type="text" pInputText (input)="
+                                  dt.filterGlobal(
+                                    $any($event.target).value,
+                                    'contains'
+                                  )
+                                " placeholder="Search" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template pTemplate="header">
+                                        <tr class="text-center">
+                                            <th style="width: 3rem;">
+                                                No
+                                            </th>
+                                            <th pSortableColumn="assetsName">
+                                                Assets Name
+                                                <p-sortIcon field="assetsName"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="expiredDate">
+                                                Date Expired
+                                                <p-sortIcon field="expiredDate"></p-sortIcon>
+                                            </th>
+                                            <th *ngIf="isEmployees">
+                                                Employees
+                                            </th>
+                                            <th *ngIf="isLocations">
+                                                Locations
+                                            </th>
+                                            <th *ngIf="isGeneral">
+                                                General
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
+                                        <tr>
+                                            <td>{{ rowIndex + 1 }}</td>
+                                            <td>{{ d.assetsName }}</td>
+                                            <td>{{ d.expiredDate }}</td>
+                                            <td *ngIf="isEmployees">
+                                                <p-dropdown [options]="listEmployees"
+                                                    [(ngModel)]="saveTransactionsOutDetailReqDto.employeesCode"
+                                                    placeholder="Select Employees " optionLabel="employeesCode"
+                                                    [showClear]="true"></p-dropdown>
+                                            </td>
+                                            <td *ngIf="isLocations">
+                                                <p-dropdown [options]="listLocations"
+                                                    [(ngModel)]="saveTransactionsOutDetailReqDto.locationsCode"
+                                                    placeholder="Select Locations " optionLabel="locationsCode"
+                                                    [showClear]="true"></p-dropdown>
+                                            </td>
+                                            <td class="text-center">
+                                                <button pButton pRipple icon="pi pi-pencil"
+                                                    class="p-button-sm p-button-warning mx-2"
+                                                    (click)="delete(rowIndex)"></button>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
