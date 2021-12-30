@@ -13,11 +13,11 @@ export class TransactionsOutService {
 
   constructor(private http: HttpClient) { }
 
-  GetAll(): Observable<GetAllTransactionsOutResDto> {
+  getAll(): Observable<GetAllTransactionsOutResDto> {
     return this.http.get<GetAllTransactionsOutResDto>(`http://localhost:8888/transactions-out/`);
   }
 
-  GetById(id:string): Observable<GetByTransactionsOutIdResDto> {
+  getById(id:string): Observable<GetByTransactionsOutIdResDto> {
     return this.http.get<GetByTransactionsOutIdResDto>(`http://localhost:8888/transactions-out/id/?id=${id}`);
   }
 

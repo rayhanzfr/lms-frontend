@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { MainbarComponent } from './pages/mainbar/mainbar.component';
+import { RegisterModifyComponent } from './pages/register/register-modify/register-modify.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/register/register.module').then(result => result.RegisterModule)
   },
   {
     path: '',
@@ -45,6 +50,12 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/transactions-in/transactions-in.module').then(result => result.TransactionsInModule)
   },
   {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/transactions-out/transactions-out.module').then(result => result.TransactionsOutModule)
+
+  },
+    {
     path: '',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/reports/reports.module').then(result => result.ReportsModule)
