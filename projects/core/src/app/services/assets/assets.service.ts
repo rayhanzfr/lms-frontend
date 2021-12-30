@@ -69,4 +69,11 @@ export class AssetsService {
     getBorrowedAssets():Observable<GetAllAssetsResDto>{
       return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/top5')
     }
+  download():Observable<any>{
+    return this.http.get(`http://localhost:8888/assets/download`, {responseType: 'blob'});
+  }
+
+  sendReport():Observable<any>{
+    return this.http.get(`http://localhost:8888/assets/send-report`);
+  }
 }
