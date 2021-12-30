@@ -1,3 +1,5 @@
+import { Files } from "../files/files";
+
 export class Assets{
     id!:string;
     version!:number;
@@ -6,9 +8,7 @@ export class Assets{
     updatedAt!: string
     updatedBy!: string
     isActive!:boolean
-    itemsId!:string
 	itemsName!:string
-	invoicesId!:string
 	invoicesCode!:string
 	assetsName!:string
 	statusesAssetsId!:string
@@ -16,4 +16,5 @@ export class Assets{
 	statusesInOutId!:string
 	statusesInOutName!:string
 	assetsExpired!:string
+	files!:Files
 }

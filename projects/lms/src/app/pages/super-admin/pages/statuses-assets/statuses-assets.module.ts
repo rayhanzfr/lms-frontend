@@ -4,6 +4,7 @@ import { StatusesAssetsViewComponent } from './statuses-assets-view/statuses-ass
 import { StatusesAssetsRoutingModule } from './statuses-assets-routing.module';
 import { TableModule } from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -11,7 +12,7 @@ import {CheckboxModule} from 'primeng/checkbox';
     StatusesAssetsViewComponent
   ],
   imports: [
-    CommonModule, StatusesAssetsRoutingModule, TableModule, CheckboxModule
+    CommonModule, StatusesAssetsRoutingModule, TableModule, CheckboxModule, ButtonModule
   ]
 })
 export class StatusesAssetsModule { }
