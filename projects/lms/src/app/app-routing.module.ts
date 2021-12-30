@@ -42,6 +42,16 @@ const routes: Routes = [
   {
     path: '',
     component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/transactions-in/transactions-in.module').then(result => result.TransactionsInModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/reports/reports.module').then(result => result.ReportsModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/roles/roles.module').then(result => result.RolesModule)
   },
   {

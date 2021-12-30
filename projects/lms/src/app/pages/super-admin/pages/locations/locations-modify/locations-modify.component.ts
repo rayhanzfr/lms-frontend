@@ -16,7 +16,8 @@ import { Subscription } from 'rxjs';
 export class LocationsModifyComponent implements OnInit, OnDestroy {
 
   locations?:Locations
-  companies?: Companies[] = []
+  listCompanies: Companies[] = []
+  companies: Companies = new Companies();
   locationsReq:Locations = new Locations();
   saveLocationsRes:SaveLocationsResDto = new SaveLocationsResDto();
   updateLocationsRes:UpdateLocationsResDto = new UpdateLocationsResDto();
@@ -39,10 +40,11 @@ export class LocationsModifyComponent implements OnInit, OnDestroy {
       });
     }
 
-    this.companiesSub = this.companiesService.getAll().subscribe(result=>{this.companies = result})
+    this.companiesSub = this.companiesService.getAll().subscribe(result=>{this.listCompanies = result})
   }
 
   submitData(){
+    this.locationsReq.companies=this.companies
     if (this.locationsReq.locationsCode) {
       this.locationsSubs = this.locationsService.update(this.locationsReq)?.subscribe(result=>{
         this.updateLocationsRes=result
