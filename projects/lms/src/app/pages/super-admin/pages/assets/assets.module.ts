@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     InputTextModule,
     ButtonModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule
   ]
 })
 export class AssetsModule { }
