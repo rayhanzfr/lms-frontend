@@ -1,6 +1,6 @@
 export class SaveTransactionsDetailsOutReqDto {
 
-	transactionsInId!: string
+	transactionsOutId!: string
 	locationsCode!: string
 	employeesCode!: string
 	assetsName!: string
