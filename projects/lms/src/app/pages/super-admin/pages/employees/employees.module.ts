@@ -5,10 +5,11 @@ import { EmployeesModifyComponent } from './employees-modify/employees-modify.co
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { MainbarModule } from '../../../mainbar/mainbar.module';
 import { ButtonModule } from 'primeng/button'
-import { DropdownModule } from 'primeng/dropdown'
+import {DropdownModule} from 'primeng/dropdown';
 import { ToolbarModule } from 'primeng/toolbar'
 import { InputTextModule } from 'primeng/inputtext'
 import { TableModule } from 'primeng/table'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TableModule } from 'primeng/table'
     DropdownModule,
     ToolbarModule,
     InputTextModule,
+    FormsModule
   ]
 })
 export class EmployeesModule { }

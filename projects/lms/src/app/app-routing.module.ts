@@ -49,6 +49,11 @@ const routes: Routes = [
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/transactions-out/transactions-out.module').then(result => result.TransactionsOutModule)
   },
+    {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/reports/reports.module').then(result => result.ReportsModule)
+  },
   {
     path: '',
     component: MainbarComponent,

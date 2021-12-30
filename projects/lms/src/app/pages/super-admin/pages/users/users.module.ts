@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext'
 import { MultiSelectModule } from 'primeng/multiselect'
 import { ButtonModule } from 'primeng/button'
 import { DropdownModule } from 'primeng/dropdown'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [UsersModifyComponent, UsersViewComponent],
@@ -25,6 +26,7 @@ import { DropdownModule } from 'primeng/dropdown'
     ButtonModule,
     MultiSelectModule,
     DropdownModule,
+    FormsModule
   ],
 })
 export class UsersModule {}
