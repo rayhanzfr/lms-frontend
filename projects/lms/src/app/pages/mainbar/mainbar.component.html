@@ -199,13 +199,18 @@
                   Status Asset
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/admin/statuses-assets">
-                  Status In Out
-                </a>
-              </li>
             </ul>
           </div>
+        </li>
+        <li
+          class="nav-item"
+          (mouseenter)="inHover($event.target)"
+          (mouseleave)="outHover($event.target)"
+        >
+          <a class="nav-link" routerLink="/admin-dashboard">
+            <i class="ti-notepad menu-icon"></i>
+            <span class="menu-title">Invoices</span>
+          </a>
         </li>
         <li
           class="nav-item"
@@ -242,16 +247,6 @@
               </li>
             </ul>
           </div>
-        </li>
-        <li
-          class="nav-item"
-          (mouseenter)="inHover($event.target)"
-          (mouseleave)="outHover($event.target)"
-        >
-          <a class="nav-link" routerLink="/admin-dashboard">
-            <i class="ti-notepad menu-icon"></i>
-            <span class="menu-title">History</span>
-          </a>
         </li>
         <li
           class="nav-item"
