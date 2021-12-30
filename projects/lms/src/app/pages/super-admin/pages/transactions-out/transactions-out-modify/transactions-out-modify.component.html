@@ -1,28 +1,15 @@
 <div class="container">
     <div class="row my-4 justify-content-center">
         <div class="col-md-12">
-            <h3 class="text-center my-5">Add Borrowed</h3>
+            <p class="text-center fs-30 mt-3 my-5"><b>Add Borrowed</b></p>
         </div>
         <div class="col-md-6">
             <div>
-                <h5 class="text-center my-5">Add Borrowed Header</h5>
                 <div class="form-outline mb-4">
                     <div class="form-group mt-4 mb-3">
                         <h5 for="transactionsOut"><b>Assets For</b></h5>
-                        <p-dropdown (change)="vContent()" [options]="assetsFor" [(ngModel)]="assetsForSelected"
+                        <p-dropdown (onChange)="vContent(assetsForSelected)" [options]="assetsFor" [(ngModel)]="assetsForSelected"
                             placeholder="Select Assets For" optionLabel="name" [showClear]="true"></p-dropdown>
-                    </div>
-                    <div *ngIf="isEmployees" class="form-group mt-4 mb-3">
-                        <h5 for="transactionsOut"><b>Employees</b></h5>
-                        <p-dropdown [options]="listEmployees"
-                            [(ngModel)]="saveTransactionsOutDetailReqDto.employeesCode" placeholder="Select Employees "
-                            optionLabel="employeesCode" [showClear]="true"></p-dropdown>
-                    </div>
-                    <div *ngIf="isLocations" class="form-group mt-4 mb-3">
-                        <h5 for="transactionsOut"><b>Locations</b></h5>
-                        <p-dropdown [options]="listLocations"
-                            [(ngModel)]="saveTransactionsOutDetailReqDto.locationsCode" placeholder="Select Locations "
-                            optionLabel="locationsCode" [showClear]="true"></p-dropdown>
                     </div>
 
                     <div class="form-group mt-4 mb-3">
@@ -38,18 +25,18 @@
                         </p-dropdown>
                     </div>
                     <div class="form-group mt-4 mb-3">
-                        <h5 for="statusesTransactions"><b>Quantity</b></h5>
+                        <h5 for="quantity"><b>Quantity</b></h5>
                         <input type="text" id="qty" pInputText class="form-control form-control-md col-12"
                             [(ngModel)]="qty" />
                     </div>
                     <div class="form-group mt-4 mb-3">
-                        <h5 for="statusesTransactions"><b>Expired Date</b></h5>
+                        <h5 for="expiredDate"><b>Expired Date</b></h5>
                         <input type="date" id="expiredDate" pInputText class="form-control form-control-md col-12"
-                            [(ngModel)]="saveTransactionsOutDetailReqDto.expiredDate" />
+                            [(ngModel)]="expiredDate" />
                     </div>
                     <div class="row d-flex mt-5 justify-content-end">
                         <div class="btn-group">
-                            <button pButton pRipple type="button" label="Success" class="p-button-sm p-button-success"
+                            <button pButton pRipple type="button" label="Save" class="p-button-sm p-button-success"
                                 (click)="findAssets()"></button>
                         </div>
                     </div>
@@ -115,15 +102,15 @@
                                             <td>{{ d.assetsName }}</td>
                                             <td>{{ d.expiredDate }}</td>
                                             <td *ngIf="isEmployees">
-                                                <p-dropdown [options]="listEmployees"
-                                                    [(ngModel)]="saveTransactionsOutDetailReqDto.employeesCode"
-                                                    placeholder="Select Employees " optionLabel="employeesCode"
+                                                <p-dropdown [options]="listEmployeesCode"
+                                                    [(ngModel)]="d.employeesCode"
+                                                    placeholder="Select Employees "
                                                     [showClear]="true"></p-dropdown>
                                             </td>
                                             <td *ngIf="isLocations">
-                                                <p-dropdown [options]="listLocations"
-                                                    [(ngModel)]="saveTransactionsOutDetailReqDto.locationsCode"
-                                                    placeholder="Select Locations " optionLabel="locationsCode"
+                                                <p-dropdown [options]="listLocationsCode"
+                                                    [(ngModel)]="d.locationsCode"
+                                                    placeholder="Select Locations "
                                                     [showClear]="true"></p-dropdown>
                                             </td>
                                             <td class="text-center">
@@ -137,6 +124,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-end">
+                        <div class="btn-group">
+                          <button
+                            pButton
+                            pRipple
+                            type="button"
+                            label="Cancel"
+                            class="p-button-sm p-button-danger mx-3"
+                            (click)="back()"
+                          ></button>
+                          <button
+                            pButton
+                            pRipple
+                            type="button"
+                            label="Success"
+                            class="p-button-sm p-button-success"
+                            (click)="submitData()"
+                          ></button>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
