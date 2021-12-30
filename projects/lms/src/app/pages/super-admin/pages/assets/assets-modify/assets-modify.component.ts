@@ -12,6 +12,8 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
   file!: File | null
   selectedFiles!: FileList
   assetsSub?:Subscription
+  date!:Date;
+  expiredAssets!:string
 
   constructor(private assetsService:AssetsService) { }
   ngOnDestroy(): void {
@@ -28,6 +30,13 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
 
   selectFile(event: any) {
     this.selectedFiles = event.target.files;
+  }
+
+  getDate():void{
+    let day = this.date.getDate()
+    let month = this.date.getMonth()+1
+    let year = this.date.getFullYear
+    this.expiredAssets = day+'-'+month+'-'+year;
   }
 
 }
