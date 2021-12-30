@@ -53,6 +53,11 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/reports/reports.module').then(result => result.ReportsModule)
 >>>>>>> edb70faaebd728be0574332822bcbf2418376e3c
   },
+    {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/super-admin/pages/reports/reports.module').then(result => result.ReportsModule)
+  },
   {
     path: '',
     component: MainbarComponent,
