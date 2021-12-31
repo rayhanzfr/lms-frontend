@@ -9,6 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { ToolbarModule } from 'primeng/toolbar';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -19,11 +23,15 @@ import { TableModule } from 'primeng/table';
   ],
   imports: [
     CommonModule,
-    TransactionsOutRoutingModule,
+    TransactionsOutRoutingModule, 
     TableModule,
+    FormsModule,
+    ContextMenuModule,
+    ToolbarModule,
     InputTextModule,
     ButtonModule,
-    FormsModule
+    MultiSelectModule,
+    DropdownModule
   ]
 })
 export class TransactionsOutModule { }
