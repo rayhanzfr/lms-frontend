@@ -5,7 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RouterModule } from '@angular/router';
 import { PasswordModule } from "primeng/password";
 import { FormsModule } from '@angular/forms';
-
+import {ToastModule} from 'primeng/toast';
 
 
 
@@ -14,7 +14,12 @@ import { FormsModule } from '@angular/forms';
     LoginComponent
   ],
   imports: [
-    CommonModule, InputTextModule, RouterModule, PasswordModule,FormsModule
+    CommonModule,
+    InputTextModule,
+    RouterModule,
+    PasswordModule, 
+    FormsModule,
+    ToastModule
   ]
 })
 export class LoginModule { }

@@ -10,7 +10,8 @@ export class TransactionsDetailOutService {
 
   constructor(private http: HttpClient) { }
 
-  GetByCodeTransactionsOut(code:string): Observable<GetAllTransactionsDetailsOutResDto> {
+
+  getByCodeTransactionsOut(code:string): Observable<GetAllTransactionsDetailsOutResDto> {
     return this.http.get<GetAllTransactionsDetailsOutResDto>(`http://localhost:8888/transactions-detail-out/?transactionOutCode=${code}`);
   }
 }
