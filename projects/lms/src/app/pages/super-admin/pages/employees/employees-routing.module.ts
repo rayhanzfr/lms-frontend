@@ -14,7 +14,7 @@ const routes: Routes = [
     component: EmployeesModifyComponent
   },
   {
-    path: 'admin/employees/:id',
+    path: 'admin/employees/:code',
     component: EmployeesModifyComponent
   }
 ]

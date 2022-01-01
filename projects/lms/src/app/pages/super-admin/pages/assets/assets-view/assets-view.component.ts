@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Assets } from 'projects/core/src/app/dto/asset/assets';
 import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto';
+import { SaveAssetsResDto } from 'projects/core/src/app/dto/asset/save-assets-res-dto';
 import { AssetsService } from 'projects/core/src/app/services/assets/assets.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-assets-view',
@@ -17,6 +19,10 @@ export class AssetsViewComponent implements OnInit {
   borrowedAssets!:number
   readyAssets!:number
   brokenAssets!:number
+
+  saveResDto:SaveAssetsResDto = new SaveAssetsResDto()
+
+  saveResSub?:Subscription
   constructor(private router: Router, private assetsService: AssetsService) { }
 
 
@@ -45,5 +51,11 @@ export class AssetsViewComponent implements OnInit {
 
   gotoUpdate(i:string):void{
     this.router.navigateByUrl(`admin/assets/${i}`)
+  }
+
+  onUpload(event: any):void{
+    this.saveResSub = this.assetsService.upload(event).subscribe(result=>{
+      this.saveResDto = result;
+    })
   }
 }
