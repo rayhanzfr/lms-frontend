@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AssetsService } from 'projects/core/src/app/services/assets/assets.service';
+import { AssetsService } from '../../../../../../../core/src/app/services/assets/assets.service';
 import { saveAs } from 'file-saver';
 
 @Component({

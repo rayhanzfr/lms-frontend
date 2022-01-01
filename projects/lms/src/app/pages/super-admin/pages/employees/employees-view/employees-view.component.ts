@@ -23,11 +23,11 @@ export class EmployeesViewComponent implements OnInit {
     })
   }
   gotoInsert():void{
-    this.router.navigateByUrl('/admin/employees/new')
+    this.router.navigateByUrl('admin/employees/new')
   }
 
-  gotoUpdate(i:string):void{
-    this.router.navigateByUrl(`admin/employees/${i}`)
+  gotoUpdate(code:string):void{
+    this.router.navigateByUrl(`admin/employees/${code}`)
   }
 
   delete(id:string){

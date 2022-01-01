@@ -15,13 +15,16 @@ export class EmployeesService {
   constructor(private http: HttpClient) { }
 
   getAll():Observable<Employees[]>{
-    return this.http.get<Employees[]>('http://localhost:8888/employees')
+    return this.http.get<Employees[]>('http://localhost:8888/employees/')
   }
   getById(id: string): Observable<Employees>{
     return this.http.get<Employees>('http://localhost:8888/employees/id?id='+id)
   }
   getByCode(code: string): Observable<Employees>{
     return this.http.get<Employees>('http://localhost:8888/employees/code?code='+code)
+  }
+  getByUsersId():Observable<Employees>{
+    return this.http.get<Employees>('http://localhost:8888/employees/users')
   }
   save(employee:Employees):Observable<SaveEmployeesResDto>{
     return this.http.post<SaveEmployeesResDto>('http://localhost:8888/employees',employee)
@@ -30,6 +33,6 @@ export class EmployeesService {
     return this.http.put<UpdateEmployeesResDto>('http://localhost:8888/employees',employee)
   }
   delete(id:string):Observable<DeleteEmployeesResDto>{
-    return this.http.delete<DeleteEmployeesResDto>('http://localhost:8888/employees/id'+id)
+    return this.http.delete<DeleteEmployeesResDto>('http://localhost:8888/employees/id?id='+id)
   }
 }

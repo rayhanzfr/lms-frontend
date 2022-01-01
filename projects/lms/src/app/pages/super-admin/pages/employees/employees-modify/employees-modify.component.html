@@ -1,72 +1,109 @@
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 grid-margin">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-7 col-sm-12 col-12 col-xl-7 align-center">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Employee</b></h4>
-                <div class="card-body mx-lg-5 mx-xl-5">
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="fullname"><b>Fullname</b></h5>
-                    <input
-                      type="text"
-                      id="fullname"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                    />
-                  </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="address"><b>Address</b></h5>
-                    <input
-                      type="text"
-                      id="address"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                    />
-                  </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="phone"><b>Phone</b></h5>
-                    <input
-                      type="text"
-                      id="phone"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                    />
-                  </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Users</b></h5>
-                    <p-dropdown [options]="users" [(ngModel)]="selectedUsers" placeholder="Select Users" optionLabel="usersEmail" [showClear]="true"></p-dropdown>
-                  </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Companies</b></h5>
-                    <p-dropdown [options]="companies" [(ngModel)]="selectedCompanies" placeholder="Select Comapnies" optionLabel="companiesName" [showClear]="true"></p-dropdown>
-                  </div>
-                  <div class="row d-flex mt-5 justify-content-end">
-                    <div class="btn-group">
-                      <button
-                        pButton
-                        pRipple
-                        type="button"
-                        label="Cancel"
-                        class="p-button-sm p-button-danger mx-3"
-                        (click)="back()"
-                      ></button>
-                      <button
-                        pButton
-                        pRipple
-                        type="button"
-                        label="Success"
-                        class="p-button-sm p-button-success"
-                      ></button>
-                    </div>
+  <div class="row">
+    <div class="col-md-12 grid-margin">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-7 col-sm-12 col-12 col-xl-7 align-center">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="text-center fs-30 m-2 mb-sm-3"><b>Employees</b></h4>
+              <div class="card-body mx-lg-5 mx-xl-5">
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="fullname"><b>Full Name</b></h5>
+                  <input
+                    type="text"
+                    id="fullname"
+                    pInputText
+                    class="form-control form-control-md col-12"
+                    [(ngModel)]="employeesReq.employeesFullname"
+                    [value]="employees?.employeesFullname"
+                  />
+                </div>
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="address"><b>Address</b></h5>
+                  <input
+                    type="text"
+                    id="address"
+                    pInputText
+                    class="form-control form-control-md col-12"
+                    [(ngModel)]="employeesReq.employeesAddress"
+                    [value]="employees?.employeesAddress"
+                  />
+                </div>
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="nip"><b>NIP</b></h5>
+                  <input
+                    type="text"
+                    id="nip"
+                    pInputText
+                    class="form-control form-control-md col-12"
+                    [(ngModel)]="employeesReq.employeesCode"
+                    [value]="employees?.employeesCode"
+                    [disabled]="isUpdate"
+                  />
+                </div>
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="phone"><b>Phone</b></h5>
+                  <input
+                    type="text"
+                    id="phone"
+                    pInputText
+                    class="form-control form-control-md col-12"
+                    [(ngModel)]="employeesReq.employeesPhoneNumber"
+                    [value]="employees?.employeesPhoneNumber"
+                  />
+                </div>
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="users"><b>Users</b></h5>
+                  <p-dropdown
+                    [options]="users"
+                    [(ngModel)]="usersReq"
+                    placeholder="{{ employees?.users?.usersEmail }}"
+                    optionLabel="usersEmail"
+                    [showClear]="true"
+                    [disabled]="isUpdate"
+                  ></p-dropdown>
+                </div>
+                {{ usersReq }}
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="companies"><b>Companies</b></h5>
+                  <p-dropdown
+                    [options]="companies"
+                    [(ngModel)]="companiesReq"
+                    placeholder="{{ employees?.users?.usersEmail }}"
+                    optionLabel="companiesName"
+                    [showClear]="true"
+                  ></p-dropdown>
+                </div>
+                {{ companiesReq }}
+                <div class="row d-flex mt-5 justify-content-end">
+                  <div class="btn-group">
+                    <button
+                      pButton
+                      pRipple
+                      type="button"
+                      label="Cancel"
+                      class="p-button-sm p-button-danger mx-3"
+                      (click)="back()"
+                    ></button>
+                    <button
+                      pButton
+                      pRipple
+                      type="button"
+                      label="Success"
+                      class="p-button-sm p-button-success"
+                      (click)="sumbit()"
+                    ></button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {{ employeesReq.employeesFullname }}
+        {{ employeesReq.employeesAddress }}
+        {{ employeesReq.employeesCode }}
+        {{ employeesReq.employeesPhoneNumber }}
       </div>
     </div>
   </div>
-  
+</div>

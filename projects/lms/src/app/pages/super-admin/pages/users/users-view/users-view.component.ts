@@ -28,8 +28,8 @@ export class UsersViewComponent implements OnInit {
     this.router.navigateByUrl('/admin/user/new')
   }
 
-  gotoUpdate(i:string):void{
-    this.router.navigateByUrl(`admin/user/${i}`)
+  gotoUpdate(code:string):void{
+    this.router.navigateByUrl(`admin/user/${code}`)
   }
 
   delete(id:string){

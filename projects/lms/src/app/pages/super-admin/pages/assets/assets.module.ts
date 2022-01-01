@@ -11,6 +11,8 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
+import {CalendarModule} from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -27,7 +29,9 @@ import {FileUploadModule} from 'primeng/fileupload';
     ButtonModule,
     TableModule,
     FormsModule,
-    FileUploadModule
+    FileUploadModule,
+    CalendarModule,
+    DropdownModule
   ]
 })
 export class AssetsModule { }

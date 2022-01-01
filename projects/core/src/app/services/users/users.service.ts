@@ -23,8 +23,8 @@ export class UsersService {
     return this.http.get<GetByIdUsersResDto>('http://localhost:8888/users/id?id=' + id);
   }
   
-  getByEmail(email: string): Observable<GetByEmailUsersResDto> {
-    return this.http.get<GetByEmailUsersResDto>('http://localhost:8888/users/email?email=' + email);
+  getByEmail(email: string): Observable<Users> {
+    return this.http.get<Users>('http://localhost:8888/users/email?email=' + email);
   }
 
   save(users: Users): Observable<SaveUsersResDto> {
@@ -36,6 +36,6 @@ export class UsersService {
   }
 
   delete(id: string): Observable<DeleteUsersResDto> {
-    return this.http.delete<DeleteUsersResDto>('http://localhost:8888/users/' + id);
+    return this.http.delete<DeleteUsersResDto>('http://localhost:8888/users/id?id=' + id);
   }
 }
