@@ -6,11 +6,11 @@ import { GetAllTransactionsDetailsOutResDto } from '../../dto/transactions-out/g
 @Injectable({
   providedIn: 'root'
 })
-export class TransactionsDetailInService {
+export class TransactionsDetailOutService {
 
   constructor(private http: HttpClient) { }
 
   GetByCodeTransactionsOut(code:string): Observable<GetAllTransactionsDetailsOutResDto> {
-    return this.http.get<GetAllTransactionsDetailsOutResDto>(`http://localhost:8888/transactions-details-out/?code=${code}`);
+    return this.http.get<GetAllTransactionsDetailsOutResDto>(`http://localhost:8888/transactions-detail-out/?transactionOutCode=${code}`);
   }
 }

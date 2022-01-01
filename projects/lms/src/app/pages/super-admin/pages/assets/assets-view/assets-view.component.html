@@ -111,7 +111,7 @@
                     class="p-button-sm p-button-success mx-4"
                     (click)="gotoInsert()"
                   ></button>
-                    <p-fileUpload mode="basic" accept=".xlsx" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+                    <p-fileUpload mode="basic" accept="xlsx/*" [maxFileSize]="10000000" label="Import" chooseLabel="Import" (onUpload)="onUpload($event)" class="p-mr-2 p-d-inline-block"></p-fileUpload>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-12">

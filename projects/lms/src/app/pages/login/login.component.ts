@@ -28,15 +28,15 @@ export class LoginComponent implements OnInit {
       this.token = this.authService.getToken()
       this.code = this.authService.getRolesCode()
       this.router.navigateByUrl('/admin-dashboard');
-      // if(this.code == code.get(1)){
-      //   this.router.navigateByUrl('/admin-dashboard');
-      // }
-      // else if(this.code == code.get(2)){
-      //   this.router.navigateByUrl('/')
-      // }
-      // else{
+      if(this.code == code.get(1)){
+        this.router.navigateByUrl('/admin-dashboard');
+      }
+      else if(this.code == code.get(2)){
+        this.router.navigateByUrl('/')
+      }
+      else{
         
-      // }
+      }
     })
   }
 

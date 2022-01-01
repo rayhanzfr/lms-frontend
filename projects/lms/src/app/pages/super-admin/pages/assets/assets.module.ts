@@ -12,6 +12,7 @@ import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
 import {CalendarModule} from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -29,7 +30,8 @@ import {CalendarModule} from 'primeng/calendar';
     TableModule,
     FormsModule,
     FileUploadModule,
-    CalendarModule
+    CalendarModule,
+    DropdownModule
   ]
 })
 export class AssetsModule { }

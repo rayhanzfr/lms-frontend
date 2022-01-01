@@ -9,12 +9,13 @@ export class Assets{
     updatedBy!: string
     isActive!:boolean
 	itemsName!:string
+	itemsCode!:string
 	invoicesCode!:string
 	assetsName!:string
-	statusesAssetsId!:string
 	statusesAssetsName!:string
-	statusesInOutId!:string
+	statusesAssetsCode!:string
 	statusesInOutName!:string
+	statusesInOutCode!:string
 	assetsExpired!:string
 	files!:Files
 }

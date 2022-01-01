@@ -14,7 +14,7 @@ const routes:Routes=[
     component: AssetsModifyComponent
   },
   {
-    path:'admin/assets/:id',
+    path:'admin/assets/:code',
     component: AssetsModifyComponent
   }
 ]
