@@ -47,6 +47,7 @@
                   [paginator]="true"
                   [globalFilterFields]="[
                               'employeesFullname',
+                              'employeesCode',
                               'employeesAddress',
                               'employeesPhoneNumber',
                               'users.usersEmail',
@@ -86,6 +87,10 @@
                         Name
                         <p-sortIcon field="employeesFullname"></p-sortIcon>
                       </th>
+                      <th pSortableColumn="employeesCode">
+                        Code
+                        <p-sortIcon field="employeesCode"></p-sortIcon>
+                      </th>
                       <th pSortableColumn="users.usersEmail">
                         Email
                         <p-sortIcon field="users.usersEmail"></p-sortIcon>
@@ -113,6 +118,7 @@
                         {{ rowIndex + 1 }}
                       </td>
                       <td>{{ d.employeesFullname }}</td>
+                      <td>{{ d.employeesCode }}</td>
                       <td>{{ d.users.usersEmail }}</td>
                       <td>{{ d.companies.companiesName }}</td>
                       <td>{{ d.employeesAddress }}</td>
@@ -123,7 +129,7 @@
                           pRipple
                           icon="pi pi-pencil"
                           class="p-button-sm p-button-warning mx-2"
-                          (click)="gotoUpdate(d.employeesFullname)"
+                          (click)="gotoUpdate(d.employeesCode)"
                         ></button>
                         <button
                           pButton

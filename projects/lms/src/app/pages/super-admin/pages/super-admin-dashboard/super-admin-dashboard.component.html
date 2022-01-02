@@ -12,59 +12,119 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-lg-4 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3">
+      <div
+        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+      >
         <div class="card card-tale">
           <div class="card-body">
-            <p class="fs-30 mb-5">Borrowed</p>
-            <p class="fs-50 mb-3 text-center"><b>{{totalBorrowed}}</b></p>
+            <p class="fs-30 mb-4">Borrowed</p>
+            <p class="fs-50 mb-3 text-center">
+              <b>{{ totalBorrowed }}</b>
+            </p>
             <p class="text-right">total assets was borrowed</p>
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-4 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3">
+      <div
+        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+      >
         <div class="card card-blue">
           <div class="card-body">
             <p class="fs-30 mb-4">Total Assets</p>
-            <p class></p>
+            <p class="fs-50 mb-3 text-center">
+              <b>{{ totalAsset }}</b>
+            </p>
+            <p class="text-right">total assets</p>
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-4 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3">
-        <div class="card">
+      <div
+        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+      >
+        <div class="card card-light-blue">
           <div class="card-body">
-            <h4>total item</h4>
+            <p class="fs-30 mb-4">Total Item</p>
+            <p class="fs-50 mb-3 text-center">
+              <b>{{ totalItem }}</b>
+            </p>
+            <p class="text-right">total items</p>
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-4 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3">
-        <div class="card">
+      <div
+        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+      >
+        <div class="card card-orange">
           <div class="card-body">
-            <h4>total employee</h4>
+            <p class="fs-30 mb-4">Total Employee</p>
+            <p class="fs-50 mb-3 text-center">
+              <b>{{ totalEmployee }}</b>
+            </p>
+            <p class="text-right">total employees</p>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-lg-6 col-xl-6 mb-5 mb-lg-4 mb-xl-3">
-        <div class="card">
-          <div class="card-body p-2">
-            <h2>New Employee</h2>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-6 col-xl-6 mb-5 mb-lg-4 mb-xl-3">
-        <div class="card">
-          <div class="card-body p-2">
-            <h2>New Items</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 mb-5 mb-lg-4 mb-xl-3">
+      <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h1>list borrowed</h1>
+            <div class="card-title">
+              <p class="fs-30 mb-4 text-center mt-xl-4 mt-lg-4 mt-md-3 mt-2"><b>List Borrowed</b></p>
+              <div class="container-fluid col-10">
+                <div class="row justify-content-end">
+                  <a routerLink="" class="text-right"><p>view all</p></a>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <p-table
+                  #dt
+                  [value]="data.data"
+                  [rows]="5"
+                  [rowHover]="true"
+                  dataKey="id"
+                >
+                  <ng-template pTemplate="header">
+                    <tr class="text-center">
+                      <th style="width: 3rem;">
+                        No
+                      </th>
+                      <th  style="width:10rem">
+                        Image
+                      </th>
+                      <th pSortableColumn="assetsName">
+                        Assets Name
+                        <p-sortIcon field="assetsName"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="itemsName">
+                        Item
+                        <p-sortIcon field="itemsName"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="statusesAssetsName">
+                        Status Assets
+                        <p-sortIcon field="statusesAssetsName"></p-sortIcon>
+                      </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template
+                    pTemplate="body"
+                    let-d
+                    let-rowIndex="rowIndex"
+                  >
+                    <tr>
+                      <td>{{ rowIndex + 1 }}</td>
+                      <td><img class="items-img" src="data:image/png;base64,{{d.files?.file}}"
+                        alt="img{{rowIndex+1}}" style="width:100px !important"></td>
+                      <td>{{ d.assetsName }}</td>
+                      <td>{{ d.itemsName }}</td>
+                      <td>{{ d.statusesAssetsName }}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

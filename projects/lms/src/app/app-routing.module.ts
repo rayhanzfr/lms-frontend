@@ -105,6 +105,20 @@ const routes: Routes = [
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/employees/employees.module').then(result=>result.EmployeesModule)
   }
+
+  //non admin
+  ,{
+    path:'',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/non-admin/dashboard/dashboard.module').then(result => result.DashboardModule)
+  }
+
+  //profiles
+  ,{
+    path:'',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/profiles/profiles.module').then(result=> result.ProfilesModule)
+  }
 ];
 
 @NgModule({

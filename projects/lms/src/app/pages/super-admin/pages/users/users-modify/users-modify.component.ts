@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Roles } from 'projects/core/src/app/dto/roles/roles';
 import { SaveUsersResDto } from 'projects/core/src/app/dto/users/save-users-res-dto';
@@ -15,38 +15,54 @@ import {Permissions} from '../../../../../../../../core/src/app/dto/permissions/
   templateUrl: './users-modify.component.html',
   styleUrls: ['./users-modify.component.css']
 })
-export class UsersModifyComponent implements OnInit {
+export class UsersModifyComponent implements OnInit, OnDestroy {
 
   users?:Users
   usersReq:Users = new Users()
   saveUsersRes:SaveUsersResDto = new SaveUsersResDto()
   updateUsersRes : UpdateUsersResDto = new UpdateUsersResDto()
   usersSubs?:Subscription
-  permissions:Permissions[] = []
-  selectPermissions!:any[]
   roles:Roles[]=[]
-  selectedRoles:Roles = new Roles()
-  constructor(private router: Router, private usersService: UsersService, private activatedRoute:ActivatedRoute, private permissionsService:PermissionsService, private rolesService:RolesService) { }
+  rolesReq:Roles = new Roles()
 
+  isUpdate:boolean =false
+
+  selectedRoles:Roles = new Roles()
+  rolesSubs?:Subscription
+  constructor(private router: Router, private usersService: UsersService, private activatedRoute:ActivatedRoute, private permissionsService:PermissionsService, private rolesService:RolesService) { }
+  
   ngOnInit(): void {
-    this.rolesService.getAll().subscribe(result=>{
+    const email = this.activatedRoute.snapshot.paramMap.get('code')
+    if(email){
+      this.usersSubs = this.usersService.getByEmail(email).subscribe(result=>{
+        this.usersReq = result
+        this.isUpdate=true
+        this.users = result
+      })
+    }
+    this.rolesSubs = this.rolesService.getAll().subscribe(result=>{
       this.roles = result
     })
-    this.permissionsService.getAll().subscribe(permissions => {
-      this.permissions= permissions
-    })
-    if (this.usersReq.id) {
+  }
+  
+  ngOnDestroy(): void {
+   this.usersSubs?.unsubscribe()
+   this.rolesSubs?.unsubscribe() 
+  }
+  sumbit():void{
+    this.usersReq.roles = this.rolesReq
+    if (this.usersReq.usersEmail == this.users?.usersEmail) {
       this.usersSubs=this.usersService.update(this.usersReq)?.subscribe(result=>{
         this.updateUsersRes=result
         if (this.updateUsersRes) { 
-          this.router.navigateByUrl("/admin/users")
+          this.router.navigateByUrl("/admin/user")
         }
       })  
     }else{
       this.usersSubs=this.usersService.save(this.usersReq)?.subscribe(result=>{
         this.saveUsersRes=result
         if (this.saveUsersRes) {
-          this.router.navigateByUrl("/admin/users")
+          this.router.navigateByUrl("/admin/user")
         }
       })
     }
