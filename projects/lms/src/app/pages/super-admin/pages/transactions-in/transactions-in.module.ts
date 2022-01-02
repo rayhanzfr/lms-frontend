@@ -8,6 +8,10 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { TransactionsInDetailViewComponent } from './transactions-in-detail-view/transactions-in-detail-view.component';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { ToolbarModule } from 'primeng/toolbar';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -21,9 +25,13 @@ import { TransactionsInDetailViewComponent } from './transactions-in-detail-view
     CommonModule,
     TransactionsInRoutingModule,
     TableModule,
+    FormsModule,
+    ContextMenuModule,
+    ToolbarModule,
     InputTextModule,
     ButtonModule,
-    FormsModule
+    MultiSelectModule,
+    DropdownModule
   ]
 })
 export class TransactionsInModule { }

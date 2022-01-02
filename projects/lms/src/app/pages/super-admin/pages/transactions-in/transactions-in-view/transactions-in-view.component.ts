@@ -27,7 +27,7 @@ export class TransactionsInViewComponent implements OnInit, OnDestroy {
     })
   }
 
-  gotoInsert(){
+  goToInsert(){
     this.router.navigateByUrl('admin/transactions-in/new')
   }
 
