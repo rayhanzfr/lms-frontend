@@ -41,8 +41,8 @@ export class AuthService {
     let data = localStorage.getItem('data')
     if(data){
       let result:LoginResDto=JSON.parse(data)
-      if (result.roleCode) {
-        return result.roleCode
+      if (result.rolesCode) {
+        return result.rolesCode
       }
     }
     return undefined
