@@ -1,16 +1,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 grid-margin">
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-10 col-12 align-center">
+        <div class="col-md-10 col-12 mx-auto">
           <div class="card">
             <div class="card-body">
-              <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Assets</b></h4>
-              <div class="card-body mx-lg-5 mx-xl-5">
+              <h4 class="text-center fs-30 m-2 mb-sm-3"><b>Assets</b></h4>
+              <div class="card-body mx-lg-5">
                 <div class="row d-flex align-items-center">
                   <div class="form-group ml-3">
                     <h5>Items</h5>
-                    <p-dropdown
+                    <p-dropdown 
                       [options]="items"
                       [disabled]="isUpdate"
                       [(ngModel)]="itemsReq"
@@ -24,8 +23,9 @@
                     <button
                       pButton
                       pRipple
+                      [disabled]="isUpdate"
                       type="button"
-                      label="Create Items"
+                      label="Create New"
                       class="p-button-sm p-button-success mx-3"
                     ></button>
                   </div>
@@ -36,6 +36,7 @@
                     <p-dropdown
                       [options]="invoices"
                       [(ngModel)]="invoicesReq"
+                      [disabled]="isUpdate"
                       [placeholder]="invoicesReq.invoicesCode"
                       optionLabel="invoicesCode"
                       [showClear]="true"
@@ -46,6 +47,7 @@
                     <button
                       pButton
                       pRipple
+                      [disabled]="isUpdate"
                       type="button"
                       label="Create Invoices"
                       class="p-button-sm p-button-success mx-3"
@@ -57,7 +59,7 @@
                   <p-dropdown
                     [options]="statusesAssets"
                     [(ngModel)]="statusesAssetsReq"
-                    placeholder="Select Statuses Assets"
+                    [placeholder]="statusesAssetsReq.statusesAssetsName"
                     optionLabel="statusesAssetsName"
                     [showClear]="true"
                     (click)="getStatusesAssetsCode(statusesAssetsReq)"
@@ -68,7 +70,7 @@
                   <p-dropdown
                     [options]="statusesInOut"
                     [(ngModel)]="statusesInOutReq"
-                    placeholder="Select Statuses In Out"
+                    [placeholder]="statusesInOutReq.statusesInOutName"
                     optionLabel="statusesInOutName"
                     [showClear]="true"
                     (click)="getStatusesInOutCode(statusesInOutReq)"
@@ -84,17 +86,6 @@
                     inputId="icon"
                   ></p-calendar>
                 </div>
-                {{ saveAssetReq | json }}
-                <div class="form-group mt-4 mb-3">
-                  <h5 for="roles"><b>Upload Excel</b></h5>
-                  <input
-                    type="file"
-                    id="file"
-                    class="form-control form-control-md col-12"
-                    accept=".xlsx"
-                    (change)="selectFile($event)"
-                  />
-                </div>
                 <div class="row d-flex mt-5 justify-content-end">
                   <div class="btn-group">
                     <button
@@ -103,6 +94,7 @@
                       type="button"
                       label="Cancel"
                       class="p-button-sm p-button-danger mx-3"
+                      (click)="back()"
                     ></button>
                     <button
                       pButton
@@ -120,5 +112,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>

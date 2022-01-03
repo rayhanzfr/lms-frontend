@@ -47,6 +47,7 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
   itemsSub?:Subscription
   invoicesSub?:Subscription
   statusesAssetsSub?:Subscription
+  display:string = "block"
   statusesInOutSub?:Subscription
   constructor(private primengConfig: PrimeNGConfig,private assetsService:AssetsService, private itemsService:ItemsService, private invoicesService: InvoicesService, private statusesInOutService:StatusesInOutService, private statusesAssetsService:StatusesAssetsService, private router: Router, private activeRoute: ActivatedRoute) { }
   ngOnDestroy(): void {
@@ -54,9 +55,9 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.primengConfig.ripple = true;
-    const assetsName:any= this.activeRoute.snapshot.paramMap.get('assetsName')
+    const assetsName:any= this.activeRoute.snapshot.paramMap.get('code')
     if(assetsName){
+      this.display = "none"
       this.isUpdate = true
       this.assetsSub = this.assetsService.getByAssetsName(assetsName).subscribe(result=>{
         this.assets=result.data
@@ -115,6 +116,10 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl("/admin/assets")
       }
     })
+  }
+
+  back(){
+    this.router.navigateByUrl("/admin/assets")
   }
 
   upload(){
