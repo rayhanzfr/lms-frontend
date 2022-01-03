@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { MessageService } from 'primeng/api'
-import { code } from 'projects/core/src/app/constant/rolecode'
+import { roleCode } from 'projects/core/src/app/constant/rolecode'
 import { LoginReqDto } from 'projects/core/src/app/dto/login/login-req-dto'
 import { AuthService } from 'projects/core/src/app/services/auth/auth.service'
 
@@ -35,7 +35,17 @@ export class LoginComponent implements OnInit {
         this.authService.saveUserData(result)
         this.token = this.authService.getToken()
         this.code = this.authService.getRolesCode()
-        this.router.navigateByUrl('/admin-dashboard')
+        if (this.code) {      
+          console.log(this.code)
+          if (this.code==roleCode.get(1)) {
+            this.router.navigateByUrl('/admin-dashboard')
+            console.log("Masuk Admin")
+          }else if (this.code==roleCode.get(2)) {
+            this.router.navigateByUrl('/dashboard')
+            console.log("Masuk Non Admin")
+          }
+          console.log("Gamasuk")
+        }
       },
       error: (err) => {
         this.messageService.add({
