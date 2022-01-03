@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './transactions-out-view.component.html',
   styleUrls: ['./transactions-out-view.component.css']
 })
-export class TransactionsOutViewComponent implements OnInit,OnDestroy{
+export class NonTransactionsOutViewComponent implements OnInit,OnDestroy{
 
   constructor(private router:Router,private transactionsOutService:TransactionsOutService) { }
   data:GetAllTransactionsOutByUsersResDto=new GetAllTransactionsOutByUsersResDto();
@@ -22,6 +22,13 @@ export class TransactionsOutViewComponent implements OnInit,OnDestroy{
     this.obs=this.transactionsOutService.getAllByUsers().subscribe(result=>{
       this.data=result
     })
+  }
+  gotoInsert(){
+    this.router.navigateByUrl('non-admin/transactions-out/new')
+  }
+
+  goToDetail(code:string):void{
+    this.router.navigateByUrl(`non-admin/transactions-out/detail/${code}`)
   }
 
 }
