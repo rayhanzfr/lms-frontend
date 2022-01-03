@@ -36,4 +36,8 @@ export class ProfilesModifyComponent implements OnInit {
     })
   }
 
+  back():void{
+    this.router.navigateByUrl('/profiles')
+  }
+
 }

@@ -44,8 +44,8 @@ export class AssetsService {
   getByStatusInOut(statusesInOutCode:string):Observable<GetAllAssetsResDto>{
     return this.http.get<GetAllAssetsResDto>('http://localhost:8888/assets/statusesInOut?statusesInOutCode='+statusesInOutCode)
   }
-  getByReq(itemsCode:string,statusesAssetsCode:string, total:number):Observable<Assets[]>{
-    return this.http.get<Assets[]>(`http://localhost:8888/assets/req?itemsCode=${itemsCode}&statusesAssetsCode=${statusesAssetsCode}&total=${total}`)
+  getByReq(itemsCode:string,statusesAssetsCode:string, statusesInOutCode:string,total:number):Observable<Assets[]>{
+    return this.http.get<Assets[]>(`http://localhost:8888/assets/req?itemsCode=${itemsCode}&statusesAssetsCode=${statusesAssetsCode}&statusesInOutCode=${statusesInOutCode}&total=${total}`)
   }
 
   save(save:SaveAssetsReqDto):Observable<SaveAssetsResDto>{
