@@ -155,7 +155,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
       this.items = result
       console.log(this.items)
       if (this.items) {        
-        this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,statusesAssetsCode.get(1)!,statusesInOutCode.get(1),this.qty).subscribe(result=>{
+        this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,statusesAssetsCode.get(1)!,statusesInOutCode.get(1)!,this.qty).subscribe(result=>{
           this.listAssets=result
           console.log(this.listAssets)
           for (let i = 0; i < this.listAssets.length; i++) {
