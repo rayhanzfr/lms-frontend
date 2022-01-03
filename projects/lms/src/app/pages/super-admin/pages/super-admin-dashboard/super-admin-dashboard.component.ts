@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Assets } from 'projects/core/src/app/dto/asset/assets';
 import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto';
+import { Employees } from 'projects/core/src/app/dto/employee/employees';
 import { AssetsService } from 'projects/core/src/app/services/assets/assets.service';
 import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service';
 import { ItemsService } from 'projects/core/src/app/services/items/items.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-super-admin-dashboard',
@@ -17,14 +19,20 @@ export class SuperAdminDashboardComponent implements OnInit {
   totalAsset!:number
   totalItem!:number
   totalEmployee!:number
+  employee!: Employees
   data:GetAllAssetsResDto= new GetAllAssetsResDto()
 
+  employeesSubs?:Subscription
+  assetsSubs?:Subscription
+  itemsSubs?:Subscription
+
   ngOnInit(): void {
-    this.assetsService.getAll().subscribe(result=>{this.totalAsset=result.data.length})
-    this.itemsService.getAll().subscribe(result=>{this.totalItem=result.length})
-    this.assetsService.getByStatusInOut('COUT').subscribe(result=>{this.totalBorrowed=result.data.length})
-    this.employeesService.getAll().subscribe(result=>this.totalEmployee=result.length)
-    this.assetsService.getBorrowedAssets().subscribe(result=>{this.data=result})
+    this.assetsSubs = this.assetsService.getAll().subscribe(result=>{this.totalAsset=result.data.length})
+    this.itemsSubs = this.itemsService.getAll().subscribe(result=>{this.totalItem=result.length})
+    this.assetsSubs =  this.assetsService.getByStatusInOut('COUT').subscribe(result=>{this.totalBorrowed=result.data.length})
+    this.employeesSubs = this.employeesService.getAll().subscribe(result=>this.totalEmployee=result.length)
+    this.employeesSubs = this.employeesService.getByUsersId().subscribe(result=>this.employee = result)
+    this.assetsSubs = this.assetsService.getBorrowedAssets().subscribe(result=>{this.data=result})
   }
 
 }

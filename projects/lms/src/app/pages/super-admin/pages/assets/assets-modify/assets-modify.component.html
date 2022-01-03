@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 grid-margin">
       <div class="row d-flex justify-content-center">
-        <div class="col-xl-7 col-lg-10 col-12 align-center">
+        <div class="col-lg-10 col-12 align-center">
           <div class="card">
             <div class="card-body">
               <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Assets</b></h4>
@@ -12,8 +12,9 @@
                     <h5>Items</h5>
                     <p-dropdown
                       [options]="items"
+                      [disabled]="isUpdate"
                       [(ngModel)]="itemsReq"
-                      placeholder="Select items"
+                      [placeholder]="itemsReq.itemsName"
                       optionLabel="itemsName"
                       [showClear]="true"
                       (click)="getItemsCode(itemsReq)"
@@ -35,7 +36,7 @@
                     <p-dropdown
                       [options]="invoices"
                       [(ngModel)]="invoicesReq"
-                      placeholder="Select invoices"
+                      [placeholder]="invoicesReq.invoicesCode"
                       optionLabel="invoicesCode"
                       [showClear]="true"
                       (click)="getInvoicesCode(invoicesReq)"
