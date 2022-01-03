@@ -11,16 +11,16 @@ import { MainbarComponent } from './pages/mainbar/mainbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from 'projects/core/src/app/services/http-interceptor/http-interceptor.service';
-import { TransactionOutViewComponent } from './pages/non-admin/transaction-out/transaction-out-view/transaction-out-view.component';
-import { TransactionOutDetailViewComponent } from './pages/non-admin/transaction-out/transaction-out-detail-view/transaction-out-detail-view.component';
 import { MessageService } from 'primeng/api';
+import { TransactionsOutDetailViewComponent } from './pages/non-admin/transactions-out/transactions-out-detail-view/transactions-out-detail-view.component';
+import { TransactionsOutViewComponent } from './pages/non-admin/transactions-out/transactions-out-view/transactions-out-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TransactionOutViewComponent,
-    TransactionOutDetailViewComponent
+    TransactionsOutViewComponent,
+    TransactionsOutDetailViewComponent
   ],
   imports: [
     BrowserModule,
