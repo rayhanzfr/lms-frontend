@@ -7,6 +7,7 @@ import { GetAllTransactionsDetailsOutResDto } from 'projects/core/src/app/dto/tr
 import { GetAllTransactionsOutResDto } from 'projects/core/src/app/dto/transactions-out/get-all-transactions-out-res-dto';
 import { GetTransactionsDetailsOutDataDto } from 'projects/core/src/app/dto/transactions-out/get-transactions-details-out-data-dto';
 import { GetTransactionsOutDataDto } from 'projects/core/src/app/dto/transactions-out/get-transactions-out-data-dto';
+import { AssetsService } from 'projects/core/src/app/services/assets/assets.service';
 import { StatusesTransactionsService } from 'projects/core/src/app/services/statuses-transactions/statuses-transactions.service';
 import { TransactionsDetailOutService } from 'projects/core/src/app/services/transactions-details-out/transactions-details-out.service';
 import { TransactionsOutService } from 'projects/core/src/app/services/transactions-out/transactions-out.service';
@@ -20,7 +21,8 @@ import { Subscription } from 'rxjs';
 export class TransactionsInModifyComponent implements OnInit {
 
   constructor(private router:Router,private transactionOutService:TransactionsOutService,
-    private transactionsDetailOutService:TransactionsDetailOutService,private statusesTransactionsService:StatusesTransactionsService) { }
+    private transactionsDetailOutService:TransactionsDetailOutService,private statusesTransactionsService:StatusesTransactionsService,
+    private assetsService:AssetsService) { }
 
   saveTransactionsInReqDto:SaveTransactionsInReqDto=new SaveTransactionsInReqDto();
   saveTransactionDetailInReqDto:SaveTransactionsDetailsInReqDto=new SaveTransactionsDetailsInReqDto();
@@ -34,6 +36,8 @@ export class TransactionsInModifyComponent implements OnInit {
   transactionsDetailOutSubs?:Subscription;
   listStatusesTransactions:StatusesTransactions[]=[]
   statusesTransactionsSubs?:Subscription;
+
+  getByReq:
   ngOnInit(): void {
     this.statusesTransactionsSubs=this.statusesTransactionsService.getAll().subscribe(result=>{
       this.listStatusesTransactions=result
@@ -49,6 +53,7 @@ export class TransactionsInModifyComponent implements OnInit {
       this.getAllTransactionsDetailsOutResDto=result
       this.transactionsDetailOut=this.getAllTransactionsDetailsOutResDto.getTransactionsDetailsOutDataDto
       for (let i = 0; i < this.transactionsDetailOut.length; i++) {
+        this.asset
         this.saveTransactionDetailInReqDto=new SaveTransactionsDetailsInReqDto();
         this.saveTransactionDetailInReqDto.assetsName = this.transactionsDetailOut[i].assetsName;
         if (this.transactionsDetailOut[i].employeesCode) {
