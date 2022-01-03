@@ -12,8 +12,9 @@
                     <h5>Items</h5>
                     <p-dropdown
                       [options]="items"
+                      [disabled]="isUpdate"
                       [(ngModel)]="itemsReq"
-                      placeholder="Select items"
+                      [placeholder]="itemsReq.itemsName"
                       optionLabel="itemsName"
                       [showClear]="true"
                       (click)="getItemsCode(itemsReq)"
@@ -35,7 +36,7 @@
                     <p-dropdown
                       [options]="invoices"
                       [(ngModel)]="invoicesReq"
-                      placeholder="Select invoices"
+                      [placeholder]="invoicesReq.invoicesCode"
                       optionLabel="invoicesCode"
                       [showClear]="true"
                       (click)="getInvoicesCode(invoicesReq)"
