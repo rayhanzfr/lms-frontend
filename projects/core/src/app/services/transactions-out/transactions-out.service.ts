@@ -24,4 +24,7 @@ export class TransactionsOutService {
   insertAll(saveFullTransactionsOutReqDto: SaveFullTransactionsOutReqDto): Observable<SaveFullTransactionsOutResDto>{
     return this.http.post<SaveFullTransactionsOutResDto>('http://localhost:8888/transactions-out/', saveFullTransactionsOutReqDto);
   }
+  getAllByUsers(): Observable<GetAllTransactionsOutResDto> {
+    return this.http.get<GetAllTransactionsOutResDto>(`http://localhost:8888/transactions-out/users`);
+  }
 }

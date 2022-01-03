@@ -10,7 +10,7 @@ export class TransactionsDetailInService {
 
   constructor(private http: HttpClient) { }
 
-  GetByCodeTransactionsIn(code: string): Observable<GetByTransactionsDetailInCodeResDto> {
-    return this.http.get<GetByTransactionsDetailInCodeResDto>('http://localhost:8888/transactions-in/code?code=' + code);
+  getByCodeTransactionsIn(code: string): Observable<GetByTransactionsDetailInCodeResDto> {
+    return this.http.get<GetByTransactionsDetailInCodeResDto>('http://localhost:8888/transactions-detail-in/?code=' + code);
   }
 }
