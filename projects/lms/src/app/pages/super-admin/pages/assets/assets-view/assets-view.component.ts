@@ -19,6 +19,10 @@ export class AssetsViewComponent implements OnInit {
   borrowedAssets!:number
   readyAssets!:number
   brokenAssets!:number
+  file!: File | null
+  selectedFiles!: FileList
+
+  assetsSub?:Subscription
 
   saveResDto:SaveAssetsResDto = new SaveAssetsResDto()
 
@@ -57,5 +61,14 @@ export class AssetsViewComponent implements OnInit {
     this.saveResSub = this.assetsService.upload(event).subscribe(result=>{
       this.saveResDto = result;
     })
+  }
+
+  upload(){
+    this.file = this.selectedFiles?.item(0)
+    this.assetsSub = this.assetsService.upload(this.file)?.subscribe()
+  }
+
+  selectFile(event: any) {
+    this.selectedFiles = event.target.files;
   }
 }

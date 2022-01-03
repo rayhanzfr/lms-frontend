@@ -1,3 +1,4 @@
+<p-toast position="top-right"></p-toast>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -111,7 +112,21 @@
                     class="p-button-sm p-button-success mx-4"
                     (click)="gotoInsert()"
                   ></button>
-                    <p-fileUpload mode="basic" accept="xlsx/*" [maxFileSize]="10000000" label="Import" chooseLabel="Import" (onUpload)="onUpload($event)" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+                  <input
+                  type="file"
+                  id="file"
+                  class="form-control form-control-sm col-2"
+                  accept=".xlsx"
+                  (change)="selectFile($event)"
+                />
+                <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-plus"
+                class="p-button-sm p-button-success mx-4"
+                (click)="upload()"
+              ></button>
                 </div>
                 <div class="row justify-content-center">
                   <div class="col-12">
