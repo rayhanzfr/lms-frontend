@@ -23,6 +23,8 @@ export class CompaniesModifyComponent implements OnInit, OnDestroy {
   file!: File | null
   selectedFiles!: FileList
 
+
+  isUpdate:boolean = false
   constructor(private route: Router, private router:ActivatedRoute, private companiesService:CompaniesService) { }
   ngOnDestroy(): void {
     this.companiesSubs?.unsubscribe()
@@ -32,6 +34,7 @@ export class CompaniesModifyComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const code:any = this.router.snapshot.paramMap.get('code');
     if (code) {
+      this.isUpdate = true
       this.companies = new Companies();
       this.companiesSub = this.companiesService.getByCode(code).subscribe(result=>{this.companies = result
       this.companiesReq = this.companies
