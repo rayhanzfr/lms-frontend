@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-12 grid-margin">
     <div class="row">
-      <div class="col-12 col-xl-8 mb-5 mb-lg-4 mb-xl-3">
+      <div class="col-12 col-md-8 mb-5 mb-lg-4 mb-xl-3">
         <h3 class="font-weight-bold">
           Welcome,
-          <b>Admin</b>
+          <b>{{employee.employeesFullname}}</b>
         </h3>
       </div>
       <div class="col-12 col-xl-4">
@@ -13,12 +13,12 @@
     </div>
     <div class="row">
       <div
-        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+        class="col-12 col-md-3 col-sm-6 mb-5 mb-lg-3 stretch-card transparent"
       >
         <div class="card card-tale">
           <div class="card-body">
-            <p class="fs-30 mb-4">Borrowed</p>
-            <p class="fs-50 mb-3 text-center">
+            <h5 class="mb-4">Borrowed</h5>
+            <p class="fs-30 mb-3 text-center">
               <b>{{ totalBorrowed }}</b>
             </p>
             <p class="text-right">total assets was borrowed</p>
@@ -26,12 +26,12 @@
         </div>
       </div>
       <div
-        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+        class="col-12 col-md-3 col-sm-6 mb-5 mb-lg-3 stretch-card transparent"
       >
         <div class="card card-blue">
           <div class="card-body">
-            <p class="fs-30 mb-4">Total Assets</p>
-            <p class="fs-50 mb-3 text-center">
+            <h5 class="mb-4">Total Assets</h5>
+            <p class="fs-30 mb-3 text-center">
               <b>{{ totalAsset }}</b>
             </p>
             <p class="text-right">total assets</p>
@@ -39,12 +39,12 @@
         </div>
       </div>
       <div
-        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+        class="col-12 col-md-3 col-sm-6 mb-5 mb-lg-3 stretch-card transparent"
       >
         <div class="card card-light-blue">
           <div class="card-body">
-            <p class="fs-30 mb-4">Total Item</p>
-            <p class="fs-50 mb-3 text-center">
+            <h5 class="mb-4">Total Item</h5>
+            <p class="fs-30 mb-3 text-center">
               <b>{{ totalItem }}</b>
             </p>
             <p class="text-right">total items</p>
@@ -52,12 +52,12 @@
         </div>
       </div>
       <div
-        class="col-12 col-lg-3 col-xl-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
+        class="col-12 col-md-3 col-sm-6 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
       >
         <div class="card card-orange">
           <div class="card-body">
-            <p class="fs-30 mb-4">Total Employee</p>
-            <p class="fs-50 mb-3 text-center">
+            <h5 class="mb-4">Total Employee</h5>
+            <p class="fs-30 mb-3 text-center">
               <b>{{ totalEmployee }}</b>
             </p>
             <p class="text-right">total employees</p>
@@ -70,10 +70,10 @@
         <div class="card">
           <div class="card-body">
             <div class="card-title">
-              <p class="fs-30 mb-4 text-center mt-xl-4 mt-lg-4 mt-md-3 mt-2"><b>List Borrowed</b></p>
+              <p class="fs-30 mb-4 text-center mt-md-3 mt-2"><b>List Borrowed Assets</b></p>
               <div class="container-fluid col-10">
                 <div class="row justify-content-end">
-                  <a routerLink="" class="text-right"><p>view all</p></a>
+                  <a routerLink="/admin/transactions-out" class="text-right"><p>view all</p></a>
                 </div>
               </div>
             </div>
