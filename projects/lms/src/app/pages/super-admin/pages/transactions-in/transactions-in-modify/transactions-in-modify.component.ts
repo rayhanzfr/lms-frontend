@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { statusesInOutCode } from 'projects/core/src/app/constant/statuses-in-out-code';
+import { Assets } from 'projects/core/src/app/dto/asset/assets';
 import { StatusesTransactions } from 'projects/core/src/app/dto/statuses-transactions/statuses-transactions';
 import { SaveTransactionsDetailsInReqDto } from 'projects/core/src/app/dto/transactions-in/save-transactions-details-in-req-dto';
 import { SaveTransactionsInReqDto } from 'projects/core/src/app/dto/transactions-in/save-transactions-in-req-dto';
@@ -37,7 +39,9 @@ export class TransactionsInModifyComponent implements OnInit {
   listStatusesTransactions:StatusesTransactions[]=[]
   statusesTransactionsSubs?:Subscription;
 
-  getByReq:
+  getByReq:Assets[]=[]
+  
+
   ngOnInit(): void {
     this.statusesTransactionsSubs=this.statusesTransactionsService.getAll().subscribe(result=>{
       this.listStatusesTransactions=result
@@ -53,16 +57,19 @@ export class TransactionsInModifyComponent implements OnInit {
       this.getAllTransactionsDetailsOutResDto=result
       this.transactionsDetailOut=this.getAllTransactionsDetailsOutResDto.getTransactionsDetailsOutDataDto
       for (let i = 0; i < this.transactionsDetailOut.length; i++) {
-        this.asset
-        this.saveTransactionDetailInReqDto=new SaveTransactionsDetailsInReqDto();
-        this.saveTransactionDetailInReqDto.assetsName = this.transactionsDetailOut[i].assetsName;
-        if (this.transactionsDetailOut[i].employeesCode) {
-          this.saveTransactionDetailInReqDto.employeesCode=this.transactionsDetailOut[i].employeesCode;
-        }
-        if (this.transactionsDetailOut[i].locationsCode) {
-          this.saveTransactionDetailInReqDto.locationsCode=this.transactionsDetailOut[i].locationsCode;
-        }
-        this.listSaveTransactionsDetailInReqDto.push(this.saveTransactionDetailInReqDto)
+        this.assetsService.getByAssetsName(this.transactionsDetailOut[i].assetsName).subscribe(result=>{
+          if (result.data.statusesInOutCode==statusesInOutCode.get(2)) {
+            this.saveTransactionDetailInReqDto=new SaveTransactionsDetailsInReqDto();
+            this.saveTransactionDetailInReqDto.assetsName = result.data.assetsName;
+            if (this.transactionsDetailOut[i].employeesCode) {
+              this.saveTransactionDetailInReqDto.employeesCode=this.transactionsDetailOut[i].employeesCode;
+            }
+            if (this.transactionsDetailOut[i].locationsCode) {
+              this.saveTransactionDetailInReqDto.locationsCode=this.transactionsDetailOut[i].locationsCode;
+            }
+            this.listSaveTransactionsDetailInReqDto.push(this.saveTransactionDetailInReqDto)
+          }
+        })
       }
     })
   }
