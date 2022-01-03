@@ -118,7 +118,18 @@ const routes: Routes = [
     path:'',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/profiles/profiles.module').then(result=> result.ProfilesModule)
-  }
+  },
+  {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/non-admin/transactions-in/transactions-in.module').then(result => result.TransactionsInModule)
+  },
+  {
+    path: '',
+    component: MainbarComponent,
+    loadChildren: () => import('./../app/pages/non-admin/transactions-out/transactions-out.module').then(result => result.TransactionsOutModule)
+
+  },
 ];
 
 @NgModule({

@@ -1,1 +1,102 @@
-<p>transactions-out-view works!</p>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+      <div class="row">
+        <div class="col-12 stretch-card transparent">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title pt-3">
+                <h2 class="text-center"><b>List Transactions Out</b></h2>
+              </div>
+              <div class="container-fluid col-10">
+                <div class="row justify-content-end">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-plus"
+                    class="p-button-sm p-button-success"
+                    (click)="gotoInsert()"
+                  ></button>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <p-table
+                  #dt
+                  [value]="data.getTransactionsOutDataDto"
+                  [rows]="10"
+                  [paginator]="true"
+                  [globalFilterFields]="[
+                              'storeName',
+                              'invoicesCode',
+                            ]"
+                  [rowHover]="true"
+                  dataKey="id"
+                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                  [showCurrentPageReport]="true"
+                >
+                  <ng-template pTemplate="caption">
+                    <div class="row">
+                      <div class="col-5">
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-search"></i>
+                          <input
+                            type="text"
+                            pInputText
+                            (input)="
+                              dt.filterGlobal(
+                                $any($event.target).value,
+                                'contains'
+                              )
+                            "
+                            placeholder="Search"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="header">
+                    <tr class="text-center">
+                      <th style="width: 3rem;">
+                        No
+                      </th>
+                      <th pSortableColumn="transactionsOutCode">
+                        Transaction Out Code
+                        <p-sortIcon field="transactionsOutCode"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="checkOutDate">
+                        Check Out Date
+                        <p-sortIcon field="checkOutDate"></p-sortIcon>
+                      </th>
+                      <th class="text-center">
+                        Action
+                      </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-tout let-rowIndex="rowIndex">
+                    <tr>
+                      <td>
+                        {{ rowIndex + 1 }}
+                      </td>
+                      <td>{{ tout.transactionsOutCode }}</td>
+                      <td>{{ tout.checkOutDate }}</td>
+                      <td class="text-center">
+                        <button
+                          pButton
+                          pRipple
+                          icon="pi pi-pencil"
+                          class="p-button-sm p-button-warning mx-2"
+                          (click)="goToDetail(tout.transactionsOutCode)"
+                        ></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

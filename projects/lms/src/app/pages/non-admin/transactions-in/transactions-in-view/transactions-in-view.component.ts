@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './transactions-in-view.component.html',
   styleUrls: ['./transactions-in-view.component.css']
 })
-export class TransactionsInViewComponent implements OnInit {
+export class NonTransactionsInViewComponent implements OnInit {
 
   constructor(private router:Router,private transactionsInService:TransactionsInService) { }
   data:GetAllTransactionsInByUsersResDto=new GetAllTransactionsInByUsersResDto();
@@ -22,6 +22,13 @@ export class TransactionsInViewComponent implements OnInit {
     this.obs=this.transactionsInService.getAllByUsers().subscribe(result=>{
       this.data=result
     })
+  }
+  goToInsert(){
+    this.router.navigateByUrl('non-admin/transactions-in/new')
+  }
+
+  goToDetail(code:string):void{
+    this.router.navigateByUrl(`non-admin/transactions-in/detail/${code}`)
   }
 
 }
