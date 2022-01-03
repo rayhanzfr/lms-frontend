@@ -94,7 +94,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
 
   
   
-    ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.itemsBrandsSubs?.unsubscribe()
     this.itemsTypesSubs?.unsubscribe()
     this.itemsSubs?.unsubscribe()
