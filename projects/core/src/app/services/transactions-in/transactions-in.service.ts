@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GetAllTransactionsInByUsersResDto } from '../../dto/transactions-in/get-all-transactions-in-by-users-res-dto';
 import { GetAllTransactionsInResDto } from '../../dto/transactions-in/get-all-transactions-in-res-dto';
 import { GetByTransactionsInCodeResDto } from '../../dto/transactions-in/get-by-transactions-in-code-res-dto';
 import { GetByTransactionsInIdResDto } from '../../dto/transactions-in/get-by-transactions-in-id-res-dto';
@@ -24,6 +25,10 @@ export class TransactionsInService {
 
   getByCode(code: string): Observable<GetByTransactionsInCodeResDto> {
     return this.http.get<GetByTransactionsInCodeResDto>('http://localhost:8888/transactions-in/code?code=' + code);
+  }
+
+  getAllByUsers(): Observable<GetAllTransactionsInByUsersResDto> {
+    return this.http.get<GetAllTransactionsInByUsersResDto>(`http://localhost:8888/transactions-in/users`);
   }
 
   insertAll(saveFullTransactionsInReqDto: SaveFullTransactionsInReqDto): Observable<SaveFullTransactionsInResDto>{
