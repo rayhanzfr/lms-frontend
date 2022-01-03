@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './transactions-out-detail-view.component.html',
   styleUrls: ['./transactions-out-detail-view.component.css']
 })
-export class TransactionsOutDetailViewComponent implements OnInit {
+export class NonTransactionsOutDetailViewComponent implements OnInit {
 
   constructor() { }
 
