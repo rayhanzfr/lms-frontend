@@ -62,10 +62,11 @@ export class AssetsService {
   getByReq(
     itemsCode: string,
     statusesAssetsCode: string,
+    statusesInOutCode: string,
     total: number,
   ): Observable<Assets[]> {
     return this.http.get<Assets[]>(
-      `http://localhost:8888/req?itemsCode=${itemsCode}&statusesAssetsCode=${statusesAssetsCode}&total=${total}`,
+      `http://localhost:8888/assets/req?itemsCode=${itemsCode}&statusesAssetsCode=${statusesAssetsCode}&statusesInOutCode=${statusesInOutCode}&total=${total}`,
     )
   }
 

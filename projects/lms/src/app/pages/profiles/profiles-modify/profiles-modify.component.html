@@ -1,1 +1,164 @@
-<p>profiles-modify works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title mb-5 mx-5">
+                        <h3><b>{{employees?.employeesFullname}}Profile's</b></h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-12 text-center">
+                            <img class="items-img" src="data:image/png;base64,{{employees?.companies?.files?.file}}">
+                            <h5 class="mt-4"><b>{{employees?.companies?.companiesName}}a</b></h5>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-12">
+                            <div class="row">
+                                <br>
+                                <div class="col-4 mb-3">
+                                    <p>Full Name</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <input
+                                    type="text"
+                                    id="fullname"
+                                    pInputText
+                                    class="form-control form-control-sm col-12"
+                                    [(ngModel)]="employeesReq.employeesFullname"
+                                    [value]="employees?.employeesFullname"
+                                  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <br>
+                                <div class="col-4 mb-3">
+                                    <p>Phone Nubmer</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <input
+                                    type="text"
+                                    id="phone"
+                                    pInputText
+                                    class="form-control form-control-sm col-12"
+                                    [(ngModel)]="employeesReq.employeesPhoneNumber"
+                                    [value]="employees?.employeesPhoneNumber"
+                                  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <br>
+                                <div class="col-4 mb-3">
+                                    <p>Address</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <input
+                                    type="text"
+                                    id="address"
+                                    pInputText
+                                    class="form-control form-control-sm col-12"
+                                    [(ngModel)]="employeesReq.employeesAddress"
+                                    [value]="employees?.employeesAddress"
+                                  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12">
+                            <div class="row">
+                                <div class="col-4 mb-3">
+                                    <p>E-mail</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>{{employees?.users?.usersEmail}}</p>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <p>Role</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>{{employees?.users?.roles?.rolesName}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-12 text-center">
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-12">
+                            <div class="row">
+                                <br>
+                                <div class="col-4 mb-3">
+                                    <p>Company</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>{{employees?.companies?.companiesName}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <br>
+                                <div class="col-4 mb-3">
+                                    <p>Company Number</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>{{employees?.companies?.companiesPhone}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <br>
+                                <div class="col-4 mb-3">
+                                    <p>Companies Address</p>
+                                </div>
+                                <div class="col-1">
+                                    <p>:</p>
+                                </div>
+                                <div class="col-6">
+                                    <p>{{employees?.companies?.companiesAddress}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex mt-5 justify-content-end">
+                        <div class="btn-group">
+                          <button
+                            pButton
+                            pRipple
+                            type="button"
+                            label="Cancel"
+                            class="p-button-sm p-button-danger mx-5 mb-3"
+                            style="width:100px"
+                            (click)="back()"
+                          ></button>
+                          <button
+                            pButton
+                            pRipple
+                            type="button"
+                            label="Edit"
+                            class="p-button-sm p-button-success mx-5 mb-3"
+                            style="width:100px"
+                            (click)="onSave()"
+                          ></button>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
