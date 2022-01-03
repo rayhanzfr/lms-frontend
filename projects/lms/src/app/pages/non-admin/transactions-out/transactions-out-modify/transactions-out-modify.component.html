@@ -1,1 +1,200 @@
-<p>transactions-out-modify works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <p class="text-center fs-30 mt-3 my-5"><b>Add Borrowed</b></p>
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+                <div class="form-outline mb-4">
+                  <div class="form-group mt-4 mb-3">
+                    <h5 for="transactionsOut"><b>Assets For</b></h5>
+                    <p-dropdown
+                      (onChange)="vContent(assetsForSelected)"
+                      [options]="assetsFor"
+                      [(ngModel)]="assetsForSelected"
+                      placeholder="Select Assets For"
+                      optionLabel="name"
+                      [showClear]="true"
+                    ></p-dropdown>
+                  </div>
+  
+                  <div class="form-group mt-4 mb-3">
+                    <h5 for="transactionsOut"><b>Items Brands</b></h5>
+                    <p-dropdown
+                      [options]="listItemsBrands"
+                      [(ngModel)]="selectedItemsBrands"
+                      placeholder="Select Items Brands "
+                      optionLabel="itemsBrandsName"
+                      [showClear]="true"
+                    ></p-dropdown>
+                  </div>
+                  <div class="form-group mt-4 mb-3">
+                    <h5 for="transactionsOut"><b>Items Types</b></h5>
+                    <p-dropdown
+                      [options]="listItemsTypes"
+                      [(ngModel)]="selectedItemsTypes"
+                      placeholder="Select Items Types "
+                      optionLabel="itemsTypesName"
+                      [showClear]="true"
+                    ></p-dropdown>
+                  </div>
+                  <div class="form-group mt-4 mb-3">
+                    <h5 for="quantity"><b>Quantity</b></h5>
+                    <input
+                      type="text"
+                      id="qty"
+                      pInputText
+                      class="form-control form-control-md col-12"
+                      [(ngModel)]="qty"
+                    />
+                  </div>
+                  <div class="form-group mt-4 mb-3">
+                    <h5 for="expiredDate"><b>Expired Date</b></h5>
+                    <input
+                      type="date"
+                      id="expiredDate"
+                      pInputText
+                      class="form-control form-control-md col-12"
+                      [(ngModel)]="expiredDate"
+                    />
+                  </div>
+                  <div class="row d-flex mt-5 justify-content-end">
+                    <div class="btn-group">
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="Save"
+                        class="p-button-sm p-button-success"
+                        (click)="findAssets()"
+                      ></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <p class="text-center fs-30 mt-3 mb-3"><b>List Assets</b></p>
+                <div class="col-12">
+                  <p-table
+                    #dt
+                    [value]="listSaveTransactionsOutDetailReqDto"
+                    [rows]="10"
+                    [paginator]="true"
+                    [globalFilterFields]="[
+                                      'assetsName',
+                                      'assetsExpired',
+                                    ]"
+                    [rowHover]="true"
+                    dataKey="id"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true"
+                  >
+                    <ng-template pTemplate="caption">
+                      <div class="row">
+                        <div class="col-xl-5 col-lg-6 col-md-7 col-3">
+                          <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input
+                              type="text"
+                              pInputText
+                              (input)="
+                                dt.filterGlobal(
+                                  $any($event.target).value,
+                                  'contains'
+                                )
+                              "
+                              placeholder="Search"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                      <tr class="text-center">
+                        <th style="width: 3rem;">
+                          No
+                        </th>
+                        <th pSortableColumn="assetsName">
+                          Assets Name
+                          <p-sortIcon field="assetsName"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="expiredDate">
+                          Date Expired
+                          <p-sortIcon field="expiredDate"></p-sortIcon>
+                        </th>
+                        <th *ngIf="isEmployees">
+                          Employees
+                        </th>
+                        <th *ngIf="isLocations">
+                          Locations
+                        </th>
+                        <th *ngIf="isGeneral">
+                          General
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
+                      <tr>
+                        <td>{{ rowIndex + 1 }}</td>
+                        <td>{{ d.assetsName }}</td>
+                        <td>{{ d.expiredDate }}</td>
+                        <td *ngIf="isEmployees">
+                          <p-dropdown
+                            [options]="listEmployeesCode"
+                            [(ngModel)]="d.employeesCode"
+                            placeholder="Select Employees "
+                            [showClear]="true"
+                          ></p-dropdown>
+                        </td>
+                        <td *ngIf="isLocations">
+                          <p-dropdown
+                            [options]="listLocationsCode"
+                            [(ngModel)]="d.locationsCode"
+                            placeholder="Select Locations "
+                            [showClear]="true"
+                          ></p-dropdown>
+                        </td>
+                        <td class="text-center">
+                          <button
+                            pButton
+                            pRipple
+                            icon="pi pi-trash"
+                            class="p-button-sm p-button-danger mx-2"
+                            (click)="delete(rowIndex)"
+                          ></button>
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end">
+              <div class="btn-group">
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  label="Cancel"
+                  class="p-button-sm p-button-danger mx-3"
+                  (click)="back()"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  label="Success"
+                  class="p-button-sm p-button-success"
+                  (click)="submitData()"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

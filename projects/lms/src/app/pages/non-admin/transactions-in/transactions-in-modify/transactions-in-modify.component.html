@@ -1,1 +1,147 @@
-<p>transactions-in-modify works!</p>
+<div class="container">
+    <div class="row my-4 justify-content-center">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <p class="text-center fs-30 mt-3 my-5"><b>Return Assets</b></p>
+              <div class="col-md-8 mx-auto">
+                  <div>
+                      <div class="form-outline mb-4">
+                          <div class="form-group mt-4 mb-3">
+                              <h5 for="transactionsIn"><b>Choose Borrowed</b></h5>
+                              <p-dropdown [options]="transactionsOut" 
+                                  placeholder="Select Borrowed Code" [(ngModel)]="transactionsOutSelected" optionLabel="transactionsOutCode" [showClear]="true"></p-dropdown>
+                          </div>
+                          <div class="row d-flex mt-5 justify-content-end">
+                              <div class="btn-group">
+                                  <button pButton pRipple type="button" label="Save" class="p-button-sm p-button-success"
+                                  (click)="findDetails()"></button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-12 stretch-card transparent">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="card-title pt-3">
+                          <h2 class="text-center"><b>List Transactions Details Out</b></h2>
+                        </div>
+                        <div class="container-fluid col-10">
+                        </div>
+                      </div>
+                      <div class="row justify-content-center">
+                        <div class="col-10">
+                          <p-table
+                            #dt
+                            [value]="listSaveTransactionsDetailInReqDto"
+                            [rows]="10"
+                            [paginator]="true"
+                            [globalFilterFields]="[
+                                        'locationsCode',
+                                        'employeesCode',
+                                        'assetsName',
+                                        'expiredDate',
+                                      ]"
+                            [rowHover]="true"
+                            dataKey="id"
+                          >
+                            <ng-template pTemplate="caption">
+                              <div class="row">
+                                <div class="col-5">
+                                  <span class="p-input-icon-left">
+                                    <i class="pi pi-search"></i>
+                                    <input
+                                      type="text"
+                                      pInputText
+                                      (input)="
+                                        dt.filterGlobal(
+                                          $any($event.target).value,
+                                          'contains'
+                                        )
+                                      "
+                                      placeholder="Search"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                            </ng-template>
+                            <ng-template pTemplate="header">
+                              <tr class="text-center">
+                                <th style="width: 3rem;">
+                                  No
+                                </th>
+                                <th pSortableColumn="locationsCode">
+                                  Locations Code
+                                  <p-sortIcon field="locationsCode"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="employeesCode">
+                                  Employees Code
+                                  <p-sortIcon field="employeesCode"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="assetsName">
+                                  Assets Name
+                                  <p-sortIcon field="assetsName"></p-sortIcon>
+                                </th>
+                                <th>
+                                    Status Transactions
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                              </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
+                              <tr>
+                                <td>
+                                  {{ rowIndex + 1 }}
+                                </td>
+                                <td>{{ d.locationsCode }}</td>
+                                <td>{{ d.employeesCode }}</td>
+                                <td>{{ d.assetsName }}</td>
+                                <td>
+                                  <p-dropdown [options]="listStatusesTransactionsCode"
+                                      [(ngModel)]="d.statusesTransactionsCode"
+                                      placeholder="Select Statuses Transactions "
+                                      [showClear]="true"></p-dropdown>
+                              </td>
+                                <td class="text-center">
+                                  <button pButton pRipple icon="pi pi-trash"
+                                      class="p-button-sm p-button-danger mx-2"
+                                      (click)="delete(rowIndex)"></button>
+                              </td>
+                              </tr>
+                            </ng-template>
+                          </p-table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end mx-5">
+                    <div class="btn-group">
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="Cancel"
+                        class="p-button-sm p-button-danger mx-3"
+                        (click)="back()"
+                      ></button>
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="Success"
+                        class="p-button-sm p-button-success"
+                        (click)="submitData()"
+                      ></button>
+                    </div>
+                  </div> 
+              
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
