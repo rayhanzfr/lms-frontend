@@ -5,19 +5,8 @@
           <div class="col-12 col-md-7 align-center">
             <div class="card">
               <div class="card-body">
-                <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Companies</b></h4>
+                <h4 class="text-center fs-30 m-2 mb-sm-3"><b>Companies</b></h4>
                 <div class="card-body mx-5">
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Company Code</b></h5>
-                    <input
-                      type="text"
-                      id="text"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                      disabled
-                      value = {{companiesReq.companiesCode}}
-                    />
-                  </div>
                   <div class="form-group mt-4 mb-3">
                     <h5 for="roles"><b>Company Name</b></h5>
                     <input
@@ -26,6 +15,7 @@
                       pInputText
                       class="form-control form-control-md col-12"
                       [(ngModel)]="companiesReq.companiesName"
+                      [placeholder]="companiesReq.companiesName"
                     />
                   </div>
                   <div class="form-group mt-4 mb-3">
@@ -36,6 +26,7 @@
                       pInputText
                       class="form-control form-control-md col-12"
                       [(ngModel)]="companiesReq.companiesPhone"
+                      [placeholder]="companiesReq.companiesPhone"
                     />
                   </div>
                   <div class="form-group mt-4 mb-3">
@@ -46,6 +37,7 @@
                       pInputText
                       class="form-control form-control-md col-12"
                       [(ngModel)]="companiesReq.companiesAddress"
+                      [placeholder]="companiesReq.companiesAddress"
                     />
                   </div>
                   <div class="form-group mt-4 mb-3">
@@ -53,7 +45,7 @@
                     <input
                       type="file"
                       id="file"
-                      class="form-control form-control-md col-12"
+                      class="form-control form-control-sm col-12"
                       accept="image/*"
                       (change)="selectFile($event)"
                     />

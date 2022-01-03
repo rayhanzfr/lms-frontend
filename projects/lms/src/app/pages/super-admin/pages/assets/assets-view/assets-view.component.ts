@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Assets } from 'projects/core/src/app/dto/asset/assets';
 import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto';
 import { SaveAssetsResDto } from 'projects/core/src/app/dto/asset/save-assets-res-dto';
@@ -27,7 +28,7 @@ export class AssetsViewComponent implements OnInit {
   saveResDto:SaveAssetsResDto = new SaveAssetsResDto()
 
   saveResSub?:Subscription
-  constructor(private router: Router, private assetsService: AssetsService) { }
+  constructor(private router: Router, private assetsService: AssetsService,private messageService: MessageService) { }
 
 
   ngOnInit(): void {
@@ -57,12 +58,6 @@ export class AssetsViewComponent implements OnInit {
     this.router.navigateByUrl(`admin/assets/${i}`)
   }
 
-  onUpload(event: any):void{
-    this.saveResSub = this.assetsService.upload(event).subscribe(result=>{
-      this.saveResDto = result;
-    })
-  }
-
   upload(){
     this.file = this.selectedFiles?.item(0)
     this.assetsSub = this.assetsService.upload(this.file)?.subscribe()
@@ -71,4 +66,20 @@ export class AssetsViewComponent implements OnInit {
   selectFile(event: any) {
     this.selectedFiles = event.target.files;
   }
+
+  onUpload(event:any):void {
+    for (let file of event.files) {
+      this.file = file;
+    }
+    this.uploadFileToActivity();
+  }
+  uploadFileToActivity() {
+    this.saveResSub =  this.assetsService.upload(this.file).subscribe(data => {
+      this.saveResDto = data
+      this.reloadCurrentPage()
+    })
+  }
+  reloadCurrentPage() {
+    window.location.reload();
+   }
 }
