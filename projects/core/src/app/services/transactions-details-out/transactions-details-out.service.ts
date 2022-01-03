@@ -8,12 +8,7 @@ import { GetAllTransactionsDetailsOutResDto } from '../../dto/transactions-out/g
 })
 export class TransactionsDetailOutService {
   constructor(private http: HttpClient) {}
-
-  getByCodeTransactionsOut(
-    code: string,
-  ): Observable<GetAllTransactionsDetailsOutResDto> {
-    return this.http.get<GetAllTransactionsDetailsOutResDto>(
-      `http://localhost:8888/transactions-detail-out/?transactionOutCode=${code}`,
-    )
+  getByCodeTransactionsOut(code:string): Observable<GetAllTransactionsDetailsOutResDto> {
+    return this.http.get<GetAllTransactionsDetailsOutResDto>(`http://localhost:8888/transactions-detail-out/?transactionOutCode=${code}`);
   }
 }

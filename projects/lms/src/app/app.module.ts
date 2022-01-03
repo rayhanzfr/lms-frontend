@@ -12,14 +12,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from 'projects/core/src/app/services/http-interceptor/http-interceptor.service';
 import { MessageService } from 'primeng/api';
-import { TransactionOutViewComponent } from './pages/non-admin/transaction-out/transaction-out-view/transaction-out-view.component';
-import { TransactionOutDetailViewComponent } from './pages/non-admin/transaction-out/transaction-out-detail-view/transaction-out-detail-view.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TransactionOutViewComponent,
-    TransactionOutDetailViewComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
