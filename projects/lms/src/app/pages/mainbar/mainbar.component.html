@@ -75,7 +75,7 @@
           <a
             class="nav-link"
             data-toggle="collapse"
-            href="#ui-basic"
+            routerLink="/admin/companies"
             aria-expanded="false"
             aria-controls="ui-basic"
           >
@@ -91,7 +91,7 @@
           <a
             class="nav-link"
             data-toggle="collapse"
-            href="#ui-basic"
+            routerLink="/admin/locations"
             aria-expanded="false"
             aria-controls="ui-basic"
           >
@@ -207,7 +207,7 @@
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
         >
-          <a class="nav-link" routerLink="/admin-dashboard">
+          <a class="nav-link" routerLink="/admin/invoices">
             <i class="ti-notepad menu-icon"></i>
             <span class="menu-title">Invoices</span>
           </a>
@@ -240,11 +240,6 @@
                   Returned
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/admin/statuses-transactions">
-                  Status Transaction
-                </a>
-              </li>
             </ul>
           </div>
         </li>
@@ -253,7 +248,7 @@
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
         >
-          <a class="nav-link" routerLink="#">
+          <a class="nav-link" routerLink="admin/reports">
             <i class="ti-folder menu-icon"></i>
             <span class="menu-title">Report</span>
           </a>
