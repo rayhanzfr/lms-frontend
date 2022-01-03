@@ -57,9 +57,9 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
     this.primengConfig.ripple = true;
     const assetsName:any= this.activeRoute.snapshot.paramMap.get('assetsName')
     if(assetsName){
+      this.isUpdate = true
       this.assetsSub = this.assetsService.getByAssetsName(assetsName).subscribe(result=>{
         this.assets=result.data
-        this.isUpdate = true
         this.saveAssetReq.assetsName = this.assets.assetsName
         this.saveAssetReq.assetsExpired = this.assets.assetsExpired
         this.saveAssetReq.invoicesCode = this.assets.invoicesCode
