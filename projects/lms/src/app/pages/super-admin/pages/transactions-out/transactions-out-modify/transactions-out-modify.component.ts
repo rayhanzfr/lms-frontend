@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { statusesAssetsCode } from 'projects/core/src/app/constant/statuses-assets-code';
+import { statusesInOutCode} from 'projects/core/src/app/constant/statuses-in-out-code';
 import { Assets } from 'projects/core/src/app/dto/asset/assets';
 import { Employees } from 'projects/core/src/app/dto/employee/employees';
 import { ItemsBrands } from 'projects/core/src/app/dto/items-brands/items-brands';
@@ -154,7 +155,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
       this.items = result
       console.log(this.items)
       if (this.items) {        
-        this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,statusesAssetsCode.get(1)!,this.qty).subscribe(result=>{
+        this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,statusesAssetsCode.get(1)!,statusesInOutCode.get(1)!,this.qty).subscribe(result=>{
           this.listAssets=result
           console.log(this.listAssets)
           for (let i = 0; i < this.listAssets.length; i++) {
