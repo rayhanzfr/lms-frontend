@@ -24,8 +24,8 @@ export class StatusesAssetsService {
     return this.http.get<GetByIdStatusesAssetsResDto>('http://localhost:8888/statuses-assets/id?id=' + id);
   }
   
-  getByCode(code: string): Observable<GetByCodeStatusesAssetsResDto> {
-    return this.http.get<GetByCodeStatusesAssetsResDto>('http://localhost:8888/statuses-assets/code?code=' + code);
+  getByCode(code: string): Observable<StatusesAssets> {
+    return this.http.get<StatusesAssets>('http://localhost:8888/statuses-assets/code?code=' + code);
   }
 
   save(statusesAssets: StatusesAssets): Observable<SaveStatusesAssetsResDto> {

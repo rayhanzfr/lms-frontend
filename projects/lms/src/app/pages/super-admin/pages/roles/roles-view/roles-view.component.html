@@ -70,19 +70,19 @@
           <div class="card">
             <div class="card-body">
               <div class="card-title pt-3">
-                <h2 class="text-center"><b>List Roles</b></h2>
+                <h2 class="text-center"><b>Permission Roles</b></h2>
               </div>
             </div>
             <div class="row justify-content-center">
               <div class="col-10">
                 <p-table
                   #dt
-                  [value]="data"
+                  [value]="permissionRolesData"
                   [rows]="10"
                   [paginator]="true"
                   [globalFilterFields]="[
-                              'rolesCode',
-                              'rolesName',
+                              'roles.rolesName',
+                              'permissions.permissionsName',
                             ]"
                   [rowHover]="true"
                   dataKey="id"
@@ -93,23 +93,23 @@
                       <th style="width: 3rem;">
                         No
                       </th>
-                      <th pSortableColumn="rolesCode">
-                        Roles Code
-                        <p-sortIcon field="rolesCode"></p-sortIcon>
-                      </th>
-                      <th pSortableColumn="rolesName">
+                      <th pSortableColumn="roles.rolesName">
                         Roles Name
-                        <p-sortIcon field="rolesName"></p-sortIcon>
+                        <p-sortIcon field="roles.rolesName"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="permissions.permissionsName">
+                        Permission Name
+                        <p-sortIcon field="permissions.permissionsName"></p-sortIcon>
                       </th>
                     </tr>
                   </ng-template>
-                  <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
+                  <ng-template pTemplate="body" let-p let-rowIndex="rowIndex">
                     <tr>
                       <td>
                         {{ rowIndex + 1 }}
                       </td>
-                      <td>{{ d.rolesCode }}</td>
-                      <td>{{ d.rolesName }}</td>
+                      <td>{{ p.roles.rolesName }}</td>
+                      <td>{{ p.permissions.permissionsName }}</td>
                     </tr>
                   </ng-template>
                 </p-table>

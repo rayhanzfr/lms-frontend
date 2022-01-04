@@ -59,6 +59,12 @@ export class AssetsService {
         statusesInOutCode,
     )
   }
+  getByStatus(statusAssetsCode: string,statusesInOutCode: string): Observable<GetAllAssetsResDto> {
+    return this.http.get<GetAllAssetsResDto>(
+      'http://localhost:8888/assets/status?statusesAssetsCode='+statusAssetsCode+'&statusesInOutCode=' +
+        statusesInOutCode,
+    )
+  }
   getByReq(
     itemsCode: string,
     statusesAssetsCode: string,

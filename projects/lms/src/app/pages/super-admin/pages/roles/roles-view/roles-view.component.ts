@@ -52,7 +52,7 @@ export class RolesViewComponent implements OnInit,OnDestroy {
       this.permissionData = result
     })
     this.permissionsRolesSubs = this.permissionsRolesService.getAll()?.subscribe(result=>{
-      this.permissionRolesData = result.permissionsRoles
+      this.permissionRolesData = result
     })
   }
 

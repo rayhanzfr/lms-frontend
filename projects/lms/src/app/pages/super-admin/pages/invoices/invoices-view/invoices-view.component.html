@@ -14,6 +14,7 @@
                     pRipple
                     type="button"
                     icon="pi pi-plus"
+                    label="New"
                     class="p-button-sm p-button-success"
                     (click)="gotoInsert()"
                   ></button>
@@ -96,14 +97,14 @@
                           pButton
                           pRipple
                           icon="pi pi-pencil"
-                          class="p-button-sm p-button-warning mx-2"
+                          class="p-button-rounded p-button-warning mx-2"
                           (click)="gotoUpdate(i.invoicesCode)"
                         ></button>
                         <button
                           pButton
                           pRipple
                           icon="pi pi-trash"
-                          class="p-button-sm p-button-danger"
+                          class="p-button-rounded p-button-danger"
                           (click)="delete(i.id)"
                         ></button>
                       </td>

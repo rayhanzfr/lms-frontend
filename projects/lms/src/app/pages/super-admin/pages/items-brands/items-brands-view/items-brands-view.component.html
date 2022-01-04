@@ -1,25 +1,6 @@
 <div class="row">
     <div class="col-md-12 grid-margin">
       <div class="row">
-        <div
-        class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
-      > 
-      </div>
-        <div
-          class="col-12 col-lg-4 col-xl-3 col-sm-4 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent"
-        >
-          <div class="card card-tale">
-            <div class="card-body">
-              <h3 class="mb-4"><b>Total Items Brands</b></h3>
-              <p class="fs-50 mb-4 text-center">
-                <b>{{totalData}}</b>
-              </p>
-              <p class="text-center">Items Brands in this application</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-12 stretch-card transparent">
           <div class="card">
             <div class="card-body">
@@ -33,7 +14,8 @@
                     pRipple
                     type="button"
                     icon="pi pi-plus"
-                    class="p-button-sm p-button-info"
+                    label="New"
+                    class="p-button-sm p-button-success"
                     (click)="gotoInsert()"
                   ></button>
                 </div>
@@ -88,10 +70,7 @@
                         ItemsBrands Name
                         <p-sortIcon field="itemsBrandsName"></p-sortIcon>
                       </th>
-                      <th class="text-center">
-                        Active
-                      </th>
-                      <th class="text-center">
+                      <th class="text-center" style="width:10rem">
                         Action
                       </th>
                     </tr>
@@ -104,27 +83,18 @@
                       <td>{{ d.itemsBrandsCode }}</td>
                       <td>{{ d.itemsBrandsName }}</td>
                       <td class="text-center">
-                        <input
-                          style="margin: -8px 0 0 -5px;"
-                          type="checkbox"
-                          class="form-check-input"
-                          disabled
-                          [checked]="d.isActive"
-                        />
-                      </td>
-                      <td class="text-center">
                         <button
                           pButton
                           pRipple
                           icon="pi pi-pencil"
-                          class="p-button-sm p-button-warning mx-2"
+                          class="p-button-rounded p-button-warning mx-2"
                           (click)="gotoUpdate(d.itemsBrandsCode)"
                         ></button>
                         <button
                           pButton
                           pRipple
                           icon="pi pi-trash"
-                          class="p-button-sm p-button-danger"
+                          class="p-button-rounded p-button-danger"
                           (click)="delete(d.id)"
                         ></button>
                       </td>

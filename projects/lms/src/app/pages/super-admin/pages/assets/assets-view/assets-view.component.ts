@@ -16,7 +16,7 @@ export class AssetsViewComponent implements OnInit {
 
   data:GetAllAssetsResDto = new GetAllAssetsResDto()
   newAssets:GetAllAssetsResDto = new GetAllAssetsResDto()
-  totalAssets!:number
+  loseAssets!:number
   borrowedAssets!:number
   readyAssets!:number
   brokenAssets!:number
@@ -32,21 +32,23 @@ export class AssetsViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.assetsService.getAll().subscribe(result=>{
-      this.data = result
-      this.totalAssets = this.data.data.length
-    })
-    this.assetsService.newAssets().subscribe(result=>{
-      this.newAssets = result
-    })
-    this.assetsService.getByStatusInOut("COUT").subscribe(result=>{
-      this.borrowedAssets = result.data.length
-    })
-    this.assetsService.getByStatusAssets("DEP").subscribe(result=>{
-      this.readyAssets = result.data.length
-    })
-    this.assetsService.getByStatusAssets("ARCHV").subscribe(result=>{
-      this.brokenAssets = result.data.length
+    this.assetsSub = this.assetsService.getAll().subscribe(asset => {
+      this.data = asset
+      this.assetsSub =    this.assetsService.getByStatusAssets("ARCHV").subscribe(asset => {
+        this.loseAssets = asset.data.length
+      })
+      this.assetsSub =    this.assetsService.newAssets().subscribe(result=>{
+        this.newAssets = result
+      })
+      this.assetsSub =    this.assetsService.getByStatus("UNDEP","COUT").subscribe(result=>{
+        this.borrowedAssets = result.data.length
+      })
+      this.assetsSub =    this.assetsService.getByStatusAssets("DEP").subscribe(result=>{
+        this.readyAssets = result.data.length
+      })
+      this.assetsSub =    this.assetsService.getByStatus("UNDEP","CIN").subscribe(result=>{
+        this.brokenAssets = result.data.length
+      })
     })
   }
 

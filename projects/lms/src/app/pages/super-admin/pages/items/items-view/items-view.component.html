@@ -1,21 +1,6 @@
 <div class="row">
     <div class="col-md-12 grid-margin">
         <div class="row">
-            <div class="col-12 col-lg-8 col-xl-9 col-sm-8 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent">
-            </div>
-            <div class="col-12 col-lg-4 col-xl-3 col-sm-4 mb-5 mb-lg-4 mb-xl-3 stretch-card transparent">
-                <div class="card card-tale">
-                    <div class="card-body">
-                        <h3 class="mb-4"><b>Total Items</b></h3>
-                        <p class="fs-50 mb-4 text-center">
-                            <b>{{totalData}}</b>
-                        </p>
-                        <p class="text-center">Items in this application</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-12 stretch-card transparent">
                 <div class="card">
                     <div class="card-body">
@@ -24,8 +9,8 @@
                         </div>
                         <div class="container-fluid col-10">
                             <div class="row justify-content-end">
-                                <button pButton pRipple type="button" icon="pi pi-plus"
-                                    class="p-button-sm p-button-info" (click)="gotoInsert()"></button>
+                                <button pButton pRipple type="button" icon="pi pi-plus" label="New"
+                                    class="p-button-sm p-button-success" (click)="gotoInsert()"></button>
                             </div>
                         </div>
                     </div>
@@ -38,6 +23,7 @@
                             'itemsName'
                             
                             ]" [rowHover]="true" dataKey="id"
+                            responsiveLayout="scroll"
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [showCurrentPageReport]="true">
                                 <ng-template pTemplate="caption">
@@ -79,10 +65,7 @@
                                             Items Name
                                             <p-sortIcon field="itemsName"></p-sortIcon>
                                         </th>
-                                        <th class="text-center">
-                                            Active
-                                        </th>
-                                        <th class="text-center">
+                                        <th class="text-center" style="width:10rem">
                                             Action
                                         </th>
                                     </tr>
@@ -99,15 +82,11 @@
                                         <td>{{d.itemsCode}}</td>
                                         <td>{{d.itemsName}}</td>
                                         <td class="text-center">
-                                            <input style="margin: -8px 0 0 -5px;" type="checkbox"
-                                                class="form-check-input" disabled [checked]="d.isActive" />
-                                        </td>
-                                        <td class="text-center">
                                             <button pButton pRipple icon="pi pi-pencil"
-                                                class="p-button-sm p-button-warning mx-2"
+                                                class="p-button-rounded p-button-warning mx-2"
                                                 (click)="gotoUpdate(d.itemsCode)"></button>
                                             <button pButton pRipple icon="pi pi-trash"
-                                                class="p-button-sm p-button-danger" (click)="delete(d.id)"></button>
+                                                class="p-button-rounded p-button-danger" (click)="delete(d.id)"></button>
                                         </td>
                                     </tr>
                                 </ng-template>

@@ -14,6 +14,7 @@
                     pRipple
                     type="button"
                     icon="pi pi-plus"
+                    label="New"
                     class="p-button-sm p-button-success"
                     (click)="gotoInsert()"
                   ></button>
@@ -21,7 +22,7 @@
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-10">
+              <div class="col-11">
                 <p-table
                   #dt
                   [value]="data"
@@ -64,26 +65,23 @@
                         No
                       </th>
                       <th class="text-center">
-                        Company Logo
+                        Logo
                       </th>
                       <th pSortableColumn="companiesCode">
-                        Company Code
+                        Code
                         <p-sortIcon field="companiesCode"></p-sortIcon>
                       </th>
                       <th pSortableColumn="companiesName">
-                        Company Name
+                        Name
                         <p-sortIcon field="companiesName"></p-sortIcon>
                       </th>
                       <th pSortableColumn="companiesPhone">
-                        Company Phone
+                        Phone
                         <p-sortIcon field="companiesPhone"></p-sortIcon>
                       </th>
                       <th pSortableColumn="companiesAddress">
-                        Company Address
+                        Address
                         <p-sortIcon field="companiesAddress"></p-sortIcon>
-                      </th>
-                      <th class="text-center">
-                        Active
                       </th>
                       <th class="text-center">
                         Action
@@ -100,16 +98,7 @@
                       <td>{{ c.companiesName }}</td>
                       <td>{{ c.companiesPhone }}</td>
                       <td>{{ c.companiesAddress }}</td>
-                      <td class="text-center">
-                        <input
-                          style="margin: -8px 0 0 -5px;"
-                          type="checkbox"
-                          class="form-check-input"
-                          disabled
-                          [checked]="c.isActive"
-                        />
-                      </td>
-                      <td class="text-center">
+                      <td class="text-center" style="width:10rem">
                         <button
                           pButton
                           pRipple
