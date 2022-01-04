@@ -8,7 +8,6 @@ import { GetAllTransactionsDetailsOutResDto } from '../../dto/transactions-out/g
 })
 export class TransactionsDetailOutService {
   constructor(private http: HttpClient) {}
-
   getByCodeTransactionsOut(
     code: string,
   ): Observable<GetAllTransactionsDetailsOutResDto> {
