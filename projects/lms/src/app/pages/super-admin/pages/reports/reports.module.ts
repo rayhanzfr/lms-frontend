@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReportsComponent } from './reports.component';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -13,7 +14,8 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     CommonModule,
     ReportsRoutingModule,
-    ButtonModule
+    ButtonModule,
+    TableModule
   ]
 })
 export class ReportsModule { }
