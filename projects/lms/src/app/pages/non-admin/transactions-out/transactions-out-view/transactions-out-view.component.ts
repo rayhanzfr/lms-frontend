@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { roleCode } from 'projects/core/src/app/constant/rolecode';
 import { GetAllTransactionsOutByUsersResDto } from 'projects/core/src/app/dto/transactions-out/get-all-transactions-out-by-users-res-dto';
+import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
 import { TransactionsOutService } from 'projects/core/src/app/services/transactions-out/transactions-out.service';
 import { Subscription } from 'rxjs';
 
@@ -18,9 +20,10 @@ export class NonTransactionsOutViewComponent implements OnInit,OnDestroy{
   ngOnDestroy():void{
     this.obs?.unsubscribe();
   }
-  ngOnInit(): void {
+  ngOnInit(): void {     
     this.obs=this.transactionsOutService.getAllByUsers().subscribe(result=>{
       this.data=result
+      console.log(this.data)
     })
   }
   gotoInsert(){
