@@ -1,12 +1,63 @@
-<button
-pButton
-pRipple
-class="p-button-sm p-button-primary mx-2"
-(click)="downloadAssets()"
->DOWNLOAD EXPIRED ASSETS</button>
-<button
-pButton
-pRipple
-class="p-button-sm p-button-warning"
-(click)="sendReport()"
->SEND EMAIL EXPIRED ASSETS</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <p class="fs-30 text-center mt-3 mb-3"><b>Report</b></p>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td style="width: 3rem;">1.</td>
+                  <td>
+                    Download History
+                  </td>
+                  <td class="text-center">
+                    <button
+                      pButton
+                      pRipple
+                      icon="icon-printer"
+                      class="p-button-sm p-button-rounded p-button-primary mx-2"
+                    ></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 3rem;">2.</td>
+                  <td>
+                    Download Expired Assets
+                  </td>
+                  <td class="text-center">
+                    <button
+                      pButton
+                      pRipple
+                      icon="icon-printer"
+                      class="p-button-sm p-button-rounded p-button-primary mx-2"
+                      (click)="downloadAssets()"
+                    ></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 3rem;">3.</td>
+                  <td>
+                    Sent Email Expired Assets
+                  </td>
+                  <td class="text-center">
+                    <button
+                      pButton
+                      pRipple
+                      icon="ti-email"
+                      class="p-button-sm p-button-rounded p-button-primary mx-2"
+                      (click)="sendReport()"
+                    ></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
