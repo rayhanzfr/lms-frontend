@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AssetsService } from '../../../../../../../core/src/app/services/assets/assets.service';
 import { saveAs } from 'file-saver';
 import { Subscription } from 'rxjs';
+import { HistoriesService } from '../../../../../../../core/src/app/services/histories/histories.service';
 
 @Component({
   selector: 'app-reports',
@@ -12,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class ReportsComponent implements OnInit, OnDestroy {
 
   obs?: Subscription
-  constructor(private router:Router, private assetsService: AssetsService) { }
+  constructor(private router:Router,private historiesService:HistoriesService ,private assetsService: AssetsService) { }
   ngOnDestroy(): void {
 
   }
@@ -28,4 +29,7 @@ export class ReportsComponent implements OnInit, OnDestroy {
   this.obs = this.assetsService.sendReport().subscribe()
   }
 
+  downloadHistory():void{
+    this.obs = this.historiesService.generatePdf().subscribe()
+  }
 }

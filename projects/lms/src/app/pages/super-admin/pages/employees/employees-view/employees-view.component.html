@@ -14,6 +14,7 @@
                     pRipple
                     type="button"
                     icon="pi pi-plus"
+                    label="New"
                     class="p-button-sm p-button-success"
                     (click)="gotoInsert()"
                   ></button>
@@ -24,6 +25,7 @@
               <div class="col-11">
                 <p-table
                   #dt
+                  responsiveLayout="scroll"
                   [value]="data"
                   [rows]="10"
                   [paginator]="true"
@@ -89,7 +91,7 @@
                         Phone
                         <p-sortIcon field="employeesPhoneNumber"></p-sortIcon>
                       </th>
-                      <th class="text-center">
+                      <th class="text-center"  style="width:10rem">
                         Action
                       </th>
                     </tr>
@@ -110,14 +112,14 @@
                           pButton
                           pRipple
                           icon="pi pi-pencil"
-                          class="p-button-sm p-button-warning mx-2"
+                          class="p-button-sm p-button-rounded p-button-warning mx-2"
                           (click)="gotoUpdate(d.employeesCode)"
                         ></button>
                         <button
                           pButton
                           pRipple
                           icon="pi pi-trash"
-                          class="p-button-sm p-button-danger"
+                          class="p-button-sm p-button-rounded p-button-danger"
                           (click)="delete(d.id)"
                         ></button>
                       </td>
