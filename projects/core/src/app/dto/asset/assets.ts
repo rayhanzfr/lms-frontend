@@ -10,6 +10,8 @@ export class Assets{
     isActive!:boolean
 	itemsName!:string
 	itemsCode!:string
+	companiesCode!:string
+	companiesName!:string
 	invoicesCode!:string
 	assetsName!:string
 	statusesAssetsName!:string
