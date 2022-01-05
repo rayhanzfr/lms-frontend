@@ -1,0 +1,100 @@
+<div class="employee container-fluid">
+    <div class="row w-100 mx-0">
+      <div class="col-xl-5 col-lg-7 col-md-10  mx-auto mt-5 mb-5">
+        <div class="container-fluid">
+          <div class="auth">
+            <div class="row d-flex align-items-center mb-5">
+              <div class="col-6">
+                <img
+                  src="../../../../assets/img/logo-big-white.svg"
+                  alt="logo"
+                  width="150"
+                  height="75"
+                />
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-10">
+                <div class="card" style="opacity:0.95">
+                  <div class="card-body">
+                    <div class="card-title">
+                      <h3 class="text-center text-info"><b>Input Your Data</b></h3>
+                    </div>
+                    {{employeesReq|json}}
+                    <div
+                      class="row d-flex justify-content-center align-items-center"
+                    >
+                      <div class="col-10">
+                        <div class="pt-4 pb-3">
+                          <div class="form-group">
+                              <label for="fullname"><h5><b>Full Name</b></h5></label>
+                            <input
+                              id="fullname"
+                              type="text"
+                              pInputText 
+                              class="form-control form-control-sm"
+                              [(ngModel)]="employeesReq.employeesFullname"
+                            />
+                          </div>
+                          <div class="form-group">
+                              <label for="fullname"><h5><b>Code</b></h5></label>
+                            <input
+                              id="fullname"
+                              type="text"
+                              pInputText 
+                              class="form-control form-control-sm"
+                              [(ngModel)]="employeesReq.employeesCode"
+                            />
+                          </div>
+                          <div class="form-group">
+                              <label for="phone"><h5><b>Phone Number</b></h5></label>
+                            <input
+                              id="phone"
+                              type="text"
+                              pInputText 
+                              class="form-control form-control-sm"
+                              [(ngModel)]="employeesReq.employeesPhoneNumber"
+                            />
+                          </div>
+                          <div class="form-group">
+                              <label for="address"><h5><b>Address</b></h5></label>
+                            <input
+                              id="address"
+                              type="text"
+                              pInputText 
+                              class="form-control form-control-sm"
+                              [(ngModel)]="employeesReq.employeesAddress"
+                            />
+                          </div>
+                          <p-dropdown [options]="data" [(ngModel)]="selectedCompanies" optionLabel="companiesName" [filter]="true" filterBy="companiesName" placeholder="Select Companies">
+                            <ng-template pTemplate="selectedItem">
+                                <div class="country-item country-item-value"  *ngIf="selectedCompanies">
+                                    <div>{{selectedCompanies.companiesName}}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-c pTemplate="item">
+                                <div class="country-item">
+                                    <div>{{c.companiesName}}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                          <div class="mt-5">
+                            <a
+                              class="btn btn-block btn-info btn-md font-weight-medium auth-form-btn text-white"
+                              (click)="onClick()"
+                            >
+                              <b>REGISTER</b>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

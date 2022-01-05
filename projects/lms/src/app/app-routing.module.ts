@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { MainbarComponent } from './pages/mainbar/mainbar.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterModifyComponent } from './pages/register/register-modify/register-modify.component';
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/register/register.module').then(result => result.RegisterModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/new-employees/new-employees.module').then(result => result.NewEmployeesModule)
   },
   {
     path: '',
@@ -130,6 +135,12 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/non-admin/transactions-out/transactions-out.module').then(result => result.TransactionsOutModule)
 
   },
+  // notfound
+  {
+    path: '**',
+    component:NotFoundComponent
+  }
+  
 ];
 
 @NgModule({

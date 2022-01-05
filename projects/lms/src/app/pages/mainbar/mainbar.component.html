@@ -29,14 +29,13 @@
             id="profileDropdown"
           >
             <i class="ti-user"></i>
-            {{employee?.employeesFullname}}
+            {{ employee?.employeesFullname }}
           </a>
           <div
             class="dropdown-menu dropdown-menu-right navbar-dropdown"
             aria-labelledby="profileDropdown"
           >
-            <a class="dropdown-item"
-            routerLink="/profiles">
+            <a class="dropdown-item" routerLink="/profiles">
               <i class="ti-user text-primary"></i>
               Profiles
             </a>
@@ -59,12 +58,14 @@
   <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas sidebar-fixed" id="sidebar">
       <ul class="nav">
+        <!-- non-admin show -->
         <li
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isNonAdmin"
         >
-          <a class="nav-link" routerLink="/admin-dashboard">
+          <a class="nav-link" routerLink="/dashboard">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">Dashboard</span>
           </a>
@@ -73,6 +74,64 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isNonAdmin"
+        >
+          <a class="nav-link" routerLink="/dashboard">
+            <i class="icon-grid menu-icon"></i>
+            <span class="menu-title">Assets</span>
+          </a>
+        </li>
+        <li
+          class="nav-item"
+          (mouseenter)="inHover($event.target)"
+          (mouseleave)="outHover($event.target)"
+          [hidden]="isNonAdmin"
+        >
+          <a
+            href="#transaction"
+            class="nav-link"
+            data-toggle="collapse"
+            aria-expanded="false"
+            aria-controls="transaction"
+          >
+            <i class="icon-paper-stack menu-icon"></i>
+            <span class="menu-title">Transaction</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="transaction">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/non-admin/transactions-out">
+                  Borrowed
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/non-admin/transactions-in">
+                  Returned
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- adminshow -->
+        <li
+          class="nav-item"
+          (mouseenter)="inHover($event.target)"
+          (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
+        >
+          <a class="nav-link" routerLink="/admin-dashboard">
+            <i class="icon-grid menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+
+        <li
+          class="nav-item"
+          (mouseenter)="inHover($event.target)"
+          (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a
             class="nav-link"
@@ -89,13 +148,12 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a
             class="nav-link"
             data-toggle="collapse"
             routerLink="/admin/locations"
-            aria-expanded="false"
-            aria-controls="ui-basic"
           >
             <i class="icon-location menu-icon"></i>
             <span class="menu-title">Location</span>
@@ -105,6 +163,7 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a
             class="nav-link"
@@ -141,6 +200,7 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a
             href="#items"
@@ -177,6 +237,7 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a
             href="#assets"
@@ -208,6 +269,7 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a class="nav-link" routerLink="/admin/invoices">
             <i class="ti-notepad menu-icon"></i>
@@ -218,6 +280,7 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a
             href="#transaction"
@@ -249,6 +312,7 @@
           class="nav-item"
           (mouseenter)="inHover($event.target)"
           (mouseleave)="outHover($event.target)"
+          [hidden]="isAdmin"
         >
           <a class="nav-link" routerLink="admin/reports">
             <i class="ti-folder menu-icon"></i>
@@ -259,6 +323,7 @@
     </nav>
     <div class="main-panel">
       <div class="content-wrapper">
+        <!-- <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> -->
         <router-outlet></router-outlet>
       </div>
     </div>
