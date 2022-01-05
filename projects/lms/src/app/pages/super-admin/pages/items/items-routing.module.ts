@@ -15,7 +15,7 @@ const itemsRoutes:Routes=[
     component:ItemsModifyComponent
   },
   {
-    path:'admin/items/:id',
+    path:'admin/items/:code',
     component:ItemsModifyComponent
   }
 ]
