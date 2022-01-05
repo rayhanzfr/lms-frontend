@@ -78,6 +78,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
   locationsSubs?:Subscription;
   listEmployees:Employees[]=[];
   employees!:Employees
+  usersEmployee:Employees = new Employees();
   listEmployeesCode:string[]=[]
   employeesSubs?:Subscription;
   listAssets:Assets[]=[];
@@ -151,11 +152,13 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
   }
   
   findAssets(){
+    this.employeesService.getByUsersId().subscribe(result=>{
+    this.usersEmployee=result
     this.itemsSubs = this.itemsService.getByBrandsAndTypes(this.selectedItemsBrands.itemsBrandsCode,this.selectedItemsTypes.itemsTypesCode).subscribe(result=>{
       this.items = result
       console.log(this.items)
       if (this.items) {        
-        this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,statusesAssetsCode.get(1)!,statusesInOutCode.get(1)!,this.qty).subscribe(result=>{
+        this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,this.usersEmployee.companies.companiesCode,statusesAssetsCode.get(1)!,statusesInOutCode.get(1)!,this.qty).subscribe(result=>{
           this.listAssets=result
           console.log(this.listAssets)
           for (let i = 0; i < this.listAssets.length; i++) {
@@ -168,6 +171,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
         });
       }
     });
+  });
     
 
   }
