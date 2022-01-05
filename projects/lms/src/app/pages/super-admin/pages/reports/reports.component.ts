@@ -4,6 +4,9 @@ import { AssetsService } from '../../../../../../../core/src/app/services/assets
 import { saveAs } from 'file-saver';
 import { Subscription } from 'rxjs';
 import { HistoriesService } from '../../../../../../../core/src/app/services/histories/histories.service';
+import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service';
+import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-reports',
@@ -13,7 +16,9 @@ import { HistoriesService } from '../../../../../../../core/src/app/services/his
 export class ReportsComponent implements OnInit, OnDestroy {
 
   obs?: Subscription
-  constructor(private router:Router,private historiesService:HistoriesService ,private assetsService: AssetsService) { }
+  constructor(private router:Router,private historiesService:HistoriesService ,private assetsService: AssetsService,
+    private employeesService:EmployeesService, private authService:AuthService) { }
+    usersId?:string
   ngOnDestroy(): void {
 
   }
@@ -29,7 +34,11 @@ export class ReportsComponent implements OnInit, OnDestroy {
   this.obs = this.assetsService.sendReport().subscribe()
   }
 
-  downloadHistory():void{
-    this.obs = this.historiesService.generatePdf().subscribe()
+  downloadHistory():void{       
+      this.employeesService.getByUsersId().subscribe(result=>{
+        const companiesCode = result.companies.companiesCode
+        window.open(`http://localhost:8888/histories/pdf?companiesCode=${companiesCode}`);
+      })
+    
   }
 }
