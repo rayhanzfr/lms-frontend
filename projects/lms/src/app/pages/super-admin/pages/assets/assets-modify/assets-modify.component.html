@@ -67,7 +67,7 @@
                     (click)="getStatusesAssetsCode(statusesAssetsReq)"
                   ></p-dropdown>
                 </div>
-                <div class="form-group">
+                <div class="form-group" [hidden]="!isUpdate">
                   <h5>Statuses In Out</h5>
                   <p-dropdown
                     [options]="statusesInOut"

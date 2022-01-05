@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-12" *ngIf="isNew" [hidden]="!isNew">
       <div class="row">
         <div class="col-12 grid-margin stretch-card">
           <div class="card">

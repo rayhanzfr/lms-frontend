@@ -38,7 +38,7 @@ import { MessageModule } from 'primeng/message';
     DropdownModule,
     ToastModule,
     MessagesModule,
-        MessageModule,
+    MessageModule,
   ]
 })
 export class AssetsModule { }
