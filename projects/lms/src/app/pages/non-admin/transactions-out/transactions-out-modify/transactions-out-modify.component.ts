@@ -13,6 +13,7 @@ import { SaveFullTransactionsOutResDto } from 'projects/core/src/app/dto/transac
 import { SaveTransactionsDetailsOutReqDto } from 'projects/core/src/app/dto/transactions-out/save-transactions-details-out-req-dto';
 import { SaveTransactionsOutReqDto } from 'projects/core/src/app/dto/transactions-out/save-transactions-out-req-dto';
 import { AssetsService } from 'projects/core/src/app/services/assets/assets.service';
+import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
 import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service';
 import { ItemsBrandsService } from 'projects/core/src/app/services/items-brands/items-brands.service';
 import { ItemsTypesService } from 'projects/core/src/app/services/items-types/items-types.service';
@@ -32,7 +33,7 @@ export class NonTransactionsOutModifyComponent implements OnInit,OnDestroy{
     private assetsService:AssetsService, private locationsService:LocationsService,
     private employeesService:EmployeesService, private itemsService:ItemsService,
     private itemsTypesService:ItemsTypesService,private itemsBrandsService:ItemsBrandsService,
-    private transactionsOutService:TransactionsOutService) { }
+    private transactionsOutService:TransactionsOutService, private authService:AuthService) { }
 
   assetsFor: AssetsFor[]=[]
   assetsForEmp:AssetsFor= new AssetsFor();
@@ -60,6 +61,7 @@ export class NonTransactionsOutModifyComponent implements OnInit,OnDestroy{
   locationsSubs?:Subscription;
   listEmployees:Employees[]=[];
   employees!:Employees
+  usersEmployee:Employees = new Employees()
   listEmployeesCode:string[]=[]
   employeesSubs?:Subscription;
   listAssets:Assets[]=[];
@@ -133,23 +135,27 @@ export class NonTransactionsOutModifyComponent implements OnInit,OnDestroy{
   }
   
   findAssets(){
-    this.itemsSubs = this.itemsService.getByBrandsAndTypes(this.selectedItemsBrands.itemsBrandsCode,this.selectedItemsTypes.itemsTypesCode).subscribe(result=>{
-      this.items = result
-      console.log(this.items)
-      if (this.items) {        
-        this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,statusesAssetsCode.get(1)!,statusesInOutCode.get(1)!,this.qty).subscribe(result=>{
-          this.listAssets=result
-          console.log(this.listAssets)
-          for (let i = 0; i < this.listAssets.length; i++) {
-            this.saveTransactionsOutDetailReqDto = new SaveTransactionsDetailsOutReqDto();
-            this.saveTransactionsOutDetailReqDto.expiredDate = this.expiredDate;
-            this.saveTransactionsOutDetailReqDto.assetsName = this.listAssets[i].assetsName;
-            this.listSaveTransactionsOutDetailReqDto.push(this.saveTransactionsOutDetailReqDto);
-          }
-  
-        });
-      }
+    this.employeesService.getByUsersId().subscribe(result=>{
+      this.usersEmployee=result
+      this.itemsSubs = this.itemsService.getByBrandsAndTypes(this.selectedItemsBrands.itemsBrandsCode,this.selectedItemsTypes.itemsTypesCode).subscribe(result=>{
+        this.items = result
+        console.log(this.items)
+        if (this.items) {        
+          this.assetsSubs=this.assetsService.getByReq(this.items.itemsCode,this.usersEmployee.companies.companiesCode,statusesAssetsCode.get(1)!,statusesInOutCode.get(1)!,this.qty).subscribe(result=>{
+            this.listAssets=result
+            console.log(this.listAssets)
+            for (let i = 0; i < this.listAssets.length; i++) {
+              this.saveTransactionsOutDetailReqDto = new SaveTransactionsDetailsOutReqDto();
+              this.saveTransactionsOutDetailReqDto.expiredDate = this.expiredDate;
+              this.saveTransactionsOutDetailReqDto.assetsName = this.listAssets[i].assetsName;
+              this.listSaveTransactionsOutDetailReqDto.push(this.saveTransactionsOutDetailReqDto);
+            }
+    
+          });
+        }
+      });
     });
+
     
 
   }

@@ -143,12 +143,14 @@
                         <td>{{ d.assetsName }}</td>
                         <td>{{ d.expiredDate }}</td>
                         <td *ngIf="isEmployees">
-                          <p-dropdown
-                            [options]="listEmployeesCode"
-                            [(ngModel)]="d.employeesCode"
-                            placeholder="Select Employees "
-                            [showClear]="true"
-                          ></p-dropdown>
+                          <input
+                            type="text"
+                            id="text"
+                            pInputText
+                            class="form-control form-control-md col-12"
+                            disabled
+                            value="{{usersEmployee.employeesCode}}"
+                          />
                         </td>
                         <td *ngIf="isLocations">
                           <p-dropdown
