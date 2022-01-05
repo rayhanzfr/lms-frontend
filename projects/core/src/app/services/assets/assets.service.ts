@@ -47,6 +47,11 @@ export class AssetsService {
       'http://localhost:8888/assets/itemsTypes?itemsTypesCode=' + itemsTypecode,
     )
   }
+  getByCompaniesCode(companiesCode: string): Observable<GetAllAssetsResDto> {
+    return this.http.get<GetAllAssetsResDto>(
+      'http://localhost:8888/assets/companies?companiesCode=' + companiesCode,
+    )
+  }
   getByStatusAssets(statusAssetsCode: string): Observable<GetAllAssetsResDto> {
     return this.http.get<GetAllAssetsResDto>(
       'http://localhost:8888/assets/statusesAssets?statusesAssetsCode=' +
@@ -72,7 +77,7 @@ export class AssetsService {
     total: number,
   ): Observable<Assets[]> {
     return this.http.get<Assets[]>(
-      `http://localhost:8888/assets/req?itemsCode=${itemsCode}&statusesAssetsCode=${statusesAssetsCode}&statusesInOutCode=${statusesInOutCode}&total=${total}`,
+      `http://localhost:8888/assets/req?itemsCode=${itemsCode}}&companiesCode=${companiesCode}&statusesAssetsCode=${statusesAssetsCode}&statusesInOutCode=${statusesInOutCode}&total=${total}`,
     )
   }
 

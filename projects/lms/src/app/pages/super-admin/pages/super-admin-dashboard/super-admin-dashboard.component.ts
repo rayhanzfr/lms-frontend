@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Assets } from 'projects/core/src/app/dto/asset/assets';
+import { Router } from '@angular/router';
 import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto';
 import { Employees } from 'projects/core/src/app/dto/employee/employees';
 import { AssetsService } from 'projects/core/src/app/services/assets/assets.service';
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class SuperAdminDashboardComponent implements OnInit {
 
-  constructor(private assetsService: AssetsService, private itemsService: ItemsService, private employeesService: EmployeesService) { }
+  constructor(private assetsService: AssetsService, private itemsService: ItemsService, private employeesService: EmployeesService, private router: Router) { }
   totalBorrowed!:number
   totalAsset!:number
   totalItem!:number

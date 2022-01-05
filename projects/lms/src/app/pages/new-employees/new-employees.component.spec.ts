@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NonMainbarComponent } from './non-mainbar.component';
+import { NewEmployeesComponent } from './new-employees.component';
 
-describe('NonMainbarComponent', () => {
-  let component: NonMainbarComponent;
-  let fixture: ComponentFixture<NonMainbarComponent>;
+describe('NewEmployeesComponent', () => {
+  let component: NewEmployeesComponent;
+  let fixture: ComponentFixture<NewEmployeesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NonMainbarComponent ]
+      declarations: [ NewEmployeesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NonMainbarComponent);
+    fixture = TestBed.createComponent(NewEmployeesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
