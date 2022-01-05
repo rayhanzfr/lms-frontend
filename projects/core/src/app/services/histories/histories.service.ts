@@ -13,7 +13,7 @@ export class HistoriesService {
   getAll(): Observable<GetAllHistoriesResDto>{
     return this.http.get<GetAllHistoriesResDto>('http://localhost:8888/histories/')
   }
-  generatePdf():Observable<HistoriesReportResDto[]>{
-    return this.http.get<HistoriesReportResDto[]>(`http://localhost:8888/histories/pdf`)
+  generatePdf(companiesCode:string):Observable<HistoriesReportResDto[]>{
+    return this.http.get<HistoriesReportResDto[]>(`http://localhost:8888/histories/pdf?companiesCode=${companiesCode}`)
   }
 }
