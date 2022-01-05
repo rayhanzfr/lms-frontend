@@ -72,6 +72,7 @@ export class AssetsService {
   }
   getByReq(
     itemsCode: string,
+    companiesCode:string,
     statusesAssetsCode: string,
     statusesInOutCode: string,
     total: number,
