@@ -49,7 +49,6 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
   statusesAssetsSub?: Subscription
   statusesInOutSub?: Subscription
   constructor(
-    private primengConfig: PrimeNGConfig,
     private assetsService: AssetsService,
     private itemsService: ItemsService,
     private invoicesService: InvoicesService,
@@ -77,6 +76,7 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
           this.saveAssetReq.statusesAssetsCode = this.assets.statusesAssetsCode
           this.saveAssetReq.statusesInOutCode = this.assets.statusesInOutCode
           this.saveAssetReq.assetsExpired = this.assets.assetsExpired
+          this.saveAssetReq.companiesCode = this.assets.companiesCode
 
           this.itemsSub = this.itemsService
             .getByCode(this.saveAssetReq.itemsCode)
