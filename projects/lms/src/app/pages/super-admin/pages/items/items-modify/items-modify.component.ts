@@ -37,6 +37,10 @@ export class ItemsModifyComponent implements OnInit, OnDestroy {
   file!: File | null
   selectedFiles!: FileList
 
+  isItemsBrands:boolean = true
+  isItemsTypes:boolean = true
+  isFiles:boolean = true
+
   constructor(private route: Router, private router:ActivatedRoute, 
     private itemsService:ItemsService, private itemsBrandsService:ItemsBrandsService,
     private itemsTypesService:ItemsTypesService) { }
@@ -48,8 +52,13 @@ export class ItemsModifyComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const code:any = this.router.snapshot.paramMap.get('code');
     if (code) {
-      this.itemsSub = this.itemsService.getByCode(code).subscribe(result=>{this.items = result
-      this.itemsReq = this.items
+      this.itemsSub = this.itemsService.getByCode(code).subscribe(result=>{
+        this.items = result
+        this.itemsReq = this.items
+        this.itemsTypes = this.itemsReq.itemsTypes
+        this.itemsBrands = this.itemsReq.itemsBrands
+        this.isItemsBrands = false
+        this.isItemsTypes = false
       });
     }
     this.itemsBrandsSubs = this.itemsBrandsService.getAll().subscribe(result=>{
@@ -69,7 +78,6 @@ export class ItemsModifyComponent implements OnInit, OnDestroy {
         }
       })  
     }else{
-      this.file = this.selectedFiles?.item(0)
       this.itemsSubs=this.itemsService.save(this.itemsReq, this.file)?.subscribe(result=>{
         this.saveItemsRes=result
         if (this.saveItemsRes) {
@@ -85,5 +93,7 @@ export class ItemsModifyComponent implements OnInit, OnDestroy {
 
   selectFile(event: any) {
     this.selectedFiles = event.target.files;
+    this.file = this.selectedFiles?.item(0)
+    
   }
 }

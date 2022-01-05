@@ -7,33 +7,37 @@
                         <div class="card-body">
                             <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Items</b></h4>
                             <div class="card-body mx-5">
-                                <div class="form-group mt-4 mb-3">
+                                <div class="form-group mt-4 mb-3" *ngIf="isItemsTypes">
                                     <h5 for="items"><b>items Types Name</b></h5>
-                                    <p-dropdown [options]="listItemsTypes" [(ngModel)]="itemsTypes" placeholder="Select a Items Types" optionLabel="itemsTypesName" [showClear]="true"></p-dropdown>
+                                    <p-dropdown [options]="listItemsTypes" [(ngModel)]="itemsTypes"
+                                        placeholder="Select a Items Types" optionLabel="itemsTypesName"
+                                        [showClear]="true"></p-dropdown>
+                                </div>
+                                <div class="form-group mt-4 mb-3" *ngIf="isItemsBrands">
+                                    <h5 for="items"><b>Items Brands Name</b></h5>
+                                    <p-dropdown [options]="listItemsBrands" [(ngModel)]="itemsBrands"
+                                        placeholder="Select a Items Brands" optionLabel="itemsBrandsName"
+                                        [showClear]="true"></p-dropdown>
                                 </div>
                                 <div class="form-group mt-4 mb-3">
-                                    <h5 for="items"><b>Items Brands Name</b></h5>
-                                    <p-dropdown [options]="listItemsBrands" [(ngModel)]="itemsBrands" placeholder="Select a Items Brands" optionLabel="itemsBrandsName" [showClear]="true"></p-dropdown>
-                                    <div class="form-group mt-4 mb-3">
-                                        <h5 for="items"><b>Items Name</b></h5>
-                                        <input type="text" id="text" pInputText
-                                            class="form-control form-control-sm col-12"
-                                            [(ngModel)]="itemsReq.itemsName" />
-                                    </div>
-                                    <div class="form-group mt-4 mb-3">
-                                        <h5 for="items"><b>Items Logo</b></h5>
-                                        <input type="file" id="file" class="form-control form-control-sm col-12"
-                                            (change)="selectFile($event)" />
-                                    </div>
-                                    <div class="row d-flex mt-5 justify-content-end">
-                                        <div class="btn-group">
-                                            <button pButton pRipple type="button" label="Cancel"
-                                                class="p-button-sm p-button-danger mx-3" (click)="back()"></button>
-                                            <button pButton pRipple type="button" label="Submit"
-                                                class="p-button-sm p-button-success" (click)="submitData()"></button>
-                                        </div>
+                                    <h5 for="items"><b>Items Name</b></h5>
+                                    <input type="text" id="text" pInputText class="form-control form-control-sm col-12"
+                                        [(ngModel)]="itemsReq.itemsName" />
+                                </div>
+                                <div class="form-group mt-4 mb-3" *ngIf="isFiles">
+                                    <h5 for="items"><b>Items Logo</b></h5>
+                                    <input type="file" id="file" class="form-control form-control-sm col-12"
+                                        (change)="selectFile($event)" />
+                                </div>
+                                <div class="row d-flex mt-5 justify-content-end">
+                                    <div class="btn-group">
+                                        <button pButton pRipple type="button" label="Cancel"
+                                            class="p-button-sm p-button-danger mx-3" (click)="back()"></button>
+                                        <button pButton pRipple type="button" label="Submit"
+                                            class="p-button-sm p-button-success" (click)="submitData()"></button>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
