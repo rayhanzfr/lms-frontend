@@ -130,7 +130,7 @@
                         Locations
                       </th>
                       <th *ngIf="isGeneral">
-                        General
+                        Assets General
                       </th>
                       <th>
                         Action
@@ -146,8 +146,7 @@
                         <p-dropdown
                           [options]="listEmployeesCode"
                           [(ngModel)]="d.employeesCode"
-                          placeholder="Select Employees "
-                          [showClear]="true"
+                          placeholder="Select Employees"
                         ></p-dropdown>
                       </td>
                       <td *ngIf="isLocations">
@@ -155,7 +154,13 @@
                           [options]="listLocationsCode"
                           [(ngModel)]="d.locationsCode"
                           placeholder="Select Locations "
-                          [showClear]="true"
+                        ></p-dropdown>
+                      </td>
+                      <td *ngIf="isGeneral">
+                        <p-dropdown
+                          [options]="listAssetsGeneralCode"
+                          [(ngModel)]="d.assetsGeneralCode"
+                          placeholder="Select Assets General "
                         ></p-dropdown>
                       </td>
                       <td class="text-center">
