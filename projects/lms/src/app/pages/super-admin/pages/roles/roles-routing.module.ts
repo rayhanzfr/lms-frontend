@@ -7,15 +7,15 @@ import { RolesModifyComponent } from './roles-modify/roles-modify.component';
 
 const rolesRoutes:Routes=[
   {
-    path:'admin/roles',
+    path:'',
     component:RolesViewComponent
   },
   {
-    path:'admin/roles/new',
+    path:'new',
     component:RolesModifyComponent
   },
   {
-    path:'admin/roles/:id',
+    path:':id',
     component:RolesModifyComponent
   }
 ]

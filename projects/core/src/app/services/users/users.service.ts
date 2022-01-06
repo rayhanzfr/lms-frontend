@@ -16,6 +16,9 @@ export class UsersService {
   getAll():Observable<Users[]> {
     return this.http.get<Users[]>('http://localhost:8888/users')
   }
+  getAllByCompany():Observable<Users[]> {
+    return this.http.get<Users[]>('http://localhost:8888/users/companies')
+  }
   getById(id: string): Observable<Users> {
     return this.http.get<Users>('http://localhost:8888/users/id?id=' + id);
   }
