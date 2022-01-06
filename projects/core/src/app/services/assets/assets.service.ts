@@ -42,7 +42,7 @@ export class AssetsService {
     )
   }
 
-  getByItemsTypecode(itemsTypecode: string): Observable<GetAllAssetsResDto> {
+  getByItemsTypesCode(itemsTypecode: string): Observable<GetAllAssetsResDto> {
     return this.http.get<GetAllAssetsResDto>(
       'http://localhost:8888/assets/itemsTypes?itemsTypesCode=' + itemsTypecode,
     )
