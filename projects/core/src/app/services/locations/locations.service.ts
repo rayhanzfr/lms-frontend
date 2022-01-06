@@ -20,6 +20,10 @@ export class LocationsService {
     return this.http.get<Locations[]>('http://localhost:8888/locations/');
   }
 
+  getByCompanies(): Observable<Locations[]> {
+    return this.http.get<Locations[]>('http://localhost:8888/locations/companies');
+  }
+
   getById(id: string): Observable<Locations> {
     return this.http.get<Locations>('http://localhost:8888/locations/id?id=' + id);
   }

@@ -66,7 +66,7 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/reports/reports.module').then(result => result.ReportsModule)
   },
   {
-    path: '',
+    path: 'admin/roles',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/roles/roles.module').then(result => result.RolesModule)
   },

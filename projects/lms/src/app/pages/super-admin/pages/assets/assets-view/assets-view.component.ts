@@ -36,13 +36,13 @@ export class AssetsViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeesService.getByUsersId().subscribe(data => {
-      this.companiesCode = data.companies.companiesCode
+      this.companiesCode = data.companies?.companiesCode
       this.assetsSub = this.assetsService.getByCompaniesCode(this.companiesCode).subscribe(asset => {
         this.data = asset
         this.assetsSub =    this.assetsService.getByStatusAssets("ARCHV").subscribe(asset => {
           this.loseAssets = asset.data.length
         })
-        if(this.data){
+        if(this.data || this.data!==null){
           this.assetsSub = this.assetsService.newAssets().subscribe(result=>{
             this.newAssets = result
             this.isNew = true
