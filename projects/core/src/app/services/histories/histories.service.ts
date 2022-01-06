@@ -13,7 +13,11 @@ export class HistoriesService {
   getAll(): Observable<GetAllHistoriesResDto>{
     return this.http.get<GetAllHistoriesResDto>('http://localhost:8888/histories/')
   }
-  generatePdf(companiesCode:string):Observable<HistoriesReportResDto[]>{
-    return this.http.get<HistoriesReportResDto[]>(`http://localhost:8888/histories/pdf?companiesCode=${companiesCode}`)
+  generatePdf(companiesCode:string):Observable<any>{
+    // return this.http.get<HistoriesReportResDto[]>()
+    return this.http.get(`http://localhost:8888/histories/pdf?companiesCode=${companiesCode}`, {
+      responseType: 'blob',
+    })
   }
+  
 }

@@ -16,6 +16,7 @@ import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
 export class ReportsComponent implements OnInit, OnDestroy {
 
   obs?: Subscription
+  historiesObs?:Subscription
   constructor(private router:Router,private historiesService:HistoriesService ,private assetsService: AssetsService,
     private employeesService:EmployeesService, private authService:AuthService) { }
     usersId?:string
@@ -37,7 +38,8 @@ export class ReportsComponent implements OnInit, OnDestroy {
   downloadHistory():void{       
       this.employeesService.getByUsersId().subscribe(result=>{
         const companiesCode = result.companies.companiesCode
-        window.open(`http://localhost:8888/histories/pdf?companiesCode=${companiesCode}`);
+        this.historiesObs = this.historiesService.generatePdf(companiesCode).subscribe(blob=>
+          saveAs(blob, 'assets-histories.pdf'))
       })
     
   }

@@ -86,9 +86,8 @@ export class MainbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout() :void{
+  logout(){
     this.authService.clearStorage()
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl("/login")
   }
-
 }
