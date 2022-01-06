@@ -5,6 +5,8 @@ export class GetTransactionsDetailsOutDataDto {
 	locationsCode?: string
 	employeesId?: string
 	employeesCode?: string
+	assetsGeneralId?:string
+	assetsGeneralName?:string
 	assetsId!: string
 	assetsName!: string
 	expiredDate!: string

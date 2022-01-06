@@ -6,6 +6,8 @@ export class GetTransactionsDetailsInDataDto {
 	locationsDeploy?: string
 	employeesId?: string
 	employeesFullname?: string
+	assetsGeneralId?: string
+	assetsGeneralName?: string
 	assetsId!: string
 	assetsName!: string
 	statusesTransactionsId!: string
