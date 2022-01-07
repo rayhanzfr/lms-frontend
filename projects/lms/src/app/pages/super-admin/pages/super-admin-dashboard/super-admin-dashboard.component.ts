@@ -22,6 +22,7 @@ export class SuperAdminDashboardComponent implements OnInit {
   employee!: Employees
   loading?:boolean
   isHide=true
+
   data:GetAllAssetsResDto= new GetAllAssetsResDto()
 
   employeesSubs?:Subscription

@@ -37,11 +37,14 @@ export class NewEmployeesComponent implements OnInit {
   onClick():void{
     this.employeesReq.users = this.users
     this.employeesReq.companies = this.selectedCompanies
-    this.employeesService.save(this.employeesReq).subscribe(result=>{
-      this.saveEmployeesRes= result
-      if(this.saveEmployeesRes){
-        this.router.navigateByUrl('/login')
-      }
-    })
+    console.log(this.employeesReq.companies)
+    if (this.employeesReq.companies) { 
+      this.employeesService.save(this.employeesReq).subscribe(result=>{
+        this.saveEmployeesRes= result
+        if(this.saveEmployeesRes){
+          this.router.navigateByUrl('/login')
+        }
+      })
+    }
   }
 }
