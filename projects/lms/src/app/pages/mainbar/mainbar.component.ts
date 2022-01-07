@@ -5,7 +5,6 @@ import { Employees } from 'projects/core/src/app/dto/employee/employees';
 import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
 import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service';
 import { delay, Subscription } from 'rxjs';
-import { LoadingService } from '../../../../../core/src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-mainbar',

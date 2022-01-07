@@ -28,8 +28,8 @@ export class LocationsService {
     return this.http.get<Locations>('http://localhost:8888/locations/id?id=' + id);
   }
 
-  getByCode(code: string): Observable<GetByCodeLocationsResDto> {
-    return this.http.get<GetByCodeLocationsResDto>('http://localhost:8888/locations/code?code=' + code);
+  getByCode(code: string): Observable<Locations> {
+    return this.http.get<Locations>('http://localhost:8888/locations/code?code=' + code);
   }
 
   save(locations: Locations): Observable<SaveLocationsResDto> {

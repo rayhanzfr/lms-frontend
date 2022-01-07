@@ -140,7 +140,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
       }
     });
     this.assetsGeneralSubs = this.assetsService.getByItemsTypesCode("ITMTYPES1").subscribe(result=>{
-      this.listAssetsGeneral = result
+      this.listAssetsGeneral = result.data
       for (let i = 0; i < this.listAssetsGeneral.length; i++) {
         this.assetsGeneral = new Assets();
         this.assetsGeneral = this.listAssetsGeneral[i];

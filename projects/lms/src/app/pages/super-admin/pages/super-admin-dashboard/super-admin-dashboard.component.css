@@ -1,5 +1,8 @@
 .lds-default {
-  position: relative;
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
   width: 80px;
   height: 80px;
 }
@@ -7,7 +10,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: #fff;
+  background: rgb(255, 230, 0);
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }
