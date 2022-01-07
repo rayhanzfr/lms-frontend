@@ -26,12 +26,15 @@ export class NewEmployeesComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.usersService.getById(this.authService.getUsersId()!).subscribe(result => {
-      this.users = result
-    })
-    this.companiesService.getAll().subscribe(result => {
-      this.data = result
-    })
+    const userId = this.authService.getUsersId()
+    if (userId) {     
+      this.usersService.getById(userId).subscribe(result => {
+        this.users = result
+        this.companiesService.getAll().subscribe(result => {
+          this.data = result
+        })
+      })
+    }
   }
 
   onClick():void{
