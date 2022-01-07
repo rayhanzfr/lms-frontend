@@ -1,11 +1,24 @@
-<div class="lds-default" *ngIf="loading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-<div class="row">
+<div class="lds-default" *ngIf="loading">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<div class="row" [hidden]="isHide">
   <div class="col-md-12 grid-margin">
     <div class="row">
       <div class="col-12 col-md-8 mb-5 mb-lg-4 mb-xl-3">
         <h3 class="font-weight-bold">
           Welcome,
-          <b>{{employee!.employeesFullname}}</b>
+          <b>{{ employee!.employeesFullname }}</b>
         </h3>
       </div>
       <div class="col-12 col-xl-4">
@@ -71,10 +84,14 @@
         <div class="card">
           <div class="card-body">
             <div class="card-title">
-              <p class="fs-30 mb-4 text-center mt-md-3 mt-2"><b>List Borrowed Assets</b></p>
+              <p class="fs-30 mb-4 text-center mt-md-3 mt-2">
+                <b>List Borrowed Assets</b>
+              </p>
               <div class="container-fluid col-10">
                 <div class="row justify-content-end">
-                  <a routerLink="/admin/transactions-out" class="text-right"><p>view all</p></a>
+                  <a routerLink="/admin/transactions-out" class="text-right">
+                    <p>view all</p>
+                  </a>
                 </div>
               </div>
             </div>
@@ -92,7 +109,7 @@
                       <th style="width: 3rem;">
                         No
                       </th>
-                      <th  style="width:10rem">
+                      <th style="width: 10rem;">
                         Image
                       </th>
                       <th pSortableColumn="assetsName">
@@ -109,15 +126,18 @@
                       </th>
                     </tr>
                   </ng-template>
-                  <ng-template
-                    pTemplate="body"
-                    let-d
-                    let-rowIndex="rowIndex"
-                  >
+                  <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
                     <tr>
                       <td>{{ rowIndex + 1 }}</td>
-                      <td><img class="items-img" src="data:image/png;base64,{{d.files?.file}}"
-                        alt="img{{rowIndex+1}}" style="width:100px !important"></td>
+                      <td>
+                        <img
+                          class="items-img"
+                          src="data:image/png;base64,{{ d.files?.file }}"
+                          alt="img{{ rowIndex + 1 }}"
+                          style="width: 100px !important;"
+                        />
+                      </td>
+
                       <td>{{ d.assetsName }}</td>
                       <td>{{ d.itemsName }}</td>
                       <td>{{ d.statusesAssetsName }}</td>

@@ -16,6 +16,8 @@ export class LocationsViewComponent implements OnInit, OnDestroy {
   data: Locations[] = []
   resDeleteLocations?:DeleteLocationsResDto
   totalData!:number
+  loading!:boolean
+  isHide=true
 
   constructor(private router:Router, private locationsService: LocationsService) { }
   ngOnDestroy(): void {
@@ -23,9 +25,12 @@ export class LocationsViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loading=true
     this.locationsService.getAll().subscribe(result => {
       this.data = result
       this.totalData = this.data.length
+      this.loading = false
+      this.isHide = false
     })
   }
 

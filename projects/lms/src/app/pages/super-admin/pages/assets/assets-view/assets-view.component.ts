@@ -5,7 +5,6 @@ import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-asse
 import { SaveAssetsResDto } from 'projects/core/src/app/dto/asset/save-assets-res-dto'
 import { AssetsService } from 'projects/core/src/app/services/assets/assets.service'
 import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service'
-import { LoadingService } from 'projects/core/src/app/services/loading/loading.service'
 import { Subscription } from 'rxjs'
 import {statusesAssetsCode} from '../../../../../../../../core/src/app/constant/statuses-assets-code'
 

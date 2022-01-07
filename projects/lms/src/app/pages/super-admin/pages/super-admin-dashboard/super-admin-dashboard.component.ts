@@ -21,6 +21,8 @@ export class SuperAdminDashboardComponent implements OnInit {
   totalEmployee!:number
   employee!: Employees
   loading?:boolean
+  isHide=true
+
   data:GetAllAssetsResDto= new GetAllAssetsResDto()
 
   employeesSubs?:Subscription
@@ -29,14 +31,25 @@ export class SuperAdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true
-    setTimeout(() => {
-    this.employeesSubs = this.employeesService.getByUsersId().subscribe(result=>this.employee = result)
-    this.assetsSubs = this.assetsService.getAll().subscribe(result=>{this.totalAsset=result.data.length})
-    this.itemsSubs = this.itemsService.getAll().subscribe(result=>{this.totalItem=result.length})
-    this.assetsSubs =  this.assetsService.getByStatusInOut('COUT').subscribe(result=>{this.totalBorrowed=result.data.length})
-    this.employeesSubs = this.employeesService.getAll().subscribe(result=>this.totalEmployee=result.length)
-    this.assetsSubs = this.assetsService.getBorrowedAssets().subscribe(result=>{this.data=result})
-    this.loading = false;
-  }, 1000); 
+    this.employeesSubs = this.employeesService.getByUsersId().subscribe(result=>{
+      this.employee = result
+      this.assetsSubs = this.assetsService.getAll().subscribe(result=>{
+        this.totalAsset=result.data.length
+        this.itemsSubs = this.itemsService.getAll().subscribe(result=>{
+          this.totalItem=result.length
+          this.assetsSubs =  this.assetsService.getByStatusInOut('COUT').subscribe(result=>{
+            this.totalBorrowed=result.data.length
+            this.employeesSubs = this.employeesService.getAll().subscribe(result=>{
+              this.totalEmployee=result.length
+              this.assetsSubs = this.assetsService.getBorrowedAssets().subscribe(result=>{
+                this.data=result
+                this.loading = false;
+                  this.isHide=false
+              })
+            })
+          })
+        })
+      })
+    })
   }
 }
