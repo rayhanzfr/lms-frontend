@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeleteItemsResDto } from 'projects/core/src/app/dto/items/delete-items-res-dto';
 import { Items } from 'projects/core/src/app/dto/items/items';
+import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
 import { ItemsService } from 'projects/core/src/app/services/items/items.service';
 import { Subscription } from 'rxjs';
 
@@ -12,7 +13,8 @@ import { Subscription } from 'rxjs';
 })
 export class ItemsViewComponent implements OnInit {
 
-  constructor(private itemsService:ItemsService,private router:Router) { }
+  constructor(private itemsService:ItemsService,private router:Router,
+    private authService:AuthService) { }
   data:Items[] = []
   totalData!:number
   obs?:Subscription
@@ -36,9 +38,15 @@ export class ItemsViewComponent implements OnInit {
     this.obs?.unsubscribe()
   }
   ngOnInit(): void {
-    this.obs=this.itemsService.getAll()?.subscribe(result=>{this.data=result
-    console.log(this.data)
-    this.totalData=this.data.length});
+    const token = this.authService.getToken()
+    if (token) {
+      this.obs=this.itemsService.getAll()?.subscribe(result=>{this.data=result
+      console.log(this.data)
+      this.totalData=this.data.length});
+    }else{
+      this.authService.clearStorage();
+      this.router.navigateByUrl("/login")
+    }
   }
 
 }

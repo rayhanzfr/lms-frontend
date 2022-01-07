@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
+import { saveAs } from 'file-saver'
 import { MessageService } from 'primeng/api'
 import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto'
 import { SaveAssetsResDto } from 'projects/core/src/app/dto/asset/save-assets-res-dto'
@@ -108,6 +109,9 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
     }
   }
 
+  downloadTemplate(){
+    
+  }
   reloadCurrentPage() {
     window.location.reload()
   }
