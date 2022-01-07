@@ -1,4 +1,4 @@
-<p-toast position="top-right"></p-toast>
+<p-toast></p-toast>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -6,7 +6,7 @@
         <div class="col-12 col-md-3 col-sm-6 grid-margin stretch-card">
           <div class="card card-blue">
             <div class="card-body">
-              <p class="fs-30 mb-4"><b>Asset Ready</b></p>
+              <h4 class="mb-4"><b>Asset Ready</b></h4>
               <p class="fs-30 text-center">
                 <b>{{ readyAssets }}</b>
               </p>
@@ -17,7 +17,7 @@
         <div class="col-12 col-md-3 col-sm-6 grid-margin stretch-card">
           <div class="card card-orange">
             <div class="card-body">
-              <p class="fs-30 mb-4"><b>Asset Borrowed</b></p>
+              <h4 class="mb-4"><b>Asset Borrowed</b></h4>
               <p class="fs-30 text-center">
                 <b>{{ borrowedAssets }}</b>
               </p>
@@ -29,18 +29,18 @@
         <div class="col-12 col-md-3 col-sm-6 grid-margin stretch-card">
           <div class="card card-light-blue">
             <div class="card-body">
-              <p class="fs-30 mb-4"><b>Asset Broken</b></p>
+              <h4 class="mb-4"><b>Asset Not Ready</b></h4>
               <p class="fs-30 text-center">
                 <b>{{ brokenAssets }}</b>
               </p>
-              <p class="text-right mt-4">asset was broken not ready</p>
+              <p class="text-right mt-4">asset was not ready</p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-3 col-sm-6 grid-margin stretch-card">
           <div class="card card-dark">
             <div class="card-body">
-              <p class="fs-30 mb-4"><b>Asset Loses</b></p>
+              <h4 class="mb-4"><b>Asset Loses</b></h4>
               <p class="fs-30 text-center">
                 <b>{{ loseAssets }}</b>
               </p>
@@ -55,7 +55,7 @@
         <div class="col-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <p class="fs-30 mb-4"><b>New Asset</b></p>
+              <h3 class="mb-4"><b>New Asset</b></h3>
               <div class="row">
                 <div class="col-9">
                   <div class="row">
@@ -143,7 +143,6 @@
                 ></button>
                 <p-fileUpload
                   mode="basic"
-                  name="myfile[]"
                   [customUpload]="true"
                   (uploadHandler)="onUpload($event)"
                   accept=".xlsx"
@@ -152,6 +151,24 @@
               </div>
               <div class="row justify-content-center">
                 <div class="col-12">
+                  <div class="row mt-2 mb-3">
+                    <div class="col-12">
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input
+                          type="text"
+                          pInputText
+                          (input)="
+                            dt.filterGlobal(
+                              $any($event.target).value,
+                              'contains'
+                            )
+                          "
+                          placeholder="Search"
+                        />
+                      </span>
+                    </div>
+                  </div>
                   <p-table
                     #dt
                     [value]="data.data"
@@ -167,26 +184,6 @@
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [showCurrentPageReport]="true"
                   >
-                    <ng-template pTemplate="caption">
-                      <div class="row">
-                        <div class="col-md-7 col-3">
-                          <span class="p-input-icon-left">
-                            <i class="pi pi-search"></i>
-                            <input
-                              type="text"
-                              pInputText
-                              (input)="
-                                dt.filterGlobal(
-                                  $any($event.target).value,
-                                  'contains'
-                                )
-                              "
-                              placeholder="Search"
-                            />
-                          </span>
-                        </div>
-                      </div>
-                    </ng-template>
                     <ng-template pTemplate="header">
                       <tr class="text-center">
                         <th style="width: 3rem;">

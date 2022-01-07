@@ -7,6 +7,7 @@ import { InvoicesRoutingModule } from './invoices-routing.module';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     TableModule,
     InputTextModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    InputNumberModule
   ]
 })
 export class InvoicesModule { }

@@ -7,15 +7,15 @@ import { UsersModifyComponent } from './users-modify/users-modify.component';
 
 const routes: Routes = [
   {
-    path: 'admin/user',
+    path: '',
     component:UsersViewComponent
   },
   {
-    path: 'admin/user/new',
+    path: 'new',
     component:UsersModifyComponent
   },
   {
-    path: 'admin/user/:code',
+    path: ':code',
     component:UsersModifyComponent
   }
 ]

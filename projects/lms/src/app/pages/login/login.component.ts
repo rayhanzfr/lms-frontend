@@ -25,12 +25,10 @@ export class LoginComponent implements OnInit {
   code?: string
   user?:string
   data:boolean = true
-  employees: Employees[]=[]
+  role!:string
+  employees: Employees=new Employees()
 
   ngOnInit(): void {
-    this.employeesService.getAll().subscribe(result => {
-      this.employees = result
-    })
   }
 
   onClick(): void {
@@ -49,32 +47,28 @@ export class LoginComponent implements OnInit {
         if (this.code) {      
           console.log(this.code)
           if (this.code==roleCode.get(1)) {
-            for(let i =0; i<this.employees.length; i++) {
-              if(this.employees[i].users.id == this.user){
-                this.data = false
+            this.employeesService.getByUsersId().subscribe(data =>{
+              this.employees = data
+              this.role = this.employees.users.roles.rolesCode
+              if(this.employeesService.getByUsersId().subscribe()) {
+                  this.router.navigateByUrl('/admin-dashboard')
               }
-            }
-            if(this.data){
-              this.router.navigateByUrl('/new-employee')
-            }
-            else{
-              this.router.navigateByUrl('/admin-dashboard')
-            }
-            console.log("Masuk Admin")
+              else{
+                this.router.navigateByUrl('/new-employee')
+              }
+            })
           }else if (this.code==roleCode.get(2)) {
-            for(let i =0; i<this.employees.length; i++) {
-              if(this.employees[i].users.id == this.user){
-                this.data = false
+            this.employeesService.getByUsersId().subscribe(data =>{
+              this.employees = data
+              this.role = this.employees.users.roles.rolesCode
+              if(this.employeesService.getByUsersId().subscribe()) {
+                  this.router.navigateByUrl('/dashboard')
               }
-            }
-            if(this.data){
-              this.router.navigateByUrl('/new-employee')
-            }else{
-              this.router.navigateByUrl('/dashboard')
-            }
-            console.log("Masuk Non Admin")
+              else{
+                this.router.navigateByUrl('/new-employee')
+              }
+            })
           }
-          console.log("Gamasuk")
         }
       },
       error: (err) => {

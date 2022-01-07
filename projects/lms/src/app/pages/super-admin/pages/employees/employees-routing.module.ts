@@ -6,15 +6,15 @@ import { EmployeesModifyComponent } from './employees-modify/employees-modify.co
 
 const routes: Routes = [
   {
-    path: 'admin/employees',
+    path: '',
     component: EmployeesViewComponent
   },
   {
-    path: 'admin/employees/new',
+    path: 'new',
     component: EmployeesModifyComponent
   },
   {
-    path: 'admin/employees/:code',
+    path: ':code',
     component: EmployeesModifyComponent
   }
 ]

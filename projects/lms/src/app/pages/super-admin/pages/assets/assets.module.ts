@@ -15,8 +15,6 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {CalendarModule} from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import {ToastModule} from 'primeng/toast';
-import { MessagesModule } from 'primeng/messages';
-import { MessageModule } from 'primeng/message';
 
 
 
@@ -27,7 +25,6 @@ import { MessageModule } from 'primeng/message';
   ],
   imports: [
     CommonModule, AssetsRoutingModule, MainbarModule,
-
     ToolbarModule,
     InputTextModule,
     ButtonModule,
@@ -36,9 +33,7 @@ import { MessageModule } from 'primeng/message';
     FileUploadModule,
     CalendarModule,
     DropdownModule,
-    ToastModule,
-    MessagesModule,
-    MessageModule,
+    ToastModule
   ]
 })
 export class AssetsModule { }

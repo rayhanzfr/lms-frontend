@@ -6,15 +6,15 @@ import { AssetsModifyComponent } from './assets-modify/assets-modify.component';
 
 const routes:Routes=[
   {
-    path:'admin/assets',
+    path:'',
     component: AssetsViewComponent
   },
   {
-    path:'admin/assets/new',
+    path:'new',
     component: AssetsModifyComponent
   },
   {
-    path:'admin/assets/:code',
+    path:':code',
     component: AssetsModifyComponent
   }
 ]

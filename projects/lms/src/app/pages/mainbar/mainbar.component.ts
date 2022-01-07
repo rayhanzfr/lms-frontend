@@ -4,7 +4,8 @@ import { roleCode } from 'projects/core/src/app/constant/rolecode';
 import { Employees } from 'projects/core/src/app/dto/employee/employees';
 import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
 import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service';
-import { Subscription } from 'rxjs';
+import { delay, Subscription } from 'rxjs';
+import { LoadingService } from '../../../../../core/src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-mainbar',
@@ -18,25 +19,16 @@ export class MainbarComponent implements OnInit, OnDestroy {
   isAdmin:boolean = true
   isNonAdmin:boolean = true
   code!:string
-
   employeeSubs?:Subscription
-
-  showLoadingIndicator=true
+  
   constructor(private router: Router, private employeesService: EmployeesService, private authService: AuthService) {
-    this.router.events.subscribe((routerEvent:Event)=>{
-      if(routerEvent instanceof NavigationStart){
-        this.showLoadingIndicator = true
-      }
-      if(routerEvent instanceof NavigationEnd || routerEvent instanceof NavigationCancel || routerEvent instanceof NavigationError){
-        this.showLoadingIndicator = false
-      }
-    })
    }
   ngOnDestroy(): void {
     this.employeeSubs?.unsubscribe()
   }
 
   ngOnInit(): void {
+
     this.employeeSubs = this.employeesService.getByUsersId().subscribe(result => {
       this.employee = result
     })
@@ -90,4 +82,5 @@ export class MainbarComponent implements OnInit, OnDestroy {
     this.authService.clearStorage()
     this.router.navigateByUrl("/login")
   }
+
 }

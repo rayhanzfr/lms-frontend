@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeleteInvoicesResDto } from 'projects/core/src/app/dto/invoices/delete-invoices-res-dto';
@@ -8,7 +9,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-invoices-view',
   templateUrl: './invoices-view.component.html',
-  styleUrls: ['./invoices-view.component.css']
+  styleUrls: ['./invoices-view.component.css'],
+  providers: [CurrencyPipe]
 })
 export class InvoicesViewComponent implements OnInit,OnDestroy {
 
@@ -25,7 +27,6 @@ export class InvoicesViewComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.invoicesService.getAll().subscribe(result => {
       this.data = result
-      this.totalData = this.data.length
     })
   }
 

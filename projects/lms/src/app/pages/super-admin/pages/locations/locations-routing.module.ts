@@ -6,15 +6,15 @@ import { LocationsModifyComponent } from './locations-modify/locations-modify.co
 
 const routes: Routes = [
   {
-    path: 'admin/locations',
+    path: '',
     component:LocationsViewComponent
   },
   {
-    path: 'admin/locations/new',
+    path: 'new',
     component:LocationsModifyComponent
   },
   {
-    path:'admin/locations/:code',
+    path:':code',
     component:LocationsModifyComponent
   }
 ]

@@ -7,15 +7,15 @@ import { TransactionsInDetailViewComponent } from './transactions-in-detail-view
 
 const routes: Routes = [
   {
-    path: 'admin/transactions-in',
+    path: '',
     component:TransactionsInViewComponent
   },
   {
-    path: 'admin/transactions-in/detail/:code',
+    path: 'detail/:code',
     component:TransactionsInDetailViewComponent
   },
   {
-    path: 'admin/transactions-in/new',
+    path: 'new',
     component:TransactionsInModifyComponent
   }
 ]

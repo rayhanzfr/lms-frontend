@@ -6,15 +6,15 @@ import { InvoicesModifyComponent } from './invoices-modify/invoices-modify.compo
 
 const routes: Routes = [
   {
-    path: 'admin/invoices',
+    path: '',
     component:InvoicesViewComponent
   },
   {
-    path: 'admin/invoices/new',
+    path: 'new',
     component:InvoicesModifyComponent
   },
   {
-    path: 'admin/invoices/:code',
+    path: ':code',
     component:InvoicesModifyComponent
   }
 ]

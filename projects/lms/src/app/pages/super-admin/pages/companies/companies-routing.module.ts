@@ -6,15 +6,15 @@ import { CompaniesModifyComponent } from './companies-modify/companies-modify.co
 
 const routes: Routes = [
   {
-    path: 'admin/companies',
+    path: '',
     component: CompaniesViewComponent
   },
   {
-    path: 'admin/companies/new',
+    path: 'new',
     component: CompaniesModifyComponent
   },
   {
-    path: 'admin/companies/:code',
+    path: ':code',
     component: CompaniesModifyComponent
   }
 ]

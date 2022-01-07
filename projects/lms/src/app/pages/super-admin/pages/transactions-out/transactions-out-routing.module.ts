@@ -7,15 +7,15 @@ import { TransactionsOutViewComponent } from './transactions-out-view/transactio
 
 const routes: Routes = [
   {
-    path: 'admin/transactions-out',
+    path: '',
     component:TransactionsOutViewComponent
   },
   {
-    path: 'admin/transactions-out/detail/:code',
+    path: 'detail/:code',
     component:TransactionsOutDetailViewComponent
   },
   {
-    path: 'admin/transactions-out/new',
+    path: 'new',
     component:TransactionsOutModifyComponent
   }
 ]

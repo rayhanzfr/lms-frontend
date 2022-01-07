@@ -20,6 +20,7 @@ export class SuperAdminDashboardComponent implements OnInit {
   totalItem!:number
   totalEmployee!:number
   employee!: Employees
+  loading?:boolean
   data:GetAllAssetsResDto= new GetAllAssetsResDto()
 
   employeesSubs?:Subscription
@@ -27,12 +28,15 @@ export class SuperAdminDashboardComponent implements OnInit {
   itemsSubs?:Subscription
 
   ngOnInit(): void {
+    this.loading = true
+    setTimeout(() => {
     this.employeesSubs = this.employeesService.getByUsersId().subscribe(result=>this.employee = result)
-    this.assetsSubs = this.assetsService.getByCompaniesCode(this.employee?.companies?.companiesCode).subscribe(result=>{this.totalAsset=result.data.length})
+    this.assetsSubs = this.assetsService.getAll().subscribe(result=>{this.totalAsset=result.data.length})
     this.itemsSubs = this.itemsService.getAll().subscribe(result=>{this.totalItem=result.length})
     this.assetsSubs =  this.assetsService.getByStatusInOut('COUT').subscribe(result=>{this.totalBorrowed=result.data.length})
-    this.employeesSubs = this.employeesService.getAllByCompany().subscribe(result=>this.totalEmployee=result.length)
+    this.employeesSubs = this.employeesService.getAll().subscribe(result=>this.totalEmployee=result.length)
     this.assetsSubs = this.assetsService.getBorrowedAssets().subscribe(result=>{this.data=result})
+    this.loading = false;
+  }, 1000); 
   }
-
 }
