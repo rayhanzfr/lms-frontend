@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { statusesAssetsCode } from 'projects/core/src/app/constant/statuses-assets-code';
 import { statusesInOutCode} from 'projects/core/src/app/constant/statuses-in-out-code';
 import { Assets } from 'projects/core/src/app/dto/asset/assets';
+import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto';
 import { Employees } from 'projects/core/src/app/dto/employee/employees';
 import { ItemsBrands } from 'projects/core/src/app/dto/items-brands/items-brands';
 import { ItemsTypes } from 'projects/core/src/app/dto/items-types/items-types';
@@ -140,7 +141,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
       }
     });
     this.assetsGeneralSubs = this.assetsService.getByItemsTypesCode("ITMTYPES1").subscribe(result=>{
-      this.listAssetsGeneral = result
+      this.listAssetsGeneral = result.data
       for (let i = 0; i < this.listAssetsGeneral.length; i++) {
         this.assetsGeneral = new Assets();
         this.assetsGeneral = this.listAssetsGeneral[i];
