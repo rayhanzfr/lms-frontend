@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     // })
     this.authService.login(this.login).subscribe({
       next: (result) => {
+        console.log(result)
         this.authService.saveUserData(result)
         this.token = this.authService.getToken()
         this.code = this.authService.getRolesCode()
@@ -49,8 +50,7 @@ export class LoginComponent implements OnInit {
           if (this.code==roleCode.get(1)) {
             this.employeesService.getByUsersId().subscribe(data =>{
               this.employees = data
-              this.role = this.employees.users.roles.rolesCode
-              if(this.employeesService.getByUsersId().subscribe()) {
+              if(this.employees) {
                   this.router.navigateByUrl('/admin-dashboard')
               }
               else{
@@ -60,8 +60,7 @@ export class LoginComponent implements OnInit {
           }else if (this.code==roleCode.get(2)) {
             this.employeesService.getByUsersId().subscribe(data =>{
               this.employees = data
-              this.role = this.employees.users.roles.rolesCode
-              if(this.employeesService.getByUsersId().subscribe()) {
+              if(this.employees) {
                   this.router.navigateByUrl('/dashboard')
               }
               else{
