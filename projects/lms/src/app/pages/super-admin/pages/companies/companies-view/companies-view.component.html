@@ -93,7 +93,7 @@
                       <td>
                         {{ rowIndex + 1 }}
                       </td>
-                      <td><img src="data:image/png;base64,{{c.files.file}}" width="50" height="50"></td>
+                      <td><img src="data:image/png;base64,{{c.files.file}}" [hidden]="showImg" width="50" height="50"></td>
                       <td>{{ c.companiesCode }}</td>
                       <td>{{ c.companiesName }}</td>
                       <td>{{ c.companiesPhone }}</td>
