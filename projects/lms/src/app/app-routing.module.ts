@@ -30,38 +30,38 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/super-admin-dashboard/super-admin-dashboard.module').then(result => result.SuperAdminDashboardModule)
   },
   {
-    path: '',
+    path: 'admin/statuses-assets',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/statuses-assets/statuses-assets.module').then(result => result.StatusesAssetsModule)
   },
   {
-    path: '',
+    path: 'admin/companies',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/companies/companies.module').then(result => result.CompaniesModule)
   },
   {
-    path: '',
+    path: 'admin/locations',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/locations/locations.module').then(result => result.LocationsModule)
   },
   {
-    path: '',
+    path: 'admin/invoices',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/invoices/invoices.module').then(result => result.InvoicesModule)
   },
   {
-    path: '',
+    path: 'admin/transactions-in',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/transactions-in/transactions-in.module').then(result => result.TransactionsInModule)
   },
   {
-    path: '',
+    path: 'admin/transactions-out',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/transactions-out/transactions-out.module').then(result => result.TransactionsOutModule)
 
   },
     {
-    path: '',
+    path: 'admin/reports',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/reports/reports.module').then(result => result.ReportsModule)
   },
@@ -71,17 +71,17 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/roles/roles.module').then(result => result.RolesModule)
   },
   {
-    path: '',
+    path: 'admin/items-brands',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/items-brands/items-brands.module').then(result => result.ItemsBrandsModule)
   },
   {
-    path: '',
+    path: 'admin/items-types',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/items-types/items-types.module').then(result => result.ItemsTypesModule)
   },
   {
-    path: '',
+    path: 'admin/items',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/items/items.module').then(result => result.ItemsModule)
   },
@@ -91,22 +91,22 @@ const routes: Routes = [
     loadChildren: () => import('./../app/pages/super-admin/pages/permissions/permissions.module').then(result => result.PermissionsModule)
   },
   {
-    path: '',
+    path: 'admin/statuses-transactions',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/statuses-transactions/statuses-transactions.module').then(result => result.StatusesTransactionsModule)
   },
   {
-    path:'',
+    path:'admin/user',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/users/users.module').then(result=>result.UsersModule)
   },
   {
-    path:'',
+    path:'admin/assets',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/assets/assets.module').then(result=>result.AssetsModule)
   },
   {
-    path:'',
+    path:'admin/employees',
     component: MainbarComponent,
     loadChildren: () => import('./../app/pages/super-admin/pages/employees/employees.module').then(result=>result.EmployeesModule)
   }
@@ -138,7 +138,7 @@ const routes: Routes = [
   // notfound
   {
     path: '**',
-    component:NotFoundComponent
+    component:NotFoundComponent,
   }
   
 ];

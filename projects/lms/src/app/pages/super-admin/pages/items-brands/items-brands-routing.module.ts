@@ -6,15 +6,15 @@ import { ItemsBrandsModifyComponent } from './items-brands-modify/items-brands-m
 
 const itemsBrandsRoutes:Routes=[
   {
-    path:'admin/items-brands',
+    path:'',
     component:ItemsBrandsViewComponent
   },
   {
-    path:'admin/items-brands/new',
+    path:'new',
     component:ItemsBrandsModifyComponent
   },
   {
-    path:'admin/items-brands/:id',
+    path:':id',
     component:ItemsBrandsModifyComponent
   }
 ]

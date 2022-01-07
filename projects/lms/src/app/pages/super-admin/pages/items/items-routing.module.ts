@@ -7,15 +7,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 const itemsRoutes:Routes=[
   {
-    path:'admin/items',
+    path:'',
     component:ItemsViewComponent
   },
   {
-    path:'admin/items/new',
+    path:'new',
     component:ItemsModifyComponent
   },
   {
-    path:'admin/items/:code',
+    path:':code',
     component:ItemsModifyComponent
   }
 ]

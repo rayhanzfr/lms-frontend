@@ -6,15 +6,15 @@ import { ItemsTypesModifyComponent } from './items-types-modify/items-types-modi
 
 const itemsTypesRoutes:Routes=[
   {
-    path:'admin/items-types',
+    path:'',
     component:ItemsTypesViewComponent
   },
   {
-    path:'admin/items-types/new',
+    path:'new',
     component:ItemsTypesModifyComponent
   },
   {
-    path:'admin/items-types/:id',
+    path:':id',
     component:ItemsTypesModifyComponent
   }
 ]

@@ -6,15 +6,15 @@ import { StatusesTransactionsViewComponent } from './statuses-transactions-view/
 
 const statusesTransactionsRoutes:Routes=[
   {
-    path:'admin/statuses-transactions',
+    path:'',
     component:StatusesTransactionsViewComponent
   },
   {
-    path:'admin/statuses-transactions/new',
+    path:'new',
     component:StatusesTransactionsModifyComponent
   },
   {
-    path:'admin/statuses-transactions/:id',
+    path:':id',
     component:StatusesTransactionsModifyComponent
   }
 ]

@@ -1,62 +1,60 @@
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 grid-margin">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-8 col-12 align-center">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Invoices</b></h4>
-                <div class="card-body mx-5">
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Invoices Code</b></h5>
-                    <input
-                      type="text"
-                      id="text"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                      disabled
-                      value="{{invoicesReq.invoicesCode}}"
-                    />
-                  </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Store Name</b></h5>
-                    <input
-                      type="text"
-                      id="text"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                      [(ngModel)]="invoicesReq.storeName"
-                    />
-                  </div>
-                  <div class="form-group mt-4 mb-3">
-                    <h5 for="roles"><b>Price</b></h5>
-                    <input
-                      type="number"
-                      id="text"
-                      pInputText
-                      class="form-control form-control-md col-12"
-                      [(ngModel)]="invoicesReq.price"
-                    />
-                  </div>
-                  <div class="row d-flex mt-5 justify-content-end">
-                    <div class="btn-group">
-                      <button
-                        pButton
-                        pRipple
-                        type="button"
-                        label="Cancel"
-                        class="p-button-sm p-button-danger mx-3"
-                        (click)="back()"
-                      ></button>
-                      <button
-                        pButton
-                        pRipple
-                        type="button"
-                        label="Submit"
-                        class="p-button-sm p-button-success"
-                        (click)="submitData()"
-                      ></button>
-                    </div>
+  <div class="row">
+    <div class="col-md-12 grid-margin">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10 col-lg-9 col-xl-7 col-12 align-center">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="text-center fs-50 m-2 mb-sm-3"><b>Invoices</b></h4>
+              <div class="card-body mx-md-5">
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="roles"><b>Invoices Code</b></h5>
+                  <input
+                    type="text"
+                    id="text"
+                    pInputText
+                    class="form-control form-control-sm col-12"
+                    disabled
+                    value="{{ invoicesReq.invoicesCode }}"
+                  />
+                </div>
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="roles"><b>Store Name</b></h5>
+                  <input
+                    type="text"
+                    id="text"
+                    pInputText
+                    class="form-control form-control-sm col-12"
+                    [(ngModel)]="invoicesReq.storeName"
+                  />
+                </div>
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="roles"><b>Price</b></h5>
+                  <p-inputNumber
+                    [(ngModel)]="invoicesReq.price"
+                    mode="currency"
+                    currency="Rp"
+                    locale="id-ID"
+                  ></p-inputNumber>
+                </div>
+                <div class="row d-flex mt-5 justify-content-end">
+                  <div class="btn-group">
+                    <button
+                      pButton
+                      pRipple
+                      type="button"
+                      label="Cancel"
+                      class="p-button-sm p-button-danger mx-3"
+                      (click)="back()"
+                    ></button>
+                    <button
+                      pButton
+                      pRipple
+                      type="button"
+                      label="Submit"
+                      class="p-button-sm p-button-success"
+                      (click)="submitData()"
+                    ></button>
                   </div>
                 </div>
               </div>
@@ -66,4 +64,4 @@
       </div>
     </div>
   </div>
-  
+</div>

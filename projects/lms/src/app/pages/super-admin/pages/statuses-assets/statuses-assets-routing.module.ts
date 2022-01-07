@@ -5,7 +5,7 @@ import { StatusesAssetsViewComponent } from './statuses-assets-view/statuses-ass
 
 const routes: Routes = [
   {
-    path: 'admin/statuses-assets',
+    path: '',
     component:StatusesAssetsViewComponent
   }
 ]
