@@ -53,6 +53,10 @@
                       <th style="width: 3rem;">
                         No
                       </th>
+                      <th pSortableColumn="assetsName">
+                        Assets Name
+                        <p-sortIcon field="assetsName"></p-sortIcon>
+                      </th>
                       <th pSortableColumn="locationsCode">
                         Locations Code
                         <p-sortIcon field="locationsCode"></p-sortIcon>
@@ -61,9 +65,9 @@
                         Employees Code
                         <p-sortIcon field="employeesCode"></p-sortIcon>
                       </th>
-                      <th pSortableColumn="assetsName">
-                        Assets Name
-                        <p-sortIcon field="assetsName"></p-sortIcon>
+                      <th pSortableColumn="assetsGeneralName">
+                        Assets General Name
+                        <p-sortIcon field="assetsGeneralName"></p-sortIcon>
                       </th>
                       <th pSortableColumn="expiredDate">
                         Expired Date
@@ -76,9 +80,10 @@
                       <td>
                         {{ rowIndex + 1 }}
                       </td>
+                      <td>{{ tdout.assetsName }}</td>
                       <td>{{ tdout.locationsCode }}</td>
                       <td>{{ tdout.employeesCode }}</td>
-                      <td>{{ tdout.assetsName }}</td>
+                      <td>{{ tdout.assetsGeneralName }}</td>
                       <td>{{ tdout.expiredDate }}</td>
                     </tr>
                   </ng-template>

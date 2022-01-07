@@ -4,7 +4,7 @@ import { ItemsTypes } from "../items-types/items-types";
 
 export class Items{
     id!:string;
-    files!:Files;
+    files?:Files;
 	itemsTypes!:ItemsTypes;
 	itemsBrands!:ItemsBrands;
 	itemsCode!:string;

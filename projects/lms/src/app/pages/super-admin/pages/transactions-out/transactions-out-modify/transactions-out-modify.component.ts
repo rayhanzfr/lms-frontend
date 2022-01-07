@@ -71,7 +71,9 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
   selectedItemsBrands:ItemsBrands=new ItemsBrands();
   itemsBrandsSubs?:Subscription;
   items:Items = new Items();
+  itemsAll:Items[]=[]
   itemsSubs?:Subscription;
+  itemsAllSubs?:Subscription;
   listLocations:Locations[]=[];
   locations!:Locations
   listLocationsCode:string[]=[]
@@ -81,6 +83,11 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
   usersEmployee:Employees = new Employees();
   listEmployeesCode:string[]=[]
   employeesSubs?:Subscription;
+  listAssetsGeneral:Assets[]=[]
+  assetsGeneral!:Assets
+  listAssetsGeneralName:string[]=[]
+  assetsGeneralSubs?:Subscription;
+
   listAssets:Assets[]=[];
   assetsSubs?:Subscription;
   qty!:number;
@@ -113,6 +120,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
     this.assetsFor.push(this.assetsForEmp);
     this.assetsFor.push(this.assetsForLoc);
     this.assetsFor.push(this.assetsForGen);
+    this.itemsAllSubs=this.itemsService.getAll().subscribe(result=>this.itemsAll=result);
     this.itemsTypesSubs = this.itemsTypesService.getAll().subscribe(result=>{this.listItemsTypes = result});
     this.itemsBrandsSubs = this.itemsBrandsService.getAll().subscribe(result=>{this.listItemsBrands = result});
     this.locationsSubs = this.locationsService.getAll().subscribe(result=>{
@@ -129,6 +137,14 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
         this.employees = new Employees();
         this.employees = this.listEmployees[i];
         this.listEmployeesCode.push(this.employees.employeesCode)
+      }
+    });
+    this.assetsGeneralSubs = this.assetsService.getByItemsTypesCode("ITMTYPES1").subscribe(result=>{
+      this.listAssetsGeneral = result
+      for (let i = 0; i < this.listAssetsGeneral.length; i++) {
+        this.assetsGeneral = new Assets();
+        this.assetsGeneral = this.listAssetsGeneral[i];
+        this.listAssetsGeneralName.push(this.assetsGeneral.assetsName)
       }
     });
     

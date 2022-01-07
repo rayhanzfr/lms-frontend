@@ -87,6 +87,9 @@ export class TransactionsInModifyComponent implements OnInit, OnDestroy{
             if (this.transactionsDetailOut[i].locationsCode) {
               this.saveTransactionDetailInReqDto.locationsCode=this.transactionsDetailOut[i].locationsCode;
             }
+            if (this.transactionsDetailOut[i].assetsGeneralName) {
+              this.saveTransactionDetailInReqDto.assetsGeneralName=this.transactionsDetailOut[i].assetsGeneralName;
+            }
             this.listSaveTransactionsDetailInReqDto.push(this.saveTransactionDetailInReqDto)
           }
         })
