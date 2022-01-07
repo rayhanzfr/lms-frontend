@@ -16,6 +16,7 @@ export class CompaniesViewComponent implements OnInit, OnDestroy {
   data: Companies[] = []
   resDeleteCompanies?:DeleteCompaniesResDto
   totalData!:number
+  showImg:boolean = true
 
   constructor(private router:Router, private companiesService: CompaniesService) { }
   ngOnDestroy(): void {
@@ -25,7 +26,11 @@ export class CompaniesViewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.companiesService.getAll().subscribe(result =>{
       this.data = result
-      this.totalData = this.data.length
+      for(let i = 0; i < this.data.length;i++){
+        if(this.data[i].files!=null){
+          this.showImg = false
+        }
+      }
     })
   }
 

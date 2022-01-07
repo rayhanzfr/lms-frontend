@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit {
           if (this.code==roleCode.get(1)) {
             this.employeesService.getByUsersId().subscribe(data =>{
               this.employees = data
-              this.role = this.employees.users.roles.rolesCode
-              if(this.employeesService.getByUsersId().subscribe()) {
+              if(this.employees) {
                   this.router.navigateByUrl('/admin-dashboard')
               }
               else{
@@ -60,8 +59,7 @@ export class LoginComponent implements OnInit {
           }else if (this.code==roleCode.get(2)) {
             this.employeesService.getByUsersId().subscribe(data =>{
               this.employees = data
-              this.role = this.employees.users.roles.rolesCode
-              if(this.employeesService.getByUsersId().subscribe()) {
+              if(this.employees) {
                   this.router.navigateByUrl('/dashboard')
               }
               else{
