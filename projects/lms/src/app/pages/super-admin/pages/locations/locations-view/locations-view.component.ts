@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 import { DeleteLocationsResDto } from 'projects/core/src/app/dto/locations/delete-locations-res-dto';
 import { Locations } from 'projects/core/src/app/dto/locations/locations';
 import { LocationsService } from 'projects/core/src/app/services/locations/locations.service';
@@ -8,7 +9,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-locations-view',
   templateUrl: './locations-view.component.html',
-  styleUrls: ['./locations-view.component.css']
+  styleUrls: ['./locations-view.component.css'],
+  providers: [ConfirmationService, MessageService],
 })
 export class LocationsViewComponent implements OnInit, OnDestroy {
 
@@ -19,7 +21,8 @@ export class LocationsViewComponent implements OnInit, OnDestroy {
   loading!:boolean
   isHide=true
 
-  constructor(private router:Router, private locationsService: LocationsService) { }
+  constructor(private router:Router, private locationsService: LocationsService,private confirmationService: ConfirmationService,
+    private messageService: MessageService) { }
   ngOnDestroy(): void {
     this.obs?.unsubscribe
   }
@@ -50,4 +53,47 @@ export class LocationsViewComponent implements OnInit, OnDestroy {
       })
     }
   }
+
+  confirm(id: string) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this companies?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.locationsService.delete(id).subscribe((result) => {
+          this.resDeleteLocations = result
+        })
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Confirmed',
+          detail: 'You have deleted',
+        })
+        setTimeout(() => this.reloadCurrentRoute(), 1000)
+      },
+      reject: (type: any) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Rejected',
+              detail: 'You have rejected',
+            })
+            break
+          case ConfirmEventType.CANCEL:
+            this.messageService.add({
+              severity: 'warn',
+              summary: 'Cancelled',
+              detail: 'You have cancelled',
+            })
+            break
+        }
+      },
+    })
+  }
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
 }

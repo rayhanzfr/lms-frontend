@@ -1,3 +1,5 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
 <div class="row">
     <div class="col-md-12 grid-margin">
       <div class="row">
@@ -120,7 +122,7 @@
                           pRipple
                           icon="pi pi-trash"
                           class="p-button-sm p-button-rounded p-button-danger"
-                          (click)="delete(d.id)"
+                          (click)="confirm(d.id)"
                         ></button>
                       </td>
                     </tr>

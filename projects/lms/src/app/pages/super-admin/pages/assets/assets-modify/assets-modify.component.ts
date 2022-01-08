@@ -16,6 +16,8 @@ import { StatusesInOutService } from 'projects/core/src/app/services/statuses-in
 import { Subscription } from 'rxjs'
 import { PrimeNGConfig } from 'primeng/api'
 import { UpdateAssetsReqDto } from 'projects/core/src/app/dto/asset/update-assets-req-dto'
+import { CompaniesService } from 'projects/core/src/app/services/companies/companies.service'
+import { Companies } from '../../../../../../../../core/src/app/dto/companies/companies';
 
 @Component({
   selector: 'app-assets-modify',
@@ -38,6 +40,8 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
   statusesAssets: StatusesAssets[] = []
   statusesInOutReq: StatusesInOut = new StatusesInOut()
   statusesInOut: StatusesInOut[] = []
+  companies: Companies[] = []
+  companiesReq: Companies = new Companies()
 
   updateResDto: UpdateAssetsResDto = new UpdateAssetsResDto()
 
@@ -48,6 +52,7 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
   invoicesSub?: Subscription
   statusesAssetsSub?: Subscription
   statusesInOutSub?: Subscription
+  companiesSubs?: Subscription
   constructor(
     private assetsService: AssetsService,
     private itemsService: ItemsService,
@@ -56,6 +61,7 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
     private statusesAssetsService: StatusesAssetsService,
     private router: Router,
     private activeRoute: ActivatedRoute,
+    private companiesService: CompaniesService
   ) {}
   ngOnDestroy(): void {
     this.assetsSub?.unsubscribe()
@@ -70,14 +76,11 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
         .subscribe((result) => {
           this.assets = result.data
           this.saveAssetReq.assetsName = this.assets.assetsName
-          this.saveAssetReq.assetsExpired = this.assets.assetsExpired
           this.saveAssetReq.invoicesCode = this.assets.invoicesCode
           this.saveAssetReq.itemsCode = this.assets.itemsCode
           this.saveAssetReq.statusesAssetsCode = this.assets.statusesAssetsCode
           this.saveAssetReq.statusesInOutCode = this.assets.statusesInOutCode
-          this.saveAssetReq.assetsExpired = this.assets.assetsExpired
           this.saveAssetReq.companiesCode = this.assets.companiesCode
-
           this.itemsSub = this.itemsService
             .getByCode(this.saveAssetReq.itemsCode)
             .subscribe((result) => {
@@ -98,6 +101,9 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
             .subscribe((result) => {
               this.statusesInOutReq = result
             })
+            this.companiesSubs = this.companiesService.getByCode(this.saveAssetReq.companiesCode).subscribe(result =>{
+              this.companiesReq = result
+            })
         })
     }
     this.itemsSub = this.itemsService.getAll().subscribe((result) => {
@@ -115,6 +121,9 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
       .getAll()
       .subscribe((result) => {
         this.statusesInOut = result
+      })
+      this.companiesSubs = this.companiesService.getAll().subscribe(result =>{
+        this.companies = result
       })
   }
 
@@ -153,6 +162,7 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
     } else {
       this.saveAssetReq.itemsCode = this.itemsReq.itemsCode
       this.saveAssetReq.invoicesCode = this.invoicesReq.invoicesCode
+      this.saveAssetReq.companiesCode = this.companiesReq.companiesCode
       this.saveAssetReq.statusesAssetsCode = this.statusesAssetsReq.statusesAssetsCode
       this.saveAssetReq.statusesInOutCode = this.statusesInOutReq.statusesInOutCode
       this.assetsService.save(this.saveAssetReq).subscribe((result) => {

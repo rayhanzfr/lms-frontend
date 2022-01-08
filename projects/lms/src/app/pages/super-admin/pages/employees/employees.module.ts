@@ -10,6 +10,8 @@ import { ToolbarModule } from 'primeng/toolbar'
 import { InputTextModule } from 'primeng/inputtext'
 import { TableModule } from 'primeng/table'
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     DropdownModule,
     ToolbarModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    ConfirmDialogModule,
+    ToastModule
   ]
 })
 export class EmployeesModule { }

@@ -1,3 +1,5 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
 <div class="row">
     <div class="col-md-12 grid-margin">
       <div class="row">
@@ -63,11 +65,11 @@
                         No
                       </th>
                       <th pSortableColumn="itemsBrandsCode">
-                        ItemsBrands Code
+                        Code
                         <p-sortIcon field="itemsBrandsCode"></p-sortIcon>
                       </th>
                       <th pSortableColumn="itemsBrandsName">
-                        ItemsBrands Name
+                        Item Brand Name
                         <p-sortIcon field="itemsBrandsName"></p-sortIcon>
                       </th>
                       <th class="text-center" style="width:10rem">
@@ -95,7 +97,7 @@
                           pRipple
                           icon="pi pi-trash"
                           class="p-button-rounded p-button-danger"
-                          (click)="delete(d.id)"
+                          (click)="confirm(d.id)"
                         ></button>
                       </td>
                     </tr>

@@ -8,6 +8,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -23,7 +25,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     InputTextModule,
     ButtonModule,
     FormsModule,
-    InputNumberModule
+    InputNumberModule,
+    ConfirmDialogModule,
+    ToastModule
   ]
 })
 export class InvoicesModule { }

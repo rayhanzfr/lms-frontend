@@ -1,26 +1,38 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Observable, Observer, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoadingService {
-  // loadingSub = new BehaviorSubject<boolean>(false)
-  // loadings : Map<string,boolean> = new Map<string,boolean>();
-  constructor() { }
-// setLoading(loading:boolean,url:string):void{
-//   if(!url){
-//     throw new Error('No URL in Loading Service')
+// load?:Observer<boolean|null>
+// load$?:Observable<boolean|null>
+//   constructor() {
+//     this.load$ = new Observable<boolean|null>(
+//       obs => this.load=obs
+//     )
+//    }
+
+//   loading(loading:boolean|null):void{
+//     this.load?.next(loading)
 //   }
-//   if(loading===true){
-//     this.loadings.set(url,loading);
-//     this.loadingSub.next(true)
-//   }
-//   else if(loading===false && this.loadings.has(url)){
-//     this.loadings.delete(url);
-//   }
-//   if(this.loadings.size ===0){
-//     this.loadingSub.next(false)
-//   }
-// }
+private _loading: boolean = false;
+loadingStatus:Subject<boolean> = new Subject()
+
+get loading():boolean {
+  return this._loading;
+}
+
+set loading(value) {
+  this._loading = value;
+  this.loadingStatus.next(value);
+}
+
+startLoading() {
+  this.loading = true;
+}
+
+stopLoading() {
+  this.loading = false;
+}
 }

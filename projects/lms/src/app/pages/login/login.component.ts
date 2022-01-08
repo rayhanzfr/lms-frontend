@@ -11,6 +11,7 @@ import { EmployeesService } from 'projects/core/src/app/services/employees/emplo
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
   constructor(
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   role!:string
   employees: Employees=new Employees()
 
+  
   ngOnInit(): void {
   }
 
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
     //   this.code = this.authService.getRolesCode()
     //   this.router.navigateByUrl('/admin-dashboard');
     // })
+
     this.authService.login(this.login).subscribe({
       next: (result) => {
         console.log(result)
@@ -48,7 +51,7 @@ export class LoginComponent implements OnInit {
         if (this.code) {      
           console.log(this.code)
           if (this.code==roleCode.get(1)) {
-            this.employeesService.getByUsersId().subscribe(data =>{
+            this.employeesService.getByUsersId().subscribe({next:data =>{
               this.employees = data
               if(this.employees) {
                   this.router.navigateByUrl('/admin-dashboard')
@@ -56,9 +59,9 @@ export class LoginComponent implements OnInit {
               else{
                 this.router.navigateByUrl('/new-employee')
               }
-            })
+            }})
           }else if (this.code==roleCode.get(2)) {
-            this.employeesService.getByUsersId().subscribe(data =>{
+            this.employeesService.getByUsersId().subscribe({next:data =>{
               this.employees = data
               if(this.employees) {
                   this.router.navigateByUrl('/dashboard')
@@ -66,7 +69,7 @@ export class LoginComponent implements OnInit {
               else{
                 this.router.navigateByUrl('/new-employee')
               }
-            })
+            }})
           }
         }
       },

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ItemsBrands } from 'projects/core/src/app/dto/items-brands/items-brands';
 import { ItemsTypes } from 'projects/core/src/app/dto/items-types/items-types';
 import { Items } from 'projects/core/src/app/dto/items/items';
@@ -13,7 +14,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-items-modify',
   templateUrl: './items-modify.component.html',
-  styleUrls: ['./items-modify.component.css']
+  styleUrls: ['./items-modify.component.css'],
+  providers:[MessageService]
 })
 export class ItemsModifyComponent implements OnInit, OnDestroy {
 
@@ -43,7 +45,7 @@ export class ItemsModifyComponent implements OnInit, OnDestroy {
 
   constructor(private route: Router, private router:ActivatedRoute, 
     private itemsService:ItemsService, private itemsBrandsService:ItemsBrandsService,
-    private itemsTypesService:ItemsTypesService) { }
+    private itemsTypesService:ItemsTypesService, private messageService: MessageService) { }
   ngOnDestroy(): void {
     this.itemsSubs?.unsubscribe()
     this.itemsSub?.unsubscribe()
@@ -68,23 +70,51 @@ export class ItemsModifyComponent implements OnInit, OnDestroy {
   }
 
   submitData(){
-    this.itemsReq.itemsTypes=this.itemsTypes
-    this.itemsReq.itemsBrands=this.itemsBrands
-    if (this.itemsReq.itemsCode) {
-      this.itemsSubs = this.itemsService.update(this.itemsReq,this.file)?.subscribe(result=>{
-        this.updateItemsRes=result
-        if (this.updateItemsRes) { 
-          this.route.navigateByUrl("admin/items")
-        }
-      })  
-    }else{
-      this.itemsSubs=this.itemsService.save(this.itemsReq, this.file)?.subscribe(result=>{
-        this.saveItemsRes=result
-        if (this.saveItemsRes) {
-          this.route.navigateByUrl("admin/items")
-        }
+
+    if(this.itemsBrands == null||this.itemsTypes==null){
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Rejected',
+        detail: 'Please input all form',
       })
+    }else{
+      this.itemsReq.itemsTypes=this.itemsTypes
+      this.itemsReq.itemsBrands=this.itemsBrands
+      if (this.itemsReq.itemsCode) {
+        this.itemsSubs = this.itemsService.update(this.itemsReq,this.file)?.subscribe(result=>{
+          this.updateItemsRes=result
+          if (this.updateItemsRes) { 
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Updated',
+              detail: '' + this.updateItemsRes.msg,
+            })
+            setTimeout(
+              () => 
+              this.route.navigateByUrl("admin/items"),
+              2000,
+            )
+          }
+        })  
+      }else{
+        this.itemsSubs=this.itemsService.save(this.itemsReq, this.file)?.subscribe(result=>{
+          this.saveItemsRes=result
+          if (this.saveItemsRes) {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Save',
+              detail: '' + this.saveItemsRes.msg,
+            })
+            setTimeout(
+              () => 
+              this.route.navigateByUrl("admin/items"),
+              2000,
+            )
+          }
+        })
+      }
     }
+    
   }
   
   back(){

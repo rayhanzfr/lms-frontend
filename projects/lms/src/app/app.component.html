@@ -1,2 +1,6 @@
-
-<router-outlet></router-outlet>
+<router-outlet>
+    <div class="loading-container" *ngIf="load">
+        <div class="loading"></div>
+        <div id="loading-text">loading</div>
+      </div>
+</router-outlet>

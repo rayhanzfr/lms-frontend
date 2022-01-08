@@ -5,6 +5,8 @@ import { Employees } from 'projects/core/src/app/dto/employee/employees';
 import { AuthService } from 'projects/core/src/app/services/auth/auth.service';
 import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service';
 import { delay, Subscription } from 'rxjs';
+import { RouteConfigLoadEnd } from "@angular/router";
+import { RouteConfigLoadStart } from "@angular/router";
 
 @Component({
   selector: 'app-mainbar',
@@ -19,8 +21,23 @@ export class MainbarComponent implements OnInit, OnDestroy {
   isNonAdmin:boolean = true
   code!:string
   employeeSubs?:Subscription
+  load?:boolean
   
   constructor(private router: Router, private employeesService: EmployeesService, private authService: AuthService) {
+    this.router.events.subscribe((event: Event) => {
+      var asyncLoadCount = 0;
+      if ( event instanceof RouteConfigLoadStart ) {
+ 
+        asyncLoadCount++;
+
+      } else if ( event instanceof RouteConfigLoadEnd ) {
+
+        asyncLoadCount--;
+
+      }
+
+      this.load = !! asyncLoadCount;
+    });
    }
   ngOnDestroy(): void {
     this.employeeSubs?.unsubscribe()

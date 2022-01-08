@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 grid-margin">
@@ -30,18 +31,6 @@
                   />
                 </div>
                 <div class="form-group mt-4 mb-3">
-                  <h5 for="nip"><b>NIP</b></h5>
-                  <input
-                    type="text"
-                    id="nip"
-                    pInputText
-                    class="form-control form-control-md col-12"
-                    [(ngModel)]="employeesReq.employeesCode"
-                    [value]="employees?.employeesCode"
-                    [disabled]="isUpdate"
-                  />
-                </div>
-                <div class="form-group mt-4 mb-3">
                   <h5 for="phone"><b>Phone</b></h5>
                   <input
                     type="text"
@@ -57,9 +46,7 @@
                   <p-dropdown
                     [options]="users"
                     [(ngModel)]="usersReq"
-                    placeholder="{{ employees?.users?.usersEmail }}"
                     optionLabel="usersEmail"
-                    [showClear]="true"
                     [disabled]="isUpdate"
                   ></p-dropdown>
                 </div>
@@ -68,9 +55,7 @@
                   <p-dropdown
                     [options]="companies"
                     [(ngModel)]="companiesReq"
-                    placeholder="{{ employees?.users?.usersEmail }}"
                     optionLabel="companiesName"
-                    [showClear]="true"
                   ></p-dropdown>
                 </div>
                 <div class="row d-flex mt-5 justify-content-end">

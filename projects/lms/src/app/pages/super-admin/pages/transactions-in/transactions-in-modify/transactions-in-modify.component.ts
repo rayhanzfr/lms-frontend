@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { statusesInOutCode } from 'projects/core/src/app/constant/statuses-in-out-code';
 import { Assets } from 'projects/core/src/app/dto/asset/assets';
 import { StatusesTransactions } from 'projects/core/src/app/dto/statuses-transactions/statuses-transactions';
@@ -21,13 +22,14 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-transactions-in-modify',
   templateUrl: './transactions-in-modify.component.html',
-  styleUrls: ['./transactions-in-modify.component.css']
+  styleUrls: ['./transactions-in-modify.component.css'],
+  providers: [MessageService]
 })
 export class TransactionsInModifyComponent implements OnInit, OnDestroy{
 
   constructor(private router:Router,private transactionOutService:TransactionsOutService,
     private transactionsDetailOutService:TransactionsDetailOutService,private statusesTransactionsService:StatusesTransactionsService,
-    private assetsService:AssetsService, private transactionsInService:TransactionsInService) { }
+    private assetsService:AssetsService, private transactionsInService:TransactionsInService, private messageService: MessageService) { }
 
   saveFullTransactionsInReqDto:SaveFullTransactionsInReqDto=new SaveFullTransactionsInReqDto();
   saveTransactionsInReqDto:SaveTransactionsInReqDto=new SaveTransactionsInReqDto();
@@ -104,7 +106,16 @@ export class TransactionsInModifyComponent implements OnInit, OnDestroy{
     this.transactionsInService.insertAll(this.saveFullTransactionsInReqDto).subscribe(result=>{
       this.saveFullTransactionsInResDto=result;
       if (this.saveFullTransactionsInResDto) {
-        this.router.navigateByUrl("admin/transactions-in")
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Transaction in success',
+        })
+        setTimeout(
+          () => 
+          this.router.navigateByUrl("admin/transactions-in")
+          ,2000,
+        )
       }
     })
   }

@@ -130,7 +130,8 @@
           <p class="text-center fs-30 mt-3 mb-3"><b>List Assets</b></p>
           <div class="row d-flex justify-content-center">
             <div class="col-12">
-              <div class="row justify-content-end mx-3 mb-3">
+              <div class="row d-flex align-items-center justify-content-end mt-3 mx-3">
+                <a style="text-decoration: none;">
                 <button
                   pButton
                   pRipple
@@ -140,6 +141,7 @@
                   class="p-button-sm p-button-success mx-4"
                   (click)="gotoInsert()"
                 ></button>
+              </a>
                 <p-fileUpload
                   mode="basic"
                   [customUpload]="true"
@@ -147,7 +149,14 @@
                   accept=".xlsx"
                   chooseLabel="Upload"
                 ></p-fileUpload>
-                <a pButton pRipple href="../../../../../../assets/template/template.xlsx" label="Download" icon="icon-download" class="p-button-sm mx-4">
+                <a style="text-decoration: none;" href="../../../../../../assets/template/template.xlsx">
+                  <button
+                  pButton
+                  pRipple
+                  type="button"
+                  label="Download" icon="icon-download" 
+                  class="p-button-sm p-button-primary mx-4"
+                ></button>
                 </a>
               </div>
               <div class="row justify-content-center">
@@ -174,11 +183,13 @@
                     #dt
                     [value]="data.data"
                     [rows]="10"
+                    responsiveLayout="scroll"
                     [paginator]="true"
                     [globalFilterFields]="[
                       'assetsName',
                       'itemsName',
-                      'statusesAssetsName'
+                      'statusesAssetsName',
+                      'companiesName'
                     ]"
                     [rowHover]="true"
                     dataKey="id"
@@ -196,6 +207,10 @@
                         <th pSortableColumn="assetsName">
                           Assets Name
                           <p-sortIcon field="assetsName"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="companiesName">
+                          Company
+                          <p-sortIcon field="companiesName"></p-sortIcon>
                         </th>
                         <th pSortableColumn="itemsName">
                           Item
@@ -226,9 +241,10 @@
                         </td>
 
                         <td>{{ d.assetsName }}</td>
+                        <td>{{ d.companiesName }}</td>
                         <td>{{ d.itemsName }}</td>
                         <td>{{ d.statusesAssetsName }}</td>
-                        <td class="text-center">{{ d.assetsExpired }}</td>
+                        <td class="text-center">{{ d.assetsExpired|date:'dd-MM-yyy' }}</td>
                         <td class="text-center">
                           <button
                             pButton

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { statusesAssetsCode } from 'projects/core/src/app/constant/statuses-assets-code';
 import { statusesInOutCode} from 'projects/core/src/app/constant/statuses-in-out-code';
 import { Assets } from 'projects/core/src/app/dto/asset/assets';
@@ -25,7 +26,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-transactions-out-modify',
   templateUrl: './transactions-out-modify.component.html',
-  styleUrls: ['./transactions-out-modify.component.css']
+  styleUrls: ['./transactions-out-modify.component.css'],
+  providers: [MessageService]
 })
 export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
 
@@ -51,7 +53,7 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
     private assetsService:AssetsService, private locationsService:LocationsService,
     private employeesService:EmployeesService, private itemsService:ItemsService,
     private itemsTypesService:ItemsTypesService,private itemsBrandsService:ItemsBrandsService,
-    private transactionsOutService:TransactionsOutService) { }
+    private transactionsOutService:TransactionsOutService, private messageService:MessageService) { }
 
   assetsFor: AssetsFor[]=[]
   assetsForEmp:AssetsFor= new AssetsFor();
@@ -198,7 +200,16 @@ export class TransactionsOutModifyComponent implements OnInit, OnDestroy {
     this.saveFullTransactionsOutReqDto.saveTransactionsOutReqDto=this.saveTransactionsOutHeaderReqDto
     this.transactionsOutService.insertAll(this.saveFullTransactionsOutReqDto).subscribe(result=>{
       this.saveFullTransactionsOutResDto=result;
-      this.route.navigateByUrl("admin/transactions-out")
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Transaction out success',
+      })
+      setTimeout(
+        () => 
+        this.route.navigateByUrl("admin/transactions-out"),
+        2000,
+      )
     })
   }
   

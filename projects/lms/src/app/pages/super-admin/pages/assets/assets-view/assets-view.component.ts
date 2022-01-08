@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { saveAs } from 'file-saver'
-import { MessageService } from 'primeng/api'
+import { ConfirmationService, MessageService } from 'primeng/api'
 import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto'
 import { SaveAssetsResDto } from 'projects/core/src/app/dto/asset/save-assets-res-dto'
 import { AssetsService } from 'projects/core/src/app/services/assets/assets.service'
@@ -13,7 +13,7 @@ import {statusesAssetsCode} from '../../../../../../../../core/src/app/constant/
   selector: 'app-assets-view',
   templateUrl: './assets-view.component.html',
   styleUrls: ['./assets-view.component.css'],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
 })
 export class AssetsViewComponent implements OnInit, OnDestroy {
   data: GetAllAssetsResDto = new GetAllAssetsResDto()
@@ -36,7 +36,7 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private assetsService: AssetsService,
-    private messageService: MessageService,
+    private messageService: MessageService, private confirmationService: ConfirmationService
     ) {}
   ngOnDestroy(): void {
     this.saveResSub?.unsubscribe()
@@ -98,6 +98,7 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
               summary: 'Success',
               detail: '' + this.saveResDto.message,
             })
+            setTimeout(() => this.reloadCurrentRoute(), 2000)
           }
         })
     } else {
@@ -109,10 +110,10 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
     }
   }
 
-  downloadTemplate(){
-    
-  }
-  reloadCurrentPage() {
-    window.location.reload()
-  }
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
 }
