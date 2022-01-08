@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ItemsTypes } from 'projects/core/src/app/dto/items-types/items-types';
 import { SaveItemsTypesResDto } from 'projects/core/src/app/dto/items-types/save-items-types-res-dto';
 import { UpdateItemsTypesResDto } from 'projects/core/src/app/dto/items-types/update-items-types-res-dto';
@@ -9,7 +10,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-items-types-modify',
   templateUrl: './items-types-modify.component.html',
-  styleUrls: ['./items-types-modify.component.css']
+  styleUrls: ['./items-types-modify.component.css'],
+  providers: [MessageService]
 })
 export class ItemsTypesModifyComponent implements OnInit {
 
@@ -20,21 +22,39 @@ export class ItemsTypesModifyComponent implements OnInit {
   itemsTypesSubs?:Subscription;
   itemsTypesSub?:Subscription;
   constructor(private router:ActivatedRoute, private itemsTypesService:ItemsTypesService,
-    private route:Router) { }
+    private route:Router, private messageService:MessageService) { }
   
   submitData(){
     if (this.itemsTypesReq.id) {
       this.itemsTypesSubs=this.itemsTypesService.update(this.itemsTypesReq)?.subscribe(result=>{
         this.updateItemsTypesRes=result
         if (this.updateItemsTypesRes) { 
-          this.route.navigateByUrl("admin/items-types")
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Updated',
+            detail: '' + this.updateItemsTypesRes.message,
+          })
+          setTimeout(
+            () => 
+            this.route.navigateByUrl("admin/items-types"),
+            2000,
+          )
         }
       })  
     }else{
       this.itemsTypesSubs=this.itemsTypesService.save(this.itemsTypesReq)?.subscribe(result=>{
         this.saveItemsTypesRes=result
         if (this.saveItemsTypesRes) {
-          this.route.navigateByUrl("admin/items-types")
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Save',
+            detail: '' + this.saveItemsTypesRes.message,
+          })
+          setTimeout(
+            () => 
+            this.route.navigateByUrl("admin/items-types"),
+            2000,
+          )
         }
       })
     }

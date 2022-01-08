@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
+import { MessageService } from 'primeng/api'
 import { Companies } from 'projects/core/src/app/dto/companies/companies'
 import { Locations } from 'projects/core/src/app/dto/locations/locations'
 import { SaveLocationsResDto } from 'projects/core/src/app/dto/locations/save-locations-res-dto'
@@ -12,6 +13,7 @@ import { Subscription } from 'rxjs'
   selector: 'app-locations-modify',
   templateUrl: './locations-modify.component.html',
   styleUrls: ['./locations-modify.component.css'],
+  providers: [MessageService],
 })
 export class LocationsModifyComponent implements OnInit, OnDestroy {
   locations: Locations = new Locations()
@@ -23,14 +25,15 @@ export class LocationsModifyComponent implements OnInit, OnDestroy {
   locationsSubs?: Subscription
   locationsSub?: Subscription
   companiesSub?: Subscription
+  isHide=true
 
   constructor(
     private route: Router,
     private router: ActivatedRoute,
     private locationsService: LocationsService,
     private companiesService: CompaniesService,
+    private messageService: MessageService,
   ) {}
-
 
   ngOnInit(): void {
     const code: any = this.router.snapshot.paramMap.get('code')
@@ -38,8 +41,10 @@ export class LocationsModifyComponent implements OnInit, OnDestroy {
       this.locationsSub = this.locationsService
         .getByCode(code)
         .subscribe((result) => {
+          this.isHide=false
           this.locations = result
           this.locationsReq = this.locations
+          this.companies = this.locations.companies
         })
     }
 
@@ -47,32 +52,57 @@ export class LocationsModifyComponent implements OnInit, OnDestroy {
       this.listCompanies = result
     })
   }
-    ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.locationsSubs?.unsubscribe()
     this.locationsSub?.unsubscribe()
   }
 
   submitData() {
     this.locationsReq.companies = this.companies
-    if (this.locationsReq.locationsCode) {
-      this.locationsSubs = this.locationsService
-        .update(this.locationsReq)
-        ?.subscribe((result) => {
-          this.updateLocationsRes = result
-          if (this.updateLocationsRes) {
-            this.route.navigateByUrl('admin/locations')
-          }
-        })
-    } else {
-      this.locationsSubs = this.locationsService
-        .save(this.locationsReq)
-        ?.subscribe((result) => {
-          this.saveLocationsRes = result
-          if (this.saveLocationsRes) {
-            this.route.navigateByUrl('admin/locations')
-          }
-        })
+    if(this.locationsReq.companies==null||this.locationsReq.locationsDeploy==null){
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Failed',
+        detail: 'Please input all form'
+      })
+    }else{
+      if (this.locationsReq.locationsCode) {
+        this.locationsSubs = this.locationsService
+          .update(this.locationsReq)
+          ?.subscribe((result) => {
+            this.updateLocationsRes = result
+              if (this.updateLocationsRes) {
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Updated',
+                  detail: '' + this.updateLocationsRes.message,
+                })
+                setTimeout(
+                  () => this.route.navigateByUrl('admin/locations'),
+                  2000,
+                )
+              }
+          })
+      } else {
+        this.locationsSubs = this.locationsService
+          .save(this.locationsReq)
+          ?.subscribe((result) => {
+            this.saveLocationsRes = result
+            if (this.saveLocationsRes) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Save',
+                detail: '' + this.saveLocationsRes.message,
+              })
+              setTimeout(
+                () => this.route.navigateByUrl('admin/locations'),
+                2000,
+              )
+            }
+          })
+      }
     }
+   
   }
 
   back() {

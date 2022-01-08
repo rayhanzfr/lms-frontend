@@ -1,3 +1,5 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
 <div class="row">
     <div class="col-md-12 grid-margin">
       <div class="flex-row-reverse">
@@ -85,9 +87,6 @@
                         <p-sortIcon field="roles.rolesName"></p-sortIcon>
                       </th>
                       <th class="text-center">
-                        Active
-                      </th>
-                      <th class="text-center">
                         Action
                       </th>
                     </tr>
@@ -99,15 +98,6 @@
                       </td>
                       <td>{{ d.usersEmail }}</td>
                       <td>{{ d.roles.rolesName }}</td>
-                      <td class="text-center">
-                        <input
-                          style="margin: -8px 0 0 -5px;"
-                          type="checkbox"
-                          class="form-check-input"
-                          disabled
-                          [checked]="d.isActive"
-                        />
-                      </td>
                       <td class="text-center">
                         <button
                           pButton
@@ -121,7 +111,7 @@
                           pRipple
                           icon="pi pi-trash"
                           class="p-button-sm p-button-danger"
-                          (click)="delete(d.id)"
+                          (click)="confirm(d.id)"
                         ></button>
                       </td>
                     </tr>

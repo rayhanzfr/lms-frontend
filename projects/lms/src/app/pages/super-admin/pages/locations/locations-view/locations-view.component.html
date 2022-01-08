@@ -1,18 +1,6 @@
-<div class="lds-default" *ngIf="loading">
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
-<div class="row" [hidden]="isHide">
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
+<div class="row">
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 stretch-card transparent">
@@ -41,6 +29,7 @@
                   [value]="data"
                   [rows]="10"
                   [paginator]="true"
+                  responsiveLayout="scroll"
                   [globalFilterFields]="[
                               'locationsCode',
                               'locationsDeploy'
@@ -88,9 +77,6 @@
                         <p-sortIcon field="companiesName"></p-sortIcon>
                       </th>
                       <th class="text-center">
-                        Active
-                      </th>
-                      <th class="text-center">
                         Action
                       </th>
                     </tr>
@@ -104,15 +90,6 @@
                       <td>{{ l.locationsDeploy }}</td>
                       <td>{{ l.companies.companiesName }}</td>
                       <td class="text-center">
-                        <input
-                          style="margin: -8px 0 0 -5px;"
-                          type="checkbox"
-                          class="form-check-input"
-                          disabled
-                          [checked]="l.isActive"
-                        />
-                      </td>
-                      <td class="text-center">
                         <button
                           pButton
                           pRipple
@@ -125,7 +102,7 @@
                           pRipple
                           icon="pi pi-trash"
                           class="p-button-sm p-button-danger"
-                          (click)="delete(l.id)"
+                          (click)="confirm(l.id)"
                         ></button>
                       </td>
                     </tr>

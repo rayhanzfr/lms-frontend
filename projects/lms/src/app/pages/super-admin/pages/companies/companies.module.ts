@@ -7,8 +7,8 @@ import { CompaniesRoutingModule } from './companies-routing.module';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
-
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     TableModule,
     InputTextModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    ConfirmDialogModule,
+    ToastModule
   ]
 })
 export class CompaniesModule { }

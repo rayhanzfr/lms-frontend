@@ -78,6 +78,16 @@
                     (click)="getStatusesInOutCode(statusesInOutReq)"
                   ></p-dropdown>
                 </div>
+                <div class="form-group mt-4 mb-3">
+                  <h5 for="companies"><b>Companies</b></h5>
+                  <p-dropdown
+                    [options]="companies"
+                    [(ngModel)]="companiesReq"
+                    optionLabel="companiesName"
+                    [placeholder]="companiesReq.companiesName"
+                    [showClear]="true"
+                  ></p-dropdown>
+                </div>
                 <div class="p-field p-col-12">
                   <h5 for="icon">Assets Expired</h5>
                   <p-calendar

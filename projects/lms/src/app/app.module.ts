@@ -11,7 +11,6 @@ import { MainbarComponent } from './pages/mainbar/mainbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from 'projects/core/src/app/services/http-interceptor/http-interceptor.service';
-import { MessageService } from 'primeng/api';
 
 
 
@@ -29,7 +28,7 @@ import { MessageService } from 'primeng/api';
     FormsModule,
  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}, MessageService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

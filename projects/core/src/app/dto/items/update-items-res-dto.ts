@@ -1,5 +1,5 @@
 export class UpdateItemsResDto {
 	version!: number
-	message!: string
+	msg!: string
 
 }

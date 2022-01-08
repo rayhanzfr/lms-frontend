@@ -11,6 +11,7 @@ import { EmployeesService } from 'projects/core/src/app/services/employees/emplo
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
   constructor(

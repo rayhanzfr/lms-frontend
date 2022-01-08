@@ -12,6 +12,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -31,7 +32,8 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     ButtonModule,
     MultiSelectModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule
   ]
 })
 export class TransactionsInModule { }

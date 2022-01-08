@@ -12,6 +12,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
@@ -31,7 +33,9 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     ButtonModule,
     MultiSelectModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule,
+    ConfirmDialogModule
   ]
 })
 export class ItemsTypesModule { }

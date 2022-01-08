@@ -12,6 +12,8 @@ import { ButtonModule } from 'primeng/button';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
@@ -29,7 +31,9 @@ import { FormsModule } from '@angular/forms';
     ButtonModule,
     MultiSelectModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    ToastModule,
+    ConfirmDialogModule
   ]
 })
 export class LocationsModule { }

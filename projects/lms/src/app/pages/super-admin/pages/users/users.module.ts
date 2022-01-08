@@ -12,6 +12,8 @@ import { MultiSelectModule } from 'primeng/multiselect'
 import { ButtonModule } from 'primeng/button'
 import { DropdownModule } from 'primeng/dropdown'
 import { FormsModule } from '@angular/forms'
+import { ToastModule } from 'primeng/toast'
+import { ConfirmDialogModule } from 'primeng/confirmdialog'
 
 @NgModule({
   declarations: [UsersModifyComponent, UsersViewComponent],
@@ -26,7 +28,9 @@ import { FormsModule } from '@angular/forms'
     ButtonModule,
     MultiSelectModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    ToastModule,
+    ConfirmDialogModule
   ],
 })
 export class UsersModule {}

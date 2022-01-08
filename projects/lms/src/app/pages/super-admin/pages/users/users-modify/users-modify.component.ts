@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Roles } from 'projects/core/src/app/dto/roles/roles';
 import { SaveUsersResDto } from 'projects/core/src/app/dto/users/save-users-res-dto';
 import { UpdateUsersResDto } from 'projects/core/src/app/dto/users/update-users-res-dto';
@@ -13,7 +14,8 @@ import {Permissions} from '../../../../../../../../core/src/app/dto/permissions/
 @Component({
   selector: 'app-users-modify',
   templateUrl: './users-modify.component.html',
-  styleUrls: ['./users-modify.component.css']
+  styleUrls: ['./users-modify.component.css'],
+  providers: [MessageService]
 })
 export class UsersModifyComponent implements OnInit, OnDestroy {
 
@@ -29,7 +31,7 @@ export class UsersModifyComponent implements OnInit, OnDestroy {
 
   selectedRoles:Roles = new Roles()
   rolesSubs?:Subscription
-  constructor(private router: Router, private usersService: UsersService, private activatedRoute:ActivatedRoute, private permissionsService:PermissionsService, private rolesService:RolesService) { }
+  constructor(private router: Router,private messageService:MessageService, private usersService: UsersService, private activatedRoute:ActivatedRoute, private permissionsService:PermissionsService, private rolesService:RolesService) { }
   
   ngOnInit(): void {
     const email = this.activatedRoute.snapshot.paramMap.get('code')
@@ -41,7 +43,7 @@ export class UsersModifyComponent implements OnInit, OnDestroy {
       })
     }
     this.rolesSubs = this.rolesService.getAll().subscribe(result=>{
-      this.roles = result
+      this.roles = result.filter(role => role.rolesCode != "ROLES1")
     })
   }
   
@@ -51,18 +53,43 @@ export class UsersModifyComponent implements OnInit, OnDestroy {
   }
   sumbit():void{
     this.usersReq.roles = this.rolesReq
+    if(this.usersReq.roles==null||this.usersReq.usersEmail==null){
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Rejected',
+        detail: 'Please Input All Form',
+      })
+    }
     if (this.usersReq.usersEmail == this.users?.usersEmail) {
       this.usersSubs=this.usersService.update(this.usersReq)?.subscribe(result=>{
         this.updateUsersRes=result
         if (this.updateUsersRes) { 
-          this.router.navigateByUrl("/admin/user")
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Updated',
+            detail: '' + this.updateUsersRes.message,
+          })
+          setTimeout(
+            () => this.router.navigateByUrl("/admin/user")
+            ,
+            2000,
+          )
         }
       })  
     }else{
       this.usersSubs=this.usersService.save(this.usersReq)?.subscribe(result=>{
         this.saveUsersRes=result
         if (this.saveUsersRes) {
-          this.router.navigateByUrl("/admin/user")
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Save',
+            detail: '' + this.saveUsersRes.message,
+          })
+          setTimeout(
+            () => this.router.navigateByUrl("/admin/user")
+            ,
+            2000,
+          )
         }
       })
     }
