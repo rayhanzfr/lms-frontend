@@ -14,19 +14,20 @@ import { ItemsService } from 'projects/core/src/app/services/items/items.service
 import { StatusesAssetsService } from 'projects/core/src/app/services/statuses-assets/statuses-assets.service'
 import { StatusesInOutService } from 'projects/core/src/app/services/statuses-in-out/statuses-in-out.service'
 import { Subscription } from 'rxjs'
-import { PrimeNGConfig } from 'primeng/api'
+import { MessageService, PrimeNGConfig } from 'primeng/api'
 import { UpdateAssetsReqDto } from 'projects/core/src/app/dto/asset/update-assets-req-dto'
 import { CompaniesService } from 'projects/core/src/app/services/companies/companies.service'
-import { Companies } from '../../../../../../../../core/src/app/dto/companies/companies';
+import { Companies } from '../../../../../../../../core/src/app/dto/companies/companies'
+import { AuthService } from '../../../../../../../../core/src/app/services/auth/auth.service'
+import { roleCode } from '../../../../../../../../core/src/app/constant/rolecode'
 
 @Component({
   selector: 'app-assets-modify',
   templateUrl: './assets-modify.component.html',
   styleUrls: ['./assets-modify.component.css'],
+  providers: [MessageService],
 })
 export class AssetsModifyComponent implements OnInit, OnDestroy {
-  file!: File | null
-  selectedFiles!: FileList
   assetsSub?: Subscription
   date!: Date
   assets: Assets = new Assets()
@@ -47,6 +48,8 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
 
   saveResDto: SaveAssetsResDto = new SaveAssetsResDto()
 
+  roles!:string
+  isNonAdmin=false
   isUpdate: boolean = false
   itemsSub?: Subscription
   invoicesSub?: Subscription
@@ -61,13 +64,24 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
     private statusesAssetsService: StatusesAssetsService,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private companiesService: CompaniesService
+    private companiesService: CompaniesService,
+    private messageService: MessageService,
+    private authService: AuthService
   ) {}
   ngOnDestroy(): void {
     this.assetsSub?.unsubscribe()
+    this.itemsSub?.unsubscribe()
+    this.companiesSubs?.unsubscribe()
+    this.invoicesSub?.unsubscribe()
+    this.statusesInOutSub?.unsubscribe()
+    this.statusesAssetsSub?.unsubscribe()
   }
 
   ngOnInit(): void {
+    this.roles = this.authService.getRolesCode()!
+    if(this.roles==roleCode.get(2)){
+      this.isNonAdmin=true
+    }
     const assetsName: any = this.activeRoute.snapshot.paramMap.get('code')
     if (assetsName) {
       this.isUpdate = true
@@ -101,7 +115,9 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
             .subscribe((result) => {
               this.statusesInOutReq = result
             })
-            this.companiesSubs = this.companiesService.getByCode(this.saveAssetReq.companiesCode).subscribe(result =>{
+          this.companiesSubs = this.companiesService
+            .getByCode(this.saveAssetReq.companiesCode)
+            .subscribe((result) => {
               this.companiesReq = result
             })
         })
@@ -122,9 +138,9 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
         this.statusesInOut = result
       })
-      this.companiesSubs = this.companiesService.getAll().subscribe(result =>{
-        this.companies = result
-      })
+    this.companiesSubs = this.companiesService.getAll().subscribe((result) => {
+      this.companies = result
+    })
   }
 
   getItemsCode(items: Items): void {
@@ -156,7 +172,12 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
         .subscribe((result) => {
           this.updateResDto = result
           if (this.updateResDto) {
-            this.router.navigateByUrl('/admin/assets')
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Updated',
+              detail: '' + this.updateResDto.message,
+            })
+            setTimeout(() => this.router.navigateByUrl('/admin/assets'), 1000)
           }
         })
     } else {
@@ -165,26 +186,24 @@ export class AssetsModifyComponent implements OnInit, OnDestroy {
       this.saveAssetReq.companiesCode = this.companiesReq.companiesCode
       this.saveAssetReq.statusesAssetsCode = this.statusesAssetsReq.statusesAssetsCode
       this.saveAssetReq.statusesInOutCode = this.statusesInOutReq.statusesInOutCode
-      this.assetsService.save(this.saveAssetReq).subscribe((result) => {
-        this.saveResDto = result
-        if (this.saveResDto) {
-          this.router.navigateByUrl('/admin/assets')
-        }
-      })
+      this.assetsSub = this.assetsService
+        .save(this.saveAssetReq)
+        .subscribe((result) => {
+          this.saveResDto = result
+          if (this.saveResDto) {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Save',
+              detail: '' + this.saveResDto.message,
+            })
+            setTimeout(() => this.router.navigateByUrl('/admin/assets'), 1000)
+          }
+        })
     }
   }
 
   back() {
     this.router.navigateByUrl('/admin/assets')
-  }
-
-  upload() {
-    this.file = this.selectedFiles?.item(0)
-    this.assetsSub = this.assetsService.upload(this.file)?.subscribe()
-  }
-
-  selectFile(event: any) {
-    this.selectedFiles = event.target.files
   }
 
   newItems(): void {

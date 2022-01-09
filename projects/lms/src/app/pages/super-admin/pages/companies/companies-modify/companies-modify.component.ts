@@ -23,7 +23,7 @@ export class CompaniesModifyComponent implements OnInit, OnDestroy {
   companiesCode!: string
   file!: File | null
   selectedFiles!: FileList
-
+  submitted=false
   constructor(
     private route: Router,
     private router: ActivatedRoute,
@@ -50,6 +50,7 @@ export class CompaniesModifyComponent implements OnInit, OnDestroy {
   }
 
   submitData() {
+    this.submitted=true
     if (
       this.companiesReq.companiesName == null ||
       this.companiesReq.companiesPhone == null ||

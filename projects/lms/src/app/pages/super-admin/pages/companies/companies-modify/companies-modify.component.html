@@ -11,6 +11,8 @@
                   <div class="form-group mt-4 mb-3">
                     <h5 for="name"><b>Company Name</b></h5>
                     <input
+                    required
+                    #name="ngModel"
                       type="text"
                       id="name"
                       pInputText
@@ -18,10 +20,12 @@
                       [(ngModel)]="companiesReq.companiesName"
                       [placeholder]="companiesReq.companiesName"
                     />
+                    <small *ngIf="(name.invalid && submitted) || (name.dirty && name.invalid)" class="p-error">company name is required.</small>
                   </div>
                   <div class="form-group mt-4 mb-3">
                     <h5 for="phone"><b>Company Phone</b></h5>
                     <input
+                    #phone="ngModel"
                       type="text"
                       id="phone"
                       pInputText
@@ -29,10 +33,12 @@
                       [(ngModel)]="companiesReq.companiesPhone"
                       [placeholder]="companiesReq.companiesPhone"
                     />
+                    <small *ngIf="(phone.invalid && submitted) || (name.dirty && name.invalid)" class="p-error">company phone is required.</small>
                   </div>
                   <div class="form-group mt-4 mb-3">
                     <h5 for="address"><b>Company Address</b></h5>
                     <input
+                    #address="ngModel"
                       type="text"
                       id="address"
                       pInputText
@@ -40,6 +46,7 @@
                       [(ngModel)]="companiesReq.companiesAddress"
                       [placeholder]="companiesReq.companiesAddress"
                     />
+                    <small *ngIf="(address.invalid && submitted) || (address.dirty && address.invalid)" class="p-error">company address is required.</small>
                   </div>
                   <div class="form-group mt-4 mb-3">
                     <h5 for="roles"><b>Company Logo</b></h5>

@@ -54,7 +54,14 @@ export class LoginComponent implements OnInit {
             this.employeesService.getByUsersId().subscribe({next:data =>{
               this.employees = data
               if(this.employees) {
-                  this.router.navigateByUrl('/admin-dashboard')
+                this.messageService.add({
+                  severity:'succes',
+                  summary:'Login Success',
+                  detail:'Welcome '+this.employees.employeesFullname
+                })
+                setTimeout(() => {
+                  this.router.navigateByUrl('/admin-dashboard'),1000
+                })
               }
               else{
                 this.router.navigateByUrl('/new-employee')

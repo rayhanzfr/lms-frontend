@@ -2,9 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { saveAs } from 'file-saver'
 import { ConfirmationService, MessageService } from 'primeng/api'
+import { roleCode } from 'projects/core/src/app/constant/rolecode'
 import { GetAllAssetsResDto } from 'projects/core/src/app/dto/asset/get-all-assets-res-dto'
 import { SaveAssetsResDto } from 'projects/core/src/app/dto/asset/save-assets-res-dto'
 import { AssetsService } from 'projects/core/src/app/services/assets/assets.service'
+import { AuthService } from 'projects/core/src/app/services/auth/auth.service'
 import { EmployeesService } from 'projects/core/src/app/services/employees/employees.service'
 import { Subscription } from 'rxjs'
 import {statusesAssetsCode} from '../../../../../../../../core/src/app/constant/statuses-assets-code'
@@ -24,7 +26,8 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
   brokenAssets!: number
   file!: File | null
   selectedFiles!: FileList
-  
+  isNonAdmin=false
+  rolesCode?:string  
   isNew: boolean = false
 
   assetsSub?: Subscription
@@ -36,7 +39,7 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private assetsService: AssetsService,
-    private messageService: MessageService, private confirmationService: ConfirmationService
+    private messageService: MessageService, private confirmationService: ConfirmationService, private authService: AuthService
     ) {}
   ngOnDestroy(): void {
     this.saveResSub?.unsubscribe()
@@ -44,6 +47,10 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.rolesCode = this.authService.getRolesCode()
+    if(this.rolesCode==roleCode.get(2)){
+      this.isNonAdmin=true
+    }
     this.assetsSub = this.assetsService.getAll().subscribe((asset) => {
       this.data = asset
       this.assetsSub = this.assetsService
@@ -76,7 +83,12 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
   }
 
   gotoInsert(): void {
-    this.router.navigateByUrl('/admin/assets/new')
+    if(this.isNonAdmin){
+      this.router.navigateByUrl('/admin/assets/new')
+    }
+    else{
+      this.router.navigateByUrl('/non-admin/assets/new')
+    }
   }
 
   gotoUpdate(i: string): void {
@@ -96,9 +108,9 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
             this.messageService.add({
               severity: 'success',
               summary: 'Success',
-              detail: '' + this.saveResDto.message,
+              detail: 'Upload file Success',
             })
-            setTimeout(() => this.reloadCurrentRoute(), 2000)
+            setTimeout(() => this.reloadCurrentRoute(),1000)
           }
         })
     } else {

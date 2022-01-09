@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -223,7 +224,7 @@
                         <th class="text-center">
                           Assets Expired
                         </th>
-                        <th class="text-center" style="width: 13rem;">
+                        <th class="text-center" style="width: 13rem;" [hidden]="isNonAdmin">
                           Action
                         </th>
                       </tr>
@@ -245,7 +246,7 @@
                         <td>{{ d.itemsName }}</td>
                         <td>{{ d.statusesAssetsName }}</td>
                         <td class="text-center">{{ d.assetsExpired|date:'dd-MM-yyy' }}</td>
-                        <td class="text-center">
+                        <td class="text-center" [hidden]="isNonAdmin">
                           <button
                             pButton
                             pRipple

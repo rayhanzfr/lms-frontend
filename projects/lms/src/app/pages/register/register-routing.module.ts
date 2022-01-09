@@ -6,11 +6,11 @@ import { RegisterModifyComponent } from './register-modify/register-modify.compo
 
 const routes: Routes = [
   {
-    path: 'register',
+    path: '',
     component: RegisterModifyComponent
   },
   {
-    path: 'register/sent',
+    path: 'sent',
     component:RegisterViewComponent
   }
 ]
