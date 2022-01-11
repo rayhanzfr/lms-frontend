@@ -11,6 +11,7 @@ import { MainbarComponent } from './pages/mainbar/mainbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from 'projects/core/src/app/services/http-interceptor/http-interceptor.service';
+import { AuthGuard } from '../../../core/src/app/services/auth.guard';
 
 
 
@@ -28,7 +29,7 @@ import { HttpInterceptorService } from 'projects/core/src/app/services/http-inte
     FormsModule,
  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,7 @@ import { NewEmployeesComponent } from './new-employees.component';
 
 const routes: Routes = [
   {
-    path: 'new-employee',
+    path: '',
     component:NewEmployeesComponent
   }
 ]

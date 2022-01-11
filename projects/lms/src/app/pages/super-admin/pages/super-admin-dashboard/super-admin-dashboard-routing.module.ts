@@ -5,7 +5,7 @@ import { SuperAdminDashboardComponent } from './super-admin-dashboard.component'
 
 const superDashboard: Routes = [
   {
-    path: 'admin-dashboard',
+    path: '',
     component: SuperAdminDashboardComponent
   }
 ]

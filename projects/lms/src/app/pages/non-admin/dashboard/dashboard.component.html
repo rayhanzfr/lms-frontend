@@ -26,13 +26,6 @@
               <th>Expired</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="groupheader" let-d>
-            <tr pRowGroupHeader>
-              <td colspan="4">
-                <span class="p-text-bold p-ml-2">{{ d.itemsName }}</span>
-              </td>
-            </tr>
-          </ng-template>
           <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
             <tr>
               <td>
@@ -59,9 +52,67 @@
     <div class="card">
       <div class="card-body">
         <div class="card-title">
-            <h3>List Item was Borrowed by customer</h3>
+            <h3 class="text-center"><b>Assets was Borrowed in Company</b></h3>
+        </div>
+        <div class="container-fluid col-10">
+          <div class="row justify-content-end">
+            <a routerLink="/non-admin/transactions-out" class="text-right">
+              <p>view transaction out</p>
+            </a>
+          </div>
         </div>
       </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p-table
+            #dt
+            [value]="data"
+            [rows]="5"
+            [rowHover]="true"
+            dataKey="id"
+          >
+            <ng-template pTemplate="header">
+              <tr class="text-center">
+                <th style="width: 3rem;">
+                  No
+                </th>
+                <th style="width: 10rem;">
+                  Image
+                </th>
+                <th pSortableColumn="assetsName">
+                  Assets Name
+                  <p-sortIcon field="assetsName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="itemsName">
+                  Item
+                  <p-sortIcon field="itemsName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="statusesAssetsName">
+                  Status Assets
+                  <p-sortIcon field="statusesAssetsName"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
+              <tr>
+                <td>{{ rowIndex + 1 }}</td>
+                <td>
+                  <img
+                    class="items-img"
+                    src="data:image/png;base64,{{ d.files?.file }}"
+                    alt="img{{ rowIndex + 1 }}"
+                    style="width: 100px !important;"
+                  />
+                </td>
+
+                <td>{{ d.assetsName }}</td>
+                <td>{{ d.itemsName }}</td>
+                <td>{{ d.statusesAssetsName }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+      </div>
     </div>
-  </div>
 </div>

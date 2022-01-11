@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -39,11 +40,11 @@
         <div class="col-12 col-md-3 col-sm-6 grid-margin stretch-card">
           <div class="card card-dark">
             <div class="card-body">
-              <h4 class="mb-4"><b>Asset Loses</b></h4>
+              <h4 class="mb-4"><b>Asset Lost</b></h4>
               <p class="fs-30 text-center">
-                <b>{{ loseAssets }}</b>
+                <b>{{ lostAssets }}</b>
               </p>
-              <p class="text-right mt-4">number of loses asset</p>
+              <p class="text-right mt-4">number of lost asset</p>
             </div>
           </div>
         </div>
@@ -223,7 +224,7 @@
                         <th class="text-center">
                           Assets Expired
                         </th>
-                        <th class="text-center" style="width: 13rem;">
+                        <th class="text-center" style="width: 13rem;" [hidden]="isNonAdmin">
                           Action
                         </th>
                       </tr>
@@ -245,7 +246,7 @@
                         <td>{{ d.itemsName }}</td>
                         <td>{{ d.statusesAssetsName }}</td>
                         <td class="text-center">{{ d.assetsExpired|date:'dd-MM-yyy' }}</td>
-                        <td class="text-center">
+                        <td class="text-center" [hidden]="isNonAdmin">
                           <button
                             pButton
                             pRipple

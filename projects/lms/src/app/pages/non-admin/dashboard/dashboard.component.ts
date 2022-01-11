@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   getDataTransactionOut:GetTransactionsOutDataDto[]=[]
   getAllAssets:Assets[]=[]
 
+  data:Assets[]=[]
   assetsSubs?:Subscription
   transOutDetailSubs?:Subscription
   constructor(private transactionsDetailOutService: TransactionsDetailOutService, private assetsService: AssetsService) { }
@@ -24,6 +25,11 @@ export class DashboardComponent implements OnInit {
     this.assetsSubs = this.assetsService.getAll().subscribe(result=>
       {
         this.getAllAssets = result.data
+        this.assetsSubs = this.assetsService
+        .getBorrowedAssets()
+        .subscribe((result) => {
+          this.data = result.data
+        })
       })
   }
 

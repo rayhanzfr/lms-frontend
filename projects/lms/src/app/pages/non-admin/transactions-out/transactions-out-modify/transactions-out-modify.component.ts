@@ -147,6 +147,9 @@ export class NonTransactionsOutModifyComponent implements OnInit,OnDestroy{
             for (let i = 0; i < this.listAssets.length; i++) {
               this.saveTransactionsOutDetailReqDto = new SaveTransactionsDetailsOutReqDto();
               this.saveTransactionsOutDetailReqDto.expiredDate = this.expiredDate;
+              if (this.isEmployees) {
+                this.saveTransactionsOutDetailReqDto.employeesCode=this.usersEmployee.employeesCode
+              }
               this.saveTransactionsOutDetailReqDto.assetsName = this.listAssets[i].assetsName;
               this.listSaveTransactionsOutDetailReqDto.push(this.saveTransactionsOutDetailReqDto);
             }
