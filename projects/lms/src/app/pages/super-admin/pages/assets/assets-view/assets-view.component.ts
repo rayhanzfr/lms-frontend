@@ -20,7 +20,7 @@ import {statusesAssetsCode} from '../../../../../../../../core/src/app/constant/
 export class AssetsViewComponent implements OnInit, OnDestroy {
   data: GetAllAssetsResDto = new GetAllAssetsResDto()
   newAssets: GetAllAssetsResDto = new GetAllAssetsResDto()
-  loseAssets!: number
+  lostAssets!: number
   borrowedAssets!: number
   readyAssets!: number
   brokenAssets!: number
@@ -56,7 +56,7 @@ export class AssetsViewComponent implements OnInit, OnDestroy {
       this.assetsSub = this.assetsService
         .getByStatusAssets('ARCHV')
         .subscribe((asset) => {
-          this.loseAssets = asset.data.length
+          this.lostAssets = asset.data.length
         })
       if (this.data || this.data !== null) {
         this.assetsSub = this.assetsService.newAssets().subscribe((result) => {

@@ -54,7 +54,8 @@ export class CompaniesModifyComponent implements OnInit, OnDestroy {
     if (
       this.companiesReq.companiesName == null ||
       this.companiesReq.companiesPhone == null ||
-      this.companiesReq.companiesAddress == null
+      this.companiesReq.companiesAddress == null || 
+      this.file == null
     ) {
       this.messageService.add({
         severity: 'error',

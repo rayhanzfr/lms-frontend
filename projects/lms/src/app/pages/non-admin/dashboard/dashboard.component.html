@@ -26,13 +26,6 @@
               <th>Expired</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="groupheader" let-d>
-            <tr pRowGroupHeader>
-              <td colspan="4">
-                <span class="p-text-bold p-ml-2">{{ d.itemsName }}</span>
-              </td>
-            </tr>
-          </ng-template>
           <ng-template pTemplate="body" let-d let-rowIndex="rowIndex">
             <tr>
               <td>
@@ -59,7 +52,7 @@
     <div class="card">
       <div class="card-body">
         <div class="card-title">
-            <h3>List Item was Borrowed by customer</h3>
+            <h3 class="text-center"><b>Assets was Borrowed in Company</b></h3>
         </div>
         <div class="container-fluid col-10">
           <div class="row justify-content-end">
